@@ -40,5 +40,14 @@
         "laminas": {
             "config-provider": "Primo\\Cli\\ConfigProvider"
         }
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@test"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit --colors=always --testsuite=\"Unit Tests\""
     }
 }
