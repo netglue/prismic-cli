@@ -86,7 +86,7 @@ class TypeBuilder
                 'label' => $label,
                 'placeholder_false' => $falseLabel,
                 'placeholder_true' => $trueLabel,
-                'default' => $default,
+                'default_value' => $default,
             ],
         ];
     }
