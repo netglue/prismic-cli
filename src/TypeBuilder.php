@@ -121,6 +121,21 @@ class TypeBuilder
         ];
     }
 
+    public function link(string $label, ?string $placeholder, bool $allowTargetBlank = false, ?array $customTypes = null) : array
+    {
+        $config = array_filter([
+            'label' => $label,
+            'placeholder' => $placeholder,
+            'allowTargetBlank' => $allowTargetBlank ? true : null,
+            'customtypes' => empty($customTypes) ? null : $customTypes,
+        ]);
+
+        return [
+            'type' => self::TYPE_LINK,
+            'config' => $config,
+        ];
+    }
+
     public static function webLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false) : array
     {
         return self::externalLink('web', $label, $placeholder, $allowTargetBlank);
