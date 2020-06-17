@@ -121,7 +121,7 @@ class TypeBuilder
         ];
     }
 
-    public function link(string $label, ?string $placeholder, bool $allowTargetBlank = false, ?array $customTypes = null) : array
+    public static function link(string $label, ?string $placeholder = null, bool $allowTargetBlank = false, ?array $customTypes = null) : array
     {
         $config = array_filter([
             'label' => $label,
