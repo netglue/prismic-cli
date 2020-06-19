@@ -252,29 +252,29 @@ class TypeBuilder
         ];
     }
 
-    public static function img(string $label, ?string $placeholder, int $x, int $y, ?array $views = null) : array
+    public static function img(string $label, ?string $placeholder = null, ?int $x = null, ?int $y = null, ?array $views = null) : array
     {
         return [
             'type' => self::TYPE_IMAGE,
             'config' => array_filter([
                 'label' => $label,
                 'placeholder' => $placeholder,
-                'constraint' => [
+                'constraint' => array_filter([
                     'width' => $x,
                     'height' => $y,
-                ],
+                ]),
                 'thumbnails' => $views,
             ]),
         ];
     }
 
-    public static function imgView(string $name, int $x, int $y) : array
+    public static function imgView(string $name, ?int $x = null, ?int $y = null) : array
     {
-        return [
+        return array_filter([
             'name' => $name,
             'width' => $x,
             'height' => $y,
-        ];
+        ]);
     }
 
     public static function textAllow(array $types) : string
