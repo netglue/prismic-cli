@@ -208,7 +208,7 @@ class TypeBuilder
         ];
     }
 
-    public static function number(string $label, string $placeholder = null, ?int $min = null, ?int $max = null) : array
+    public static function number(string $label, ?string $placeholder = null, ?int $min = null, ?int $max = null) : array
     {
         return [
             'type' => self::TYPE_NUMBER,
