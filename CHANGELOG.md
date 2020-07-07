@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.1.3 - 2020-07-07
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- TypeBuilder - add default null values to a number of methods to keep things compact.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.1.2 - 2020-06-15
 
 ### Added
