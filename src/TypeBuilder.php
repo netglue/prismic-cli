@@ -62,7 +62,7 @@ class TypeBuilder
         self::EMBED,
     ];
 
-    public static function uid(string $label, ?string $placeholder) : array
+    public static function uid(string $label, ?string $placeholder = null) : array
     {
         return [
             'type' => self::TYPE_UID,
@@ -159,7 +159,7 @@ class TypeBuilder
         ];
     }
 
-    private static function config(?string $label, ?string $placeholder, bool $useAsTitle = false) : array
+    private static function config(?string $label, ?string $placeholder = null, bool $useAsTitle = false) : array
     {
         return array_filter([
             'label' => self::nullifyString($label),
@@ -188,15 +188,15 @@ class TypeBuilder
 
     public static function date(string $label, ?string $placeholder = null, bool $isToday = false) : array
     {
-        return self::dt(self::TYPE_DATE, $label, $placeholder, $isToday);
+        return self::datetimeType(self::TYPE_DATE, $label, $placeholder, $isToday);
     }
 
     public static function timestamp(string $label, ?string $placeholder = null, bool $isToday = false) : array
     {
-        return self::dt(self::TYPE_TIMESTAMP, $label, $placeholder, $isToday);
+        return self::datetimeType(self::TYPE_TIMESTAMP, $label, $placeholder, $isToday);
     }
 
-    private static function dt(string $type, string $label, ?string $placeholder = null, bool $isToday = false) : array
+    private static function datetimeType(string $type, string $label, ?string $placeholder = null, bool $isToday = false) : array
     {
         return [
             'type' => $type,
@@ -208,7 +208,7 @@ class TypeBuilder
         ];
     }
 
-    public static function number(string $label, string $placeholder, ?int $min = null, ?int $max = null) : array
+    public static function number(string $label, string $placeholder = null, ?int $min = null, ?int $max = null) : array
     {
         return [
             'type' => self::TYPE_NUMBER,
@@ -316,7 +316,7 @@ class TypeBuilder
 
     public static function richText(
         string $label,
-        ?string $placeholder,
+        ?string $placeholder = null,
         array $allow = [],
         bool $multiple = true,
         bool $allowTargetBlank = false,
@@ -343,7 +343,7 @@ class TypeBuilder
         ];
     }
 
-    public static function slice(string $label, ?string $description, array $nonRepeatFields = [], array $repeatFields = [], ?string $icon = null) : array
+    public static function slice(string $label, ?string $description = null, array $nonRepeatFields = [], array $repeatFields = [], ?string $icon = null) : array
     {
         return array_filter([
             'type' => self::TYPE_SLICE,
