@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit\Type;
@@ -13,33 +14,33 @@ class SpecTest extends TestCase
     /** @var Spec */
     private $spec;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->spec = Spec::new('page', 'Web Page', true);
     }
 
-    public function testSource() : void
+    public function testSource(): void
     {
         $this->assertSame('page.php', $this->spec->source());
     }
 
-    public function testFilename() : void
+    public function testFilename(): void
     {
         $this->assertSame('page.json', $this->spec->filename());
     }
 
-    public function testName() : void
+    public function testName(): void
     {
         $this->assertSame('Web Page', $this->spec->name());
     }
 
-    public function testId() : void
+    public function testId(): void
     {
         $this->assertSame('page', $this->spec->id());
     }
 
-    public function testSerialize() : void
+    public function testSerialize(): void
     {
         $expect = '{"id":"page","name":"Web Page","repeatable":true,"value":"page.json"}';
         $this->assertJsonStringEqualsJsonString($expect, json_encode($this->spec));

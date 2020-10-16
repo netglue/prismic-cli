@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Primo\Cli;
@@ -39,12 +40,12 @@ class BuildConfig
     }
 
     /** @param Spec[] $types */
-    public static function with(string $sourceDir, string $distDir, iterable $types) : self
+    public static function with(string $sourceDir, string $distDir, iterable $types): self
     {
         return new static($sourceDir, $distDir, $types);
     }
 
-    public static function withArraySpecs(string $sourceDir, string $distDir, iterable $types) : self
+    public static function withArraySpecs(string $sourceDir, string $distDir, iterable $types): self
     {
         $specs = [];
         foreach ($types as $spec) {
@@ -54,23 +55,23 @@ class BuildConfig
         return self::with($sourceDir, $distDir, $specs);
     }
 
-    public function sourceDirectory() : string
+    public function sourceDirectory(): string
     {
         return $this->sourceDirectory;
     }
 
-    public function distDirectory() : string
+    public function distDirectory(): string
     {
         return $this->distDirectory;
     }
 
     /** @return Spec[] */
-    public function types() : iterable
+    public function types(): iterable
     {
         return $this->types;
     }
 
-    private function setSourceDir(string $source) : void
+    private function setSourceDir(string $source): void
     {
         $source = rtrim($source, DIRECTORY_SEPARATOR);
         $this->assertDirectory($source);
@@ -78,7 +79,7 @@ class BuildConfig
         $this->sourceDirectory = $source;
     }
 
-    private function setDistDir(string $dist) : void
+    private function setDistDir(string $dist): void
     {
         $dist = rtrim($dist, DIRECTORY_SEPARATOR);
         $this->assertDirectory($dist);
@@ -86,28 +87,28 @@ class BuildConfig
         $this->distDirectory = $dist;
     }
 
-    private function assertDirectory(string $directory) : void
+    private function assertDirectory(string $directory): void
     {
         if (! file_exists($directory) || ! is_dir($directory)) {
             throw FilesystemError::missingDirectory($directory);
         }
     }
 
-    private function assertReadable(string $path) : void
+    private function assertReadable(string $path): void
     {
         if (! is_readable($path)) {
             throw FilesystemError::notReadable($path);
         }
     }
 
-    private function assertWritable(string $path) : void
+    private function assertWritable(string $path): void
     {
         if (! is_writable($path)) {
             throw FilesystemError::notWritable($path);
         }
     }
 
-    private function addTypeSpec(Spec $type) : void
+    private function addTypeSpec(Spec $type): void
     {
         if ($type->id() === 'index') {
             throw InvalidArgument::indexDisallowed($type);

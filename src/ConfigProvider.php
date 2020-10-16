@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Primo\Cli;
@@ -6,7 +7,7 @@ namespace Primo\Cli;
 class ConfigProvider
 {
     /** @return mixed */
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'dependencies' => $this->dependencies(),
@@ -38,7 +39,7 @@ class ConfigProvider
     }
 
     /** @return mixed[] */
-    private function dependencies() : array
+    private function dependencies(): array
     {
         return [
             'factories' => [
@@ -49,7 +50,7 @@ class ConfigProvider
     }
 
     /** @return string[] */
-    private function commands() : array
+    private function commands(): array
     {
         return [
             Console\BuildCommand::DEFAULT_NAME => Console\BuildCommand::class,

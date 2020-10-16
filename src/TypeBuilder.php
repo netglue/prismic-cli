@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Primo\Cli;
@@ -62,7 +63,7 @@ class TypeBuilder
         self::EMBED,
     ];
 
-    public static function uid(string $label, ?string $placeholder = null) : array
+    public static function uid(string $label, ?string $placeholder = null): array
     {
         return [
             'type' => self::TYPE_UID,
@@ -70,7 +71,7 @@ class TypeBuilder
         ];
     }
 
-    public static function text(string $label, ?string $placeholder = null, bool $useAsTitle = false) : array
+    public static function text(string $label, ?string $placeholder = null, bool $useAsTitle = false): array
     {
         return [
             'type' => self::TYPE_TEXT,
@@ -78,7 +79,7 @@ class TypeBuilder
         ];
     }
 
-    public static function boolean(string $label, string $falseLabel, string $trueLabel, bool $default) : array
+    public static function boolean(string $label, string $falseLabel, string $trueLabel, bool $default): array
     {
         return [
             'type' => self::TYPE_BOOLEAN,
@@ -91,7 +92,7 @@ class TypeBuilder
         ];
     }
 
-    public static function color(string $label) : array
+    public static function color(string $label): array
     {
         return [
             'type' => self::TYPE_COLOR,
@@ -99,7 +100,7 @@ class TypeBuilder
         ];
     }
 
-    public static function documentLink(string $label, ?string $placeholder = null, ?array $customTypes = null, ?array $tags = null) : array
+    public static function documentLink(string $label, ?string $placeholder = null, ?array $customTypes = null, ?array $tags = null): array
     {
         $config = array_filter([
             'select' => 'document',
@@ -121,7 +122,7 @@ class TypeBuilder
         ];
     }
 
-    public static function link(string $label, ?string $placeholder = null, bool $allowTargetBlank = false, ?array $customTypes = null) : array
+    public static function link(string $label, ?string $placeholder = null, bool $allowTargetBlank = false, ?array $customTypes = null): array
     {
         $config = array_filter([
             'label' => $label,
@@ -136,17 +137,17 @@ class TypeBuilder
         ];
     }
 
-    public static function webLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false) : array
+    public static function webLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
     {
         return self::externalLink('web', $label, $placeholder, $allowTargetBlank);
     }
 
-    public static function mediaLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false) : array
+    public static function mediaLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
     {
         return self::externalLink('media', $label, $placeholder, $allowTargetBlank);
     }
 
-    private static function externalLink(string $type, string $label, ?string $placeholder = null, bool $allowTargetBlank = false) : array
+    private static function externalLink(string $type, string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
     {
         return [
             'type' => self::TYPE_LINK,
@@ -159,7 +160,7 @@ class TypeBuilder
         ];
     }
 
-    private static function config(?string $label, ?string $placeholder = null, bool $useAsTitle = false) : array
+    private static function config(?string $label, ?string $placeholder = null, bool $useAsTitle = false): array
     {
         return array_filter([
             'label' => self::nullifyString($label),
@@ -168,12 +169,12 @@ class TypeBuilder
         ]);
     }
 
-    private static function nullifyString(?string $string) :? string
+    private static function nullifyString(?string $string): ?string
     {
         return empty($string) ? null : $string;
     }
 
-    public static function select(string $label, ?string $placeholder, array $options, ?string $default = null) : array
+    public static function select(string $label, ?string $placeholder, array $options, ?string $default = null): array
     {
         return [
             'type' => self::TYPE_SELECT,
@@ -186,17 +187,17 @@ class TypeBuilder
         ];
     }
 
-    public static function date(string $label, ?string $placeholder = null, bool $isToday = false) : array
+    public static function date(string $label, ?string $placeholder = null, bool $isToday = false): array
     {
         return self::datetimeType(self::TYPE_DATE, $label, $placeholder, $isToday);
     }
 
-    public static function timestamp(string $label, ?string $placeholder = null, bool $isToday = false) : array
+    public static function timestamp(string $label, ?string $placeholder = null, bool $isToday = false): array
     {
         return self::datetimeType(self::TYPE_TIMESTAMP, $label, $placeholder, $isToday);
     }
 
-    private static function datetimeType(string $type, string $label, ?string $placeholder = null, bool $isToday = false) : array
+    private static function datetimeType(string $type, string $label, ?string $placeholder = null, bool $isToday = false): array
     {
         return [
             'type' => $type,
@@ -208,7 +209,7 @@ class TypeBuilder
         ];
     }
 
-    public static function number(string $label, ?string $placeholder = null, ?int $min = null, ?int $max = null) : array
+    public static function number(string $label, ?string $placeholder = null, ?int $min = null, ?int $max = null): array
     {
         return [
             'type' => self::TYPE_NUMBER,
@@ -221,7 +222,7 @@ class TypeBuilder
         ];
     }
 
-    public static function geoPoint(string $label) : array
+    public static function geoPoint(string $label): array
     {
         return [
             'type' => self::TYPE_GEOPOINT,
@@ -229,7 +230,7 @@ class TypeBuilder
         ];
     }
 
-    public static function embed(string $label, ?string $placeholder = null) : array
+    public static function embed(string $label, ?string $placeholder = null): array
     {
         return [
             'type' => self::TYPE_EMBED,
@@ -240,7 +241,7 @@ class TypeBuilder
         ];
     }
 
-    public static function group(string $label, array $fields, bool $repeatable = true) : array
+    public static function group(string $label, array $fields, bool $repeatable = true): array
     {
         return [
             'type' => self::TYPE_GROUP,
@@ -252,7 +253,7 @@ class TypeBuilder
         ];
     }
 
-    public static function img(string $label, ?string $placeholder = null, ?int $x = null, ?int $y = null, ?array $views = null) : array
+    public static function img(string $label, ?string $placeholder = null, ?int $x = null, ?int $y = null, ?array $views = null): array
     {
         return [
             'type' => self::TYPE_IMAGE,
@@ -268,7 +269,7 @@ class TypeBuilder
         ];
     }
 
-    public static function imgView(string $name, ?int $x = null, ?int $y = null) : array
+    public static function imgView(string $name, ?int $x = null, ?int $y = null): array
     {
         return array_filter([
             'name' => $name,
@@ -277,24 +278,24 @@ class TypeBuilder
         ]);
     }
 
-    public static function textAllow(array $types) : string
+    public static function textAllow(array $types): string
     {
         sort($types);
 
         return implode(',', $types);
     }
 
-    public static function textAllowAll() : string
+    public static function textAllowAll(): string
     {
         return self::textAllow(self::ALL);
     }
 
-    public static function blocksAll() : array
+    public static function blocksAll(): array
     {
         return self::ALL;
     }
 
-    public static function blocksText() : array
+    public static function blocksText(): array
     {
         return [
             self::P,
@@ -324,7 +325,7 @@ class TypeBuilder
         array $labels = [],
         ?int $imgX = null,
         ?int $imgY = null
-    ) : array {
+    ): array {
         $t = $multiple ? 'multi' : 'single';
         $allowString = $allow === [] ? self::textAllowAll() : self::textAllow($allow);
         $config = [
@@ -343,7 +344,7 @@ class TypeBuilder
         ];
     }
 
-    public static function slice(string $label, ?string $description = null, array $nonRepeatFields = [], array $repeatFields = [], ?string $icon = null) : array
+    public static function slice(string $label, ?string $description = null, array $nonRepeatFields = [], array $repeatFields = [], ?string $icon = null): array
     {
         return array_filter([
             'type' => self::TYPE_SLICE,
@@ -355,7 +356,7 @@ class TypeBuilder
         ]);
     }
 
-    public static function sliceLabel(string $robots, string $humans) : array
+    public static function sliceLabel(string $robots, string $humans): array
     {
         return [
             'name' => $robots,
@@ -363,7 +364,7 @@ class TypeBuilder
         ];
     }
 
-    public static function sliceZone(string $label, array $slices, array $sliceLabels = []) : array
+    public static function sliceZone(string $label, array $slices, array $sliceLabels = []): array
     {
         return [
             'type' => self::TYPE_SLICE_ZONE,

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Primo\Cli\Console;
@@ -36,7 +37,7 @@ class BuildCommand extends Command
         parent::__construct($name);
     }
 
-    protected function configure() : void
+    protected function configure(): void
     {
         $this->setDescription(
             'This command iterates over all your configured Prismic types and renders the json into a file ' .
@@ -45,7 +46,7 @@ class BuildCommand extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);
         $types = $this->config->types();
@@ -67,7 +68,7 @@ class BuildCommand extends Command
         return 0;
     }
 
-    private function buildIndex() : void
+    private function buildIndex(): void
     {
         $dest = sprintf('%s%s%s', $this->config->distDirectory(), DIRECTORY_SEPARATOR, 'index.json');
         try {
@@ -80,7 +81,7 @@ class BuildCommand extends Command
         }
     }
 
-    private function buildType(Spec $type) : void
+    private function buildType(Spec $type): void
     {
         $source = sprintf('%s%s%s', $this->config->sourceDirectory(), DIRECTORY_SEPARATOR, $type->source());
         $dest = sprintf('%s%s%s', $this->config->distDirectory(), DIRECTORY_SEPARATOR, $type->filename());

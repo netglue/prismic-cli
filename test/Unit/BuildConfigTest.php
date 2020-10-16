@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit;
@@ -16,7 +17,7 @@ class BuildConfigTest extends TestCase
     /** @var BuildConfig */
     private $config;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -43,34 +44,34 @@ class BuildConfigTest extends TestCase
         );
     }
 
-    public function testExceptionThrownForNonDirectorySource() : void
+    public function testExceptionThrownForNonDirectorySource(): void
     {
         $this->expectException(FilesystemError::class);
         $this->expectExceptionMessage(sprintf('The directory "%s" either does not exist, or is not a directory', __FILE__));
         BuildConfig::with(__FILE__, '', []);
     }
 
-    public function testExceptionThrownForNonDirectoryDest() : void
+    public function testExceptionThrownForNonDirectoryDest(): void
     {
         $this->expectException(FilesystemError::class);
         $this->expectExceptionMessage(sprintf('The directory "%s" either does not exist, or is not a directory', __FILE__));
         BuildConfig::with(__DIR__, __FILE__, []);
     }
 
-    public function testNoExceptionThrownForEmptyTypes() : void
+    public function testNoExceptionThrownForEmptyTypes(): void
     {
         BuildConfig::with(__DIR__, __DIR__, []);
         $this->addToAssertionCount(1);
     }
 
-    public function testDirectoryAccessors() : void
+    public function testDirectoryAccessors(): void
     {
         $config = BuildConfig::with(__DIR__, __DIR__, []);
         $this->assertSame(__DIR__, $config->sourceDirectory());
         $this->assertSame(__DIR__, $config->distDirectory());
     }
 
-    public function testMissingSourceFilesAreExceptional() : void
+    public function testMissingSourceFilesAreExceptional(): void
     {
         $types = [
             ['id' => 'a', 'name' => 'b', 'repeatable' => true],
@@ -80,12 +81,12 @@ class BuildConfigTest extends TestCase
         BuildConfig::withArraySpecs(__DIR__, __DIR__, $types);
     }
 
-    public function testWithArrayTypes() : void
+    public function testWithArrayTypes(): void
     {
         $this->assertContainsOnlyInstancesOf(Spec::class, $this->config->types());
     }
 
-    public function testTypesCannotBeCalledIndex() : void
+    public function testTypesCannotBeCalledIndex(): void
     {
         $this->expectException(InvalidArgument::class);
         $this->expectExceptionMessage('has "index" for its identifier');

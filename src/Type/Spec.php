@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Primo\Cli\Type;
@@ -33,12 +34,12 @@ class Spec implements JsonSerializable
         string $id,
         string $name,
         bool $repeatable
-    ) : self {
+    ): self {
         return new static($id, $name, $repeatable);
     }
 
     /** @return mixed[] */
-    public function jsonSerialize() : array
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,
@@ -48,22 +49,22 @@ class Spec implements JsonSerializable
         ];
     }
 
-    public function source() : string
+    public function source(): string
     {
         return sprintf('%s.php', $this->id);
     }
 
-    public function id() : string
+    public function id(): string
     {
         return $this->id;
     }
 
-    public function filename() : string
+    public function filename(): string
     {
         return $this->filename;
     }
 
-    public function name() : string
+    public function name(): string
     {
         return $this->name;
     }

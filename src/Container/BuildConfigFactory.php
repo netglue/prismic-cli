@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Primo\Cli\Container;
@@ -9,7 +10,7 @@ use Psr\Container\ContainerInterface;
 
 class BuildConfigFactory
 {
-    public function __invoke(ContainerInterface $container) : BuildConfig
+    public function __invoke(ContainerInterface $container): BuildConfig
     {
         $config = $container->has('config') ? $container->get('config') : [];
         $dirs = $config['primo']['cli']['builder'] ?? [];
