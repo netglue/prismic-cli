@@ -21,7 +21,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PrimoTest\\Cli\\Unit\\" : "test/Unit"
+            "PrimoTest\\Cli\\Unit\\" : "test/Unit",
+            "PrimoTest\\Cli\\Integration\\" : "test/Integration"
         }
     },
     "require": {

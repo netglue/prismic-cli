@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.1.4 - 2020-10-16
+
+### Added
+
+- A smoke test to make sure that the build command runs over the examples without any errors.
+
+### Changed
+
+- Changed coding standard to be closer to Doctrine/Slevomat standard
+- Updated the default PHPUnit config for compatibility with recent versions
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.1.3 - 2020-07-07
 
 ### Added
