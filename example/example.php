@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Primo\Cli\BuildConfig;
@@ -34,7 +35,6 @@ require __DIR__ . '/../vendor/autoload.php';
  * "scripts": {
  *   "types": "php path/to/cli-tool primo:build"
  * }
- *
  **/
 
 /**
