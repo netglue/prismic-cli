@@ -101,10 +101,6 @@ final class InfoCommand extends Command
                 }, $this->apiClient->data()->types())),
             ],
             [
-                'Tags:',
-                implode(', ', $this->apiClient->data()->tags()),
-            ],
-            [
                 'Languages:',
                 implode(PHP_EOL, array_map(static function (Language $language): string {
                     return $language->name();
