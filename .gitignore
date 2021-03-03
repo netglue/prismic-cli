@@ -1,6 +1,5 @@
 phpunit.xml
 /build/
 /vendor/
-composer.lock
 /example/dist/*
 !/example/dist/.gitkeep
