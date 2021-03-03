@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.3.0 - 2021-03-03
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Switch CI workflows.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- The Api Info command no longer lists all the known tags - this is getting deprecated/removed from the initial api response.
+
+### Fixed
+
+- Nothing.
+
 ## 0.2.0 - 2020-10-16
 
 ### Added
