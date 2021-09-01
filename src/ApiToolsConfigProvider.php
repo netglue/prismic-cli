@@ -6,7 +6,7 @@ namespace Primo\Cli;
 
 final class ApiToolsConfigProvider
 {
-    /** @return mixed */
+    /** @return array<string, mixed> */
     public function __invoke(): array
     {
         return [
@@ -20,7 +20,7 @@ final class ApiToolsConfigProvider
         ];
     }
 
-    /** @return mixed[] */
+    /** @return array<string, array<string, class-string>> */
     private function dependencies(): array
     {
         return [
@@ -32,7 +32,7 @@ final class ApiToolsConfigProvider
         ];
     }
 
-    /** @return string[] */
+    /** @return array<string, class-string> */
     private function commands(): array
     {
         return [

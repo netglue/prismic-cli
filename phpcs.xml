@@ -15,16 +15,15 @@
     <rule ref="Doctrine">
         <!-- Whilst this lib is compatible with 7.3, exclude this sniff -->
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint" />
-
-        <!-- This exclusion is all about being lazy -->
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification" />
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingTraversableTypeHintSpecification" />
     </rule>
 
     <rule ref="Generic.Formatting.MultipleStatementAlignment.NotSame">
         <severity>0</severity>
     </rule>
     <rule ref="Generic.Files.LineLength.TooLong">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.SpacingAfterParamType">
         <severity>0</severity>
     </rule>
 </ruleset>

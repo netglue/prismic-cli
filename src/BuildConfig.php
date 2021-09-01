@@ -45,6 +45,9 @@ class BuildConfig
         return new static($sourceDir, $distDir, $types);
     }
 
+    /**
+     * @param iterable<array-key, array{id: string, name: string, repeatable: bool}> $types
+     */
     public static function withArraySpecs(string $sourceDir, string $distDir, iterable $types): self
     {
         $specs = [];

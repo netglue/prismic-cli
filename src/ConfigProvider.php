@@ -6,7 +6,7 @@ namespace Primo\Cli;
 
 class ConfigProvider
 {
-    /** @return mixed */
+    /** @return array<string, mixed> */
     public function __invoke(): array
     {
         return [
@@ -38,7 +38,7 @@ class ConfigProvider
         ];
     }
 
-    /** @return mixed[] */
+    /** @return array<string, array<class-string, class-string>> */
     private function dependencies(): array
     {
         return [
@@ -49,7 +49,7 @@ class ConfigProvider
         ];
     }
 
-    /** @return string[] */
+    /** @return array<string, class-string> */
     private function commands(): array
     {
         return [

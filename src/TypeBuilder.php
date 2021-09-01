@@ -63,6 +63,7 @@ class TypeBuilder
         self::EMBED,
     ];
 
+    /** @return array<string, mixed> */
     public static function uid(string $label, ?string $placeholder = null): array
     {
         return [
@@ -71,6 +72,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function text(string $label, ?string $placeholder = null, bool $useAsTitle = false): array
     {
         return [
@@ -79,6 +81,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function boolean(string $label, string $falseLabel, string $trueLabel, bool $default): array
     {
         return [
@@ -92,6 +95,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function color(string $label): array
     {
         return [
@@ -100,6 +104,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function documentLink(string $label, ?string $placeholder = null, ?array $customTypes = null, ?array $tags = null): array
     {
         $config = array_filter([
@@ -122,6 +127,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function link(string $label, ?string $placeholder = null, bool $allowTargetBlank = false, ?array $customTypes = null): array
     {
         $config = array_filter([
@@ -137,16 +143,19 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function webLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
     {
         return self::externalLink('web', $label, $placeholder, $allowTargetBlank);
     }
 
+    /** @return array<string, mixed> */
     public static function mediaLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
     {
         return self::externalLink('media', $label, $placeholder, $allowTargetBlank);
     }
 
+    /** @return array<string, mixed> */
     private static function externalLink(string $type, string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
     {
         return [
@@ -160,6 +169,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     private static function config(?string $label, ?string $placeholder = null, bool $useAsTitle = false): array
     {
         return array_filter([
@@ -174,6 +184,11 @@ class TypeBuilder
         return empty($string) ? null : $string;
     }
 
+    /**
+     * @param array<int, string> $options
+     *
+     * @return array<string, mixed>
+     */
     public static function select(string $label, ?string $placeholder, array $options, ?string $default = null): array
     {
         return [
@@ -187,16 +202,19 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function date(string $label, ?string $placeholder = null, bool $isToday = false): array
     {
         return self::datetimeType(self::TYPE_DATE, $label, $placeholder, $isToday);
     }
 
+    /** @return array<string, mixed> */
     public static function timestamp(string $label, ?string $placeholder = null, bool $isToday = false): array
     {
         return self::datetimeType(self::TYPE_TIMESTAMP, $label, $placeholder, $isToday);
     }
 
+    /** @return array<string, mixed> */
     private static function datetimeType(string $type, string $label, ?string $placeholder = null, bool $isToday = false): array
     {
         return [
@@ -209,6 +227,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function number(string $label, ?string $placeholder = null, ?int $min = null, ?int $max = null): array
     {
         return [
@@ -222,6 +241,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function geoPoint(string $label): array
     {
         return [
@@ -230,6 +250,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function embed(string $label, ?string $placeholder = null): array
     {
         return [
@@ -241,6 +262,11 @@ class TypeBuilder
         ];
     }
 
+    /**
+     * @param array<array-key, mixed> $fields
+     *
+     * @return array<string, mixed>
+     */
     public static function group(string $label, array $fields, bool $repeatable = true): array
     {
         return [
@@ -253,6 +279,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function img(string $label, ?string $placeholder = null, ?int $x = null, ?int $y = null, ?array $views = null): array
     {
         return [
@@ -269,6 +296,7 @@ class TypeBuilder
         ];
     }
 
+    /** @return array<string, mixed> */
     public static function imgView(string $name, ?int $x = null, ?int $y = null): array
     {
         return array_filter([
@@ -278,6 +306,7 @@ class TypeBuilder
         ]);
     }
 
+    /** @param array<array-key, string> $types */
     public static function textAllow(array $types): string
     {
         sort($types);
@@ -290,11 +319,13 @@ class TypeBuilder
         return self::textAllow(self::ALL);
     }
 
+    /** @return array<array-key, string> */
     public static function blocksAll(): array
     {
         return self::ALL;
     }
 
+    /** @return array<array-key, string> */
     public static function blocksText(): array
     {
         return [
@@ -315,6 +346,12 @@ class TypeBuilder
         ];
     }
 
+    /**
+     * @param array<array-key, string> $allow
+     * @param array<array-key, string> $labels
+     *
+     * @return array<string, mixed>
+     */
     public static function richText(
         string $label,
         ?string $placeholder = null,
@@ -344,8 +381,19 @@ class TypeBuilder
         ];
     }
 
-    public static function slice(string $label, ?string $description = null, array $nonRepeatFields = [], array $repeatFields = [], ?string $icon = null): array
-    {
+    /**
+     * @param array<string, mixed> $nonRepeatFields
+     * @param array<string, mixed> $repeatFields
+     *
+     * @return array<string, mixed>
+     */
+    public static function slice(
+        string $label,
+        ?string $description = null,
+        array $nonRepeatFields = [],
+        array $repeatFields = [],
+        ?string $icon = null
+    ): array {
         return array_filter([
             'type' => self::TYPE_SLICE,
             'fieldset' => $label,
@@ -356,6 +404,7 @@ class TypeBuilder
         ]);
     }
 
+    /** @return array{name: string, display: string} */
     public static function sliceLabel(string $robots, string $humans): array
     {
         return [
@@ -364,6 +413,12 @@ class TypeBuilder
         ];
     }
 
+    /**
+     * @param array<string, mixed> $slices
+     * @param array<array-key, array{name: string, display: string}> $sliceLabels
+     *
+     * @return array<string, mixed>
+     */
     public static function sliceZone(string $label, array $slices, array $sliceLabels = []): array
     {
         return [
