@@ -8,7 +8,7 @@ use JsonSerializable;
 
 use function sprintf;
 
-class Spec implements JsonSerializable
+final class Spec implements JsonSerializable
 {
     /** @var string */
     private $id;

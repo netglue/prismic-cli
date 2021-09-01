@@ -18,7 +18,7 @@ use function sprintf;
 
 use const DIRECTORY_SEPARATOR;
 
-class BuildConfig
+final class BuildConfig
 {
     /** @var string */
     private $sourceDirectory;

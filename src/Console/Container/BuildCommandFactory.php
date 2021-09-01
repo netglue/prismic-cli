@@ -8,7 +8,7 @@ use Primo\Cli\BuildConfig;
 use Primo\Cli\Console\BuildCommand;
 use Psr\Container\ContainerInterface;
 
-class BuildCommandFactory
+final class BuildCommandFactory
 {
     public function __invoke(ContainerInterface $container): BuildCommand
     {

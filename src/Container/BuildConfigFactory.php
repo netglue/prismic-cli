@@ -8,7 +8,7 @@ use Primo\Cli\BuildConfig;
 use Primo\Cli\Type\Spec;
 use Psr\Container\ContainerInterface;
 
-class BuildConfigFactory
+final class BuildConfigFactory
 {
     public function __invoke(ContainerInterface $container): BuildConfig
     {

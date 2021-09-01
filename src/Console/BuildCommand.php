@@ -24,7 +24,7 @@ use const JSON_PRETTY_PRINT;
 use const JSON_THROW_ON_ERROR;
 use const PHP_EOL;
 
-class BuildCommand extends Command
+final class BuildCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:build';
 

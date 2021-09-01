@@ -8,7 +8,7 @@ use function array_filter;
 use function implode;
 use function sort;
 
-class TypeBuilder
+final class TypeBuilder
 {
     public const TYPE_UID = 'UID';
     public const TYPE_TEXT = 'Text';

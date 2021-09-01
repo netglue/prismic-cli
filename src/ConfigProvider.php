@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli;
 
-class ConfigProvider
+final class ConfigProvider
 {
     /** @return array<string, mixed> */
     public function __invoke(): array
