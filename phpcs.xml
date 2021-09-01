@@ -26,4 +26,8 @@
     <rule ref="Squiz.Commenting.FunctionComment.SpacingAfterParamType">
         <severity>0</severity>
     </rule>
+    <!-- Multiline arrays with single elements often improve readability IMO -->
+    <rule ref="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed">
+        <severity>0</severity>
+    </rule>
 </ruleset>

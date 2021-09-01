@@ -29,8 +29,15 @@
         "php": "^7.3||~8.0",
         "ext-json": "*",
         "netglue/prismic-client": "^0",
+        "netglue/prismic-doctype-client": "^0.1.0",
+        "php-http/discovery": "^1.14",
         "psr/container": "^1.0||^2.0",
-        "symfony/console": "^5.1"
+        "psr/http-client": "^1.0",
+        "psr/http-client-implementation": "*",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.0",
+        "symfony/console": "^5.1",
+        "webmozart/assert": "^1.10"
     },
     "require-dev": {
         "ext-curl": "*",
@@ -45,7 +52,8 @@
         "laminas": {
             "config-provider": [
                 "Primo\\Cli\\ConfigProvider",
-                "Primo\\Cli\\ApiToolsConfigProvider"
+                "Primo\\Cli\\ApiToolsConfigProvider",
+                "Primo\\Cli\\CustomTypeApiConfigProvider"
             ]
         }
     },
