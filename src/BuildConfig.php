@@ -24,11 +24,11 @@ final class BuildConfig
     private $sourceDirectory;
     /** @var string */
     private $distDirectory;
-    /** @var Spec[] */
+    /** @var array<array-key, Spec> */
     private $types = [];
 
-    /** @param Spec[] $types */
-    private function __construct(string $sourceDirectory, string $distDirectory, iterable $types)
+    /** @param array<array-key, Spec> $types */
+    private function __construct(string $sourceDirectory, string $distDirectory, array $types)
     {
         $this->setSourceDir($sourceDirectory);
         $this->setDistDir($distDirectory);
@@ -39,8 +39,8 @@ final class BuildConfig
         $this->types = array_values($this->types);
     }
 
-    /** @param Spec[] $types */
-    public static function with(string $sourceDir, string $distDir, iterable $types): self
+    /** @param array<array-key, Spec> $types */
+    public static function with(string $sourceDir, string $distDir, array $types): self
     {
         return new self($sourceDir, $distDir, $types);
     }
@@ -52,7 +52,7 @@ final class BuildConfig
     {
         $specs = [];
         foreach ($types as $spec) {
-            $specs[] = Spec::new($spec['id'] ?? null, $spec['name'] ?? null, $spec['repeatable'] ?? true);
+            $specs[] = Spec::new($spec['id'], $spec['name'], $spec['repeatable'] ?? true);
         }
 
         return self::with($sourceDir, $distDir, $specs);
@@ -68,8 +68,8 @@ final class BuildConfig
         return $this->distDirectory;
     }
 
-    /** @return iterable<Spec> */
-    public function types(): iterable
+    /** @return array<array-key, Spec> */
+    public function types(): array
     {
         return $this->types;
     }

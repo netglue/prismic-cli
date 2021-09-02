@@ -13,7 +13,7 @@ use Psr\Container\ContainerInterface;
 
 class CustomTypeClientFactoryTest extends TestCase
 {
-    /** @var MockObject|ContainerInterface */
+    /** @var MockObject&ContainerInterface */
     private $container;
     /** @var CustomTypeClientFactory */
     private $factory;

@@ -78,6 +78,7 @@ final class BuildCommand extends Command
         $source = sprintf('%s%s%s', $this->config->sourceDirectory(), DIRECTORY_SEPARATOR, $type->source());
 
         try {
+            /** @psalm-suppress UnresolvableInclude */
             $data = require $source;
         } catch (Throwable $error) {
             throw BuildError::unknown($error);

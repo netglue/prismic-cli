@@ -15,6 +15,8 @@ use Primo\Cli\CustomTypeApiConfigProvider;
 use Psr\Container\ContainerInterface;
 
 use function array_keys;
+use function assert;
+use function is_array;
 
 final class ServiceManagerIntegrationTest extends TestCase
 {
@@ -48,7 +50,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         ];
     }
 
-    /** @return array<string, mixed> */
+    /** @return array<array-key, mixed> */
     private function kitchenSinkConfig(): array
     {
         $aggregator = new ConfigAggregator([
@@ -61,7 +63,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         return $aggregator->getMergedConfig();
     }
 
-    /** @return array<string, mixed> */
+    /** @return array<array-key, mixed> */
     private function generalPlusApiConfig(): array
     {
         $aggregator = new ConfigAggregator([
@@ -73,7 +75,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         return $aggregator->getMergedConfig();
     }
 
-    /** @return array<string, mixed> */
+    /** @return array<array-key, mixed> */
     private function buildOnlyConfig(): array
     {
         $aggregator = new ConfigAggregator([
@@ -84,26 +86,34 @@ final class ServiceManagerIntegrationTest extends TestCase
         return $aggregator->getMergedConfig();
     }
 
-    /** @param array<string, mixed> $config */
+    /**
+     * @param array<array-key, mixed> $config
+     *
+     * @psalm-suppress MixedAssignment, MixedArrayAssignment, MixedArrayAccess
+     */
     private function serviceManager(array $config): ContainerInterface
     {
         $dependencies = $config['dependencies'];
+        assert(is_array($dependencies));
+        $dependencies['services'] = $dependencies['services'] ?? [];
         $dependencies['services']['config'] = $config;
 
         return new ServiceManager($dependencies);
     }
 
     /**
-     * @param array<string, mixed> $config
+     * @param array<array-key, mixed> $config
      *
-     * @return Generator<class-string, array{0: class-string, 1: ServiceManager}>
+     * @return Generator<string, array{0: string, 1: ContainerInterface}>
+     *
+     * @psalm-suppress MoreSpecificReturnType
      */
     private function factoryGenerator(array $config): Generator
     {
         $container = $this->serviceManager($config);
-        self::assertTrue($container->has('config'));
-        $config = $container->get('config');
-        $factories = $config['dependencies']['factories'] ?? null;
+        $local = $container->get('config');
+        self::assertIsArray($local);
+        $factories = $local['dependencies']['factories'] ?? null;
         self::assertIsArray($factories);
         $services = array_keys($factories);
 
@@ -112,7 +122,11 @@ final class ServiceManagerIntegrationTest extends TestCase
         }
     }
 
-    /** @return Generator<class-string, array{0: class-string, 1: ServiceManager}> */
+    /**
+     * @return Generator<string, array{0: string, 1: ContainerInterface}>
+     *
+     * @psalm-suppress MoreSpecificReturnType
+     */
     public function kitchenSinkDataProvider(): Generator
     {
         return $this->factoryGenerator($this->kitchenSinkConfig());
@@ -125,7 +139,11 @@ final class ServiceManagerIntegrationTest extends TestCase
         self::assertIsObject($container->get($serviceId));
     }
 
-    /** @return Generator<class-string, array{0: class-string, 1: ServiceManager}> */
+    /**
+     * @return Generator<string, array{0: string, 1: ContainerInterface}>
+     *
+     * @psalm-suppress MoreSpecificReturnType
+     */
     public function generalUsageDataProvider(): Generator
     {
         return $this->factoryGenerator($this->generalPlusApiConfig());
@@ -138,7 +156,11 @@ final class ServiceManagerIntegrationTest extends TestCase
         self::assertIsObject($container->get($serviceId));
     }
 
-    /** @return Generator<class-string, array{0: class-string, 1: ServiceManager}> */
+    /**
+     * @return Generator<string, array{0: string, 1: ContainerInterface}>
+     *
+     * @psalm-suppress MoreSpecificReturnType
+     */
     public function buildOnlyDataProvider(): Generator
     {
         return $this->factoryGenerator($this->buildOnlyConfig());

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Primo\Cli\Assert;
 use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Type\TypePersistence;
 use Symfony\Component\Console\Command\Command;
@@ -51,6 +52,7 @@ final class DownloadCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
         $type = $input->getArgument('type');
+        Assert::nullOrStringNotEmpty($type);
 
         try {
             $types = $type !== null

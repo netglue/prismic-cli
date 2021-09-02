@@ -10,11 +10,11 @@ use Throwable;
 
 use function sprintf;
 
-class BuildError extends RuntimeException
+final class BuildError extends RuntimeException
 {
     public static function unknown(Throwable $previous): self
     {
-        return new static(sprintf(
+        return new self(sprintf(
             'An unknown build error occurred: %s',
             $previous->getMessage()
         ), 500, $previous);
@@ -22,7 +22,7 @@ class BuildError extends RuntimeException
 
     public static function notArray(Spec $type, string $source): self
     {
-        return new static(sprintf(
+        return new self(sprintf(
             'The source file for "%s" did not return an array suitable for serialisation. Path: %s',
             $type->name(),
             $source

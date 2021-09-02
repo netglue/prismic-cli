@@ -11,9 +11,9 @@ use function sprintf;
 
 class InvalidArgument extends InvalidArgumentException
 {
-    public static function indexDisallowed(Spec $spec): self
+    final public static function indexDisallowed(Spec $spec): self
     {
-        return new static(sprintf(
+        return new self(sprintf(
             'The type definition for "%s" has "index" for its identifier. This is not allowed because "index.json" is used ' .
             'to inform Prismic about the type definitions',
             $spec->name()

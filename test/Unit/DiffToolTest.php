@@ -27,6 +27,7 @@ class DiffToolTest extends TestCase
         $right = Definition::new('foo', 'bar', true, true, '{"foo":["a","b","d"]}');
 
         $diff = $this->tool->diff($left, $right);
+        self::assertNotNull($diff);
 
         $expect = <<<DIFF
                  "foo": [

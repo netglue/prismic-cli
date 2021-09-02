@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Primo\Cli\Assert;
 use Prismic\ApiClient;
 use Prismic\Document;
 use Prismic\Predicate;
@@ -47,7 +48,9 @@ final class ListCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
         $type = $input->getArgument('type');
-        if (empty($type)) {
+        Assert::nullOrStringNotEmpty($type);
+
+        if ($type === null) {
             $this->listTypes($style);
 
             return 0;

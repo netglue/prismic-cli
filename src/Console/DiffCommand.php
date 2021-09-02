@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Primo\Cli\Assert;
 use Primo\Cli\DiffTool;
 use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Type\TypePersistence;
@@ -63,6 +64,7 @@ final class DiffCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
         $type = $input->getArgument('type');
+        Assert::nullOrStringNotEmpty($type);
 
         try {
             $types = is_string($type)

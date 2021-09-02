@@ -16,8 +16,13 @@ final class CustomTypeClientFactory
     {
         $config = $container->get('config');
         Assert::isArrayAccessible($config);
-        $token = $config['primo']['custom-type-api']['token'] ?? null;
-        $repository = $config['primo']['custom-type-api']['repository'] ?? null;
+        $primo = $config['primo'] ?? [];
+        Assert::isArrayAccessible($primo);
+        $apiConfig = $primo['custom-type-api'] ?? [];
+        Assert::isArrayAccessible($apiConfig);
+
+        $token = $apiConfig['token'] ?? null;
+        $repository = $apiConfig['repository'] ?? null;
         Assert::string($token, 'An access token must be provided in config.primo.custom-type-api.token in order to access the Prismic custom type API.');
         Assert::string($repository, 'The repository name must be provided in config.primo.custom-type-api.repository in order to access the Prismic custom type API.');
 

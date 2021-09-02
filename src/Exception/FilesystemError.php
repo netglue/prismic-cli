@@ -8,11 +8,11 @@ use RuntimeException;
 
 use function sprintf;
 
-class FilesystemError extends RuntimeException
+final class FilesystemError extends RuntimeException
 {
     public static function missingDirectory(string $path): self
     {
-        return new static(sprintf(
+        return new self(sprintf(
             'The directory "%s" either does not exist, or is not a directory',
             $path
         ));
@@ -20,7 +20,7 @@ class FilesystemError extends RuntimeException
 
     public static function notReadable(string $path): self
     {
-        return new static(sprintf(
+        return new self(sprintf(
             'The path "%s" is not readable',
             $path
         ));
@@ -28,7 +28,7 @@ class FilesystemError extends RuntimeException
 
     public static function notWritable(string $path): self
     {
-        return new static(sprintf(
+        return new self(sprintf(
             'The path "%s" is not writable',
             $path
         ));

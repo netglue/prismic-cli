@@ -60,8 +60,8 @@ class BuildConfigTest extends TestCase
 
     public function testNoExceptionThrownForEmptyTypes(): void
     {
+        $this->expectNotToPerformAssertions();
         BuildConfig::with(__DIR__, __DIR__, []);
-        $this->addToAssertionCount(1);
     }
 
     public function testDirectoryAccessors(): void

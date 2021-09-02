@@ -28,7 +28,7 @@ final class CustomTypeApiConfigProvider
         ];
     }
 
-    /** @return array<string, array<class-string, class-string>> */
+    /** @return array<string, array<string, string>> */
     private function dependencies(): array
     {
         return [

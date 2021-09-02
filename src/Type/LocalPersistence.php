@@ -10,12 +10,10 @@ use Primo\Cli\Exception\InvalidArgument;
 use Primo\Cli\Exception\PersistenceError;
 use Prismic\DocumentType\Definition;
 use Throwable;
-use Traversable;
 
 use function array_map;
 use function file_get_contents;
 use function file_put_contents;
-use function iterator_to_array;
 use function json_encode;
 use function sprintf;
 
@@ -114,12 +112,9 @@ final class LocalPersistence implements TypePersistence
     /** @inheritDoc */
     public function all(): iterable
     {
-        $types = $this->config->types();
-        $types = $types instanceof Traversable ? iterator_to_array($types) : $types;
-
         return array_map(function (Spec $spec): Definition {
             return $this->read($spec->id());
-        }, $types);
+        }, $this->config->types());
     }
 
     /** @inheritDoc */

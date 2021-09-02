@@ -13,7 +13,7 @@ use Symfony\Component\Console\Input\ArgvInput;
 
 final class BuildExamplesTest extends TestCase
 {
-    /** @var array<string, mixed>[] */
+    /** @var array<array-key, array{id: string, name: string, repeatable: bool}> */
     private static $types = [
         [
             'id' => 'page',
@@ -34,6 +34,7 @@ final class BuildExamplesTest extends TestCase
 
     public function testThatNoErrorsOccurWhenProcessingTheExampleConfiguration(): void
     {
+        $this->expectNotToPerformAssertions();
         $config = BuildConfig::withArraySpecs(
             __DIR__ . '/../../example/source',
             __DIR__ . '/../../example/dist',
@@ -45,6 +46,5 @@ final class BuildExamplesTest extends TestCase
         $application->setAutoExit(false);
         $application->setDefaultCommand(BuildCommand::DEFAULT_NAME, true);
         $application->run(new ArgvInput(['', '-qn']));
-        $this->addToAssertionCount(1);
     }
 }

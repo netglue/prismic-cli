@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Primo\Cli\Assert;
 use Prismic\ApiClient;
 use Prismic\Document;
 use Prismic\Value\Bookmark;
@@ -51,7 +52,8 @@ final class InfoCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
         $id = $input->getArgument('id');
-        if (empty($id)) {
+        Assert::nullOrStringNotEmpty($id);
+        if ($id === null) {
             $this->showApiInfo($style);
 
             return 0;

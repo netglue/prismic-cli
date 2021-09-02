@@ -20,7 +20,7 @@ use function reset;
 
 class RemotePersistenceTest extends TestCase
 {
-    /** @var MockObject|Client */
+    /** @var MockObject&Client */
     private $client;
     /** @var RemotePersistence */
     private $storage;
