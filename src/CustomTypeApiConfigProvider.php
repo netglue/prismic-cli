@@ -43,7 +43,6 @@ final class CustomTypeApiConfigProvider
                 Type\RemotePersistence::class => Type\Container\RemotePersistenceFactory::class,
 
                 DiffTool::class => Container\DiffToolFactory::class,
-                TypePersister::class => Container\TypePersisterFactory::class,
             ],
             'aliases' => [
                 Prismic\DocumentType\Client::class => Prismic\DocumentType\BaseClient::class,
