@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Type\TypePersistence;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function is_string;
 use function sprintf;
 
 use const PHP_EOL;
@@ -42,19 +43,52 @@ final class DownloadCommand extends Command
         );
 
         $this->addArgument('type', InputArgument::OPTIONAL, 'An individual type identifier to download', null);
+        $this->addOption('no-index', null, InputOption::VALUE_NONE, 'Disable index.json generation');
+        $this->addOption('all', 'a', InputOption::VALUE_NONE, 'Include disabled types');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);
         $type = $input->getArgument('type');
-        $types = is_string($type)
-            ? [$this->remote->read($type)]
-            : $this->remote->all();
+
+        try {
+            $types = $type !== null
+                ? [$this->remote->read($type)]
+                : $this->remote->all();
+        } catch (PersistenceError $error) {
+            $style->error($error->getMessage());
+
+            return self::FAILURE;
+        }
+
+        $writeIndex = $input->getOption('no-index') === false;
+        $skipDisabled = $input->getOption('all') !== false;
 
         foreach ($types as $type) {
+            if ($skipDisabled && ! $type->isActive()) {
+                continue;
+            }
+
             $style->comment(sprintf('Writing "%s"', $type->label()));
-            $this->local->write($type);
+            try {
+                $this->local->write($type);
+            } catch (PersistenceError $error) {
+                $style->error(sprintf('Failed to write "%s" to local storage', $type->label()));
+
+                return self::FAILURE;
+            }
+        }
+
+        if ($writeIndex) {
+            try {
+                $style->comment('Writing Index');
+                $this->local->writeIndex($this->remote->indexSpecs());
+            } catch (PersistenceError $error) {
+                $style->error('Failed to write the index to local storage');
+
+                return self::FAILURE;
+            }
         }
 
         return self::SUCCESS;

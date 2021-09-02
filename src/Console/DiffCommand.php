@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Primo\Cli\Console;
 
 use Primo\Cli\DiffTool;
+use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Type\TypePersistence;
 use Prismic\DocumentType\Definition;
 use Symfony\Component\Console\Command\Command;
@@ -62,10 +63,23 @@ final class DiffCommand extends Command
     {
         $style = new SymfonyStyle($input, $output);
         $type = $input->getArgument('type');
-        $types = is_string($type)
-            ? [$this->local->read($type)]
-            : $this->local->all();
 
+        try {
+            $types = is_string($type)
+                ? [$this->local->read($type)]
+                : $this->local->all();
+
+            return $this->showDiff($types, $style);
+        } catch (PersistenceError $error) {
+            $style->error('An error occurred reading definitions. Check local types have been built and that credentials are correct for the remote API');
+
+            return self::FAILURE;
+        }
+    }
+
+    /** @param iterable<Definition> $types */
+    private function showDiff(iterable $types, SymfonyStyle $style): int
+    {
         $returnValue = self::SUCCESS;
 
         foreach ($types as $local) {
@@ -79,7 +93,6 @@ final class DiffCommand extends Command
             }
 
             $remote = $this->remote->read($local->id());
-
 
             $diff = $this->diffTool->diff($local, $remote);
             if ($diff === null) {
@@ -98,7 +111,7 @@ final class DiffCommand extends Command
     private function newLocalType(Definition $type, SymfonyStyle $style): void
     {
         $style->info(sprintf(
-            "%s.json is not present in the remote API",
+            '%s.json is not present in the remote API',
             $type->id()
         ));
     }
@@ -106,14 +119,13 @@ final class DiffCommand extends Command
     private function identical(Definition $local, SymfonyStyle $style): void
     {
         $style->info(sprintf(
-            "%s.json is unchanged",
+            '%s.json is unchanged',
             $local->id()
         ));
     }
 
     private function formatDiff(string $diff, SymfonyStyle $style): void
     {
-
         $style->write(
             $this->formatter->format($diff)
         );

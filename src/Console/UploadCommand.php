@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Type\TypePersistence;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -49,13 +50,25 @@ final class UploadCommand extends Command
         $style = new SymfonyStyle($input, $output);
 
         $type = $input->getArgument('type');
-        $types = is_string($type)
-            ? [$this->local->read($type)]
-            : $this->local->all();
+        try {
+            $types = is_string($type)
+                ? [$this->local->read($type)]
+                : $this->local->all();
+        } catch (PersistenceError $error) {
+            $style->error('Failed to read local type definitions - make sure they have been built first');
+
+            return self::FAILURE;
+        }
 
         foreach ($types as $type) {
             $style->comment(sprintf('Uploading "%s"', $type->label()));
-            $this->remote->write($type);
+            try {
+                $this->remote->write($type);
+            } catch (PersistenceError $error) {
+                $style->error(sprintf('Upload of "%s" failed', $type->label()));
+
+                return self::FAILURE;
+            }
         }
 
         return self::SUCCESS;
