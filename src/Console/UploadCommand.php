@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
-use Primo\Cli\BuildConfig;
-use Primo\Cli\Exception\InvalidArgument;
-use Primo\Cli\Type\Spec;
-use Primo\Cli\TypePersister;
+use Primo\Cli\Type\TypePersistence;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function count;
+use function is_string;
 use function sprintf;
 
 use const PHP_EOL;
@@ -23,15 +20,15 @@ final class UploadCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:upload';
 
-    /** @var TypePersister */
-    private $uploader;
-    /** @var BuildConfig */
-    private $config;
+    /** @var TypePersistence */
+    private $local;
+    /** @var TypePersistence */
+    private $remote;
 
-    public function __construct(TypePersister $uploader, BuildConfig $config, string $name = self::DEFAULT_NAME)
+    public function __construct(TypePersistence $local, TypePersistence $remote, string $name = self::DEFAULT_NAME)
     {
-        $this->uploader = $uploader;
-        $this->config = $config;
+        $this->local = $local;
+        $this->remote = $remote;
         parent::__construct($name);
     }
 
@@ -50,41 +47,17 @@ final class UploadCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);
-        $specs = $this->resolveTypes($input->getArgument('type'));
 
-        $style->progressStart(count($specs));
-        foreach ($specs as $spec) {
-            $this->uploader->uploadType($spec);
+        $type = $input->getArgument('type');
+        $types = is_string($type)
+            ? [$this->local->read($type)]
+            : $this->local->all();
+
+        foreach ($types as $type) {
+            $style->comment(sprintf('Uploading "%s"', $type->label()));
+            $this->remote->write($type);
         }
-
-        $style->progressFinish();
-
-        $style->success(sprintf(
-            '%d document types uploaded',
-            count($specs)
-        ));
 
         return self::SUCCESS;
-    }
-
-    /**
-     * @return array<Spec>
-     */
-    private function resolveTypes(?string $type): array
-    {
-        $specs = $this->config->types();
-        if ($type === null) {
-            return $specs;
-        }
-
-        foreach ($specs as $spec) {
-            if ($spec->id() !== $type) {
-                continue;
-            }
-
-            return [$spec];
-        }
-
-        throw new InvalidArgument(sprintf('The type "%s" is not a known type', $type));
     }
 }

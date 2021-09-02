@@ -11,10 +11,15 @@ require __DIR__ . '/../vendor/autoload.php';
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Primo\Cli\BuildConfig;
+use Primo\Cli\Console\ConsoleColourDiffFormatter;
+use Primo\Cli\Console\DiffCommand;
 use Primo\Cli\Console\DownloadCommand;
 use Primo\Cli\Console\UploadCommand;
-use Primo\Cli\TypePersister;
+use Primo\Cli\DiffTool;
+use Primo\Cli\Type\LocalPersistence;
+use Primo\Cli\Type\RemotePersistence;
 use Prismic\DocumentType\BaseClient;
+use SebastianBergmann\Diff\Differ;
 use Symfony\Component\Console\Application;
 
 $repo = getenv('PRISMIC_REPOSITORY');
@@ -70,11 +75,19 @@ $types = [
 /**
  * Build config will throw exceptions if there are any configuration problems.
  */
-$config = BuildConfig::withArraySpecs($source, $dist, []);
-$persister = new TypePersister($config, $client);
+$config = BuildConfig::withArraySpecs($source, $dist, $types);
+
+$localStorage = new LocalPersistence($config);
+$remoteStorage = new RemotePersistence($client);
 
 $application = new Application('Primo Upload and Download Example');
-$application->add(new DownloadCommand($persister, $config));
-$application->add(new UploadCommand($persister, $config));
+$application->add(new DownloadCommand($localStorage, $remoteStorage));
+$application->add(new UploadCommand($localStorage, $remoteStorage));
+$application->add(new DiffCommand(
+    new DiffTool(new Differ()),
+    new ConsoleColourDiffFormatter(),
+    $localStorage,
+    $remoteStorage
+));
 
 return $application->run();
