@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.4.2 - 2021-09-02
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#7](https://github.com/netglue/prismic-cli/pull/7) makes sure that dependencies are loadable when the user opts out of the custom type api tooling.
+
 ## 0.4.1 - 2021-09-02
 
 ### Added

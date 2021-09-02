@@ -39,7 +39,6 @@ final class CustomTypeApiConfigProvider
                 Console\DownloadCommand::class => Console\Container\DownloadCommandFactory::class,
                 Console\UploadCommand::class => Console\Container\UploadCommandFactory::class,
 
-                Type\LocalPersistence::class => Type\Container\LocalPersistenceFactory::class,
                 Type\RemotePersistence::class => Type\Container\RemotePersistenceFactory::class,
 
                 DiffTool::class => Container\DiffToolFactory::class,
