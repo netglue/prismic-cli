@@ -21,7 +21,7 @@ use const PHP_EOL;
 
 final class DiffCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:diff';
+    public const DEFAULT_NAME = 'primo:types:diff';
 
     /** @var ConsoleColourDiffFormatter */
     private $formatter;

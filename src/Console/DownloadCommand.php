@@ -19,7 +19,7 @@ use const PHP_EOL;
 
 final class DownloadCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:download';
+    public const DEFAULT_NAME = 'primo:types:download';
 
     /** @var TypePersistence */
     private $local;
