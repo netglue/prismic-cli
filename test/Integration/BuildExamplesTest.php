@@ -7,6 +7,7 @@ namespace PrimoTest\Cli\Integration;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Console\BuildCommand;
+use Primo\Cli\Type\LocalPersistence;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 
@@ -40,7 +41,7 @@ final class BuildExamplesTest extends TestCase
         );
 
         $application = new Application('Type Builder Example');
-        $application->add(new BuildCommand($config));
+        $application->add(new BuildCommand($config, new LocalPersistence($config)));
         $application->setAutoExit(false);
         $application->setDefaultCommand(BuildCommand::DEFAULT_NAME, true);
         $application->run(new ArgvInput(['', '-qn']));

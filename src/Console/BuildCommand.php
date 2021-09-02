@@ -7,6 +7,8 @@ namespace Primo\Cli\Console;
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Exception\BuildError;
 use Primo\Cli\Type\Spec;
+use Primo\Cli\Type\TypePersistence;
+use Prismic\DocumentType\Definition;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -14,7 +16,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Throwable;
 
 use function count;
-use function file_put_contents;
 use function is_array;
 use function json_encode;
 use function sprintf;
@@ -30,16 +31,20 @@ final class BuildCommand extends Command
 
     /** @var BuildConfig */
     private $config;
+    /** @var TypePersistence */
+    private $localStorage;
 
-    public function __construct(BuildConfig $config, string $name = self::DEFAULT_NAME)
+    public function __construct(BuildConfig $config, TypePersistence $localStorage, string $name = self::DEFAULT_NAME)
     {
         $this->config = $config;
+        $this->localStorage = $localStorage;
         parent::__construct($name);
     }
 
     protected function configure(): void
     {
-        $this->setDescription(
+        $this->setDescription('Build JSON document models from local PHP Sources');
+        $this->setHelp(
             'This command iterates over all your configured Prismic types and renders the json into a file ' .
             'for each type in the configured output directory.' . PHP_EOL .
             'There are no arguments or parameters.'
@@ -56,7 +61,7 @@ final class BuildCommand extends Command
             $style->progressAdvance(1);
         }
 
-        $this->buildIndex();
+        $this->localStorage->writeIndex($types);
         $style->progressAdvance(1);
         $style->progressFinish();
 
@@ -65,26 +70,12 @@ final class BuildCommand extends Command
             count($types)
         ));
 
-        return 0;
-    }
-
-    private function buildIndex(): void
-    {
-        $dest = sprintf('%s%s%s', $this->config->distDirectory(), DIRECTORY_SEPARATOR, 'index.json');
-        try {
-            file_put_contents(
-                $dest,
-                json_encode($this->config->types(), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT)
-            );
-        } catch (Throwable $error) {
-            throw BuildError::unknown($error);
-        }
+        return self::SUCCESS;
     }
 
     private function buildType(Spec $type): void
     {
         $source = sprintf('%s%s%s', $this->config->sourceDirectory(), DIRECTORY_SEPARATOR, $type->source());
-        $dest = sprintf('%s%s%s', $this->config->distDirectory(), DIRECTORY_SEPARATOR, $type->filename());
 
         try {
             $data = require $source;
@@ -102,6 +93,12 @@ final class BuildCommand extends Command
             throw BuildError::unknown($error);
         }
 
-        file_put_contents($dest, $content);
+        $this->localStorage->write(Definition::new(
+            $type->id(),
+            $type->name(),
+            $type->repeatable(),
+            true,
+            $content
+        ));
     }
 }
