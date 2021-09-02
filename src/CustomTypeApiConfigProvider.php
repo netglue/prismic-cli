@@ -35,6 +35,7 @@ final class CustomTypeApiConfigProvider
             'factories' => [
                 Prismic\DocumentType\BaseClient::class => Container\CustomTypeClientFactory::class,
 
+                Console\DiffCommand::class => Console\Container\DiffCommandFactory::class,
                 Console\DownloadCommand::class => Console\Container\DownloadCommandFactory::class,
                 Console\UploadCommand::class => Console\Container\UploadCommandFactory::class,
 
@@ -54,6 +55,7 @@ final class CustomTypeApiConfigProvider
     private function commands(): array
     {
         return [
+            Console\DiffCommand::DEFAULT_NAME => Console\DiffCommand::class,
             Console\DownloadCommand::DEFAULT_NAME => Console\DownloadCommand::class,
             Console\UploadCommand::DEFAULT_NAME => Console\UploadCommand::class,
         ];
