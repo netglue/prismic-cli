@@ -6,11 +6,18 @@ namespace Primo\Cli\Console;
 
 use Symfony\Component\Console\Formatter\OutputFormatter;
 
+use function array_map;
+use function implode;
 use function preg_replace;
 use function preg_split;
+use function rtrim;
+use function sprintf;
+
+use const PHP_EOL;
 
 /**
  * Copy/pasted from:
+ *
  * @link https://github.com/symplify/console-color-diff/blob/main/src/Console/Formatter/ColorConsoleDiffFormatter.php
  */
 final class ConsoleColourDiffFormatter
@@ -41,17 +48,15 @@ final class ConsoleColourDiffFormatter
     private function formatWithTemplate(string $diff, string $template): string
     {
         $escapedDiff = OutputFormatter::escape(rtrim($diff));
-
         $escapedDiffLines = preg_split(self::NEWLINES_REGEX, $escapedDiff);
 
         // remove description of added + remove; obvious on diffs
         foreach ($escapedDiffLines as $key => $escapedDiffLine) {
-            if ($escapedDiffLine === '--- Original') {
-                unset($escapedDiffLines[$key]);
+            if ($escapedDiffLine !== '--- Original' && $escapedDiffLine !== '+++ New') {
+                continue;
             }
-            if ($escapedDiffLine === '+++ New') {
-                unset($escapedDiffLines[$key]);
-            }
+
+            unset($escapedDiffLines[$key]);
         }
 
         $coloredLines = array_map(function (string $string): string {

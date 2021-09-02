@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit;
 
-use Primo\Cli\DiffTool;
 use PHPUnit\Framework\TestCase;
+use Primo\Cli\DiffTool;
 use Prismic\DocumentType\Definition;
 use SebastianBergmann\Diff\Differ;
 

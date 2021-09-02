@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit\Console;
 
-use Primo\Cli\Console\ConsoleColourDiffFormatter;
 use PHPUnit\Framework\TestCase;
+use Primo\Cli\Console\ConsoleColourDiffFormatter;
 use SebastianBergmann\Diff\Differ;
 
 class ConsoleColourDiffFormatterTest extends TestCase
@@ -46,7 +46,6 @@ class ConsoleColourDiffFormatterTest extends TestCase
             <comment>    ----------- end diff -----------</comment>
             
             DIFF;
-
 
         self::assertEquals($expect, $formatter->format($diff));
     }
