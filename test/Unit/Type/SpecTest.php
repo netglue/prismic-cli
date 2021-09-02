@@ -45,4 +45,9 @@ class SpecTest extends TestCase
         $expect = '{"id":"page","name":"Web Page","repeatable":true,"value":"page.json"}';
         $this->assertJsonStringEqualsJsonString($expect, json_encode($this->spec));
     }
+
+    public function testRepeatable(): void
+    {
+        self::assertTrue($this->spec->repeatable());
+    }
 }

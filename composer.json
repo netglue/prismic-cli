@@ -43,7 +43,9 @@
     "require-dev": {
         "ext-curl": "*",
         "doctrine/coding-standard": "^9.0.0",
+        "laminas/laminas-config-aggregator": "^1.5",
         "laminas/laminas-diactoros": "^2.5",
+        "laminas/laminas-servicemanager": "^3.7",
         "php-http/curl-client": "^2.2",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-master",

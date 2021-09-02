@@ -62,7 +62,7 @@ final class RemotePersistence implements TypePersistence
         try {
             return $this->client->fetchAllDefinitions();
         } catch (Throwable $error) {
-            throw PersistenceError::writeFailure($error);
+            throw PersistenceError::readFailure($error);
         }
     }
 
