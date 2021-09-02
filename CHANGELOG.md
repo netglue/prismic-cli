@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.4.1 - 2021-09-02
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- [#6](https://github.com/netglue/prismic-cli/pull/6) adds config.select = null to links that do not have to be a specific type to match the structure returned from the api. This helps to reduce noise in diffs…
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.4.0 - 2021-09-02
 
 ### Added
