@@ -111,15 +111,9 @@ final class TypeBuilder
             'select' => 'document',
             'label' => $label,
             'placeholder' => $placeholder,
+            'customtypes' => $customTypes,
+            'tags' => $tags,
         ]);
-
-        if (! empty($customTypes)) {
-            $config['customtypes'] = $customTypes;
-        }
-
-        if (! empty($tags)) {
-            $config['tags'] = $tags;
-        }
 
         return [
             'type' => self::TYPE_LINK,
@@ -136,6 +130,8 @@ final class TypeBuilder
             'allowTargetBlank' => $allowTargetBlank ? true : null,
             'customtypes' => empty($customTypes) ? null : $customTypes,
         ]);
+
+        $config['select'] = null;
 
         return [
             'type' => self::TYPE_LINK,
