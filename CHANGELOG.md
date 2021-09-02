@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.4.0 - TBD
+
+### Added
+
+- `primo:types:download` - A console command that can download all document type definitions to local storage using the Prismic Custom Types API.
+- `primo:types:upload` - A console command that can upload local document type definitions to the Prismic Custom Types API.
+- `primo:types:diff` - A console command that can show a colour diff between local and remote document type definitions.
+- To facilitate the commands above, a new persistence abstraction has been introduced for local and remote storage, including a dependency on [`netglue/prismic-doctype-client`](https://github.com/netglue/prismic-doctype-client).
+
+### Changed
+
+- Factories that produce some kind of HTTP API Client, now make use of [`php-http/discovery`](https://github.com/php-http/discovery) for finding dependencies, but still prefer those that have been configured in the container.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.3.0 - 2021-03-03
 
 ### Added

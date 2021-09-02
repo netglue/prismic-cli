@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Console\BuildCommand;
+use Primo\Cli\Type\LocalPersistence;
 use Symfony\Component\Console\Application;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -74,6 +75,6 @@ $dist = __DIR__ . '/dist';
 $config = BuildConfig::withArraySpecs($source, $dist, $types);
 
 $application = new Application('Primo Builder Example');
-$application->add(new BuildCommand($config));
+$application->add(new BuildCommand($config, new LocalPersistence($config)));
 
 return $application->run();

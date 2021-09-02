@@ -49,6 +49,36 @@ return [
 The lib currently lacks documentation and a decent test suite but there is an annotated example in `./example`. When it comes to 
 configuring as part of a Mezzio app, please examine `./src/ConfigProvider.php` for more information.
 
+### Upload, Download and Diff Document Models Against the Remote Repository
+
+If you have setup the "Custom Types API" and have a valid access token to use it, adding the following to your configuration along with the contents of `CustomTypeApiConfigProvider` will configure 3 additional commands that will enable you to upload, download and diff changes between your local and remote definitions:
+
+```php
+<?php
+// Local Configuration
+return [
+    'primo' => [
+
+        // ...
+
+        'custom-type-api' => [
+            'token' => 'an access token retrieved from repository settings',
+            'repository' => 'my-repo', // The repo name such as "my-repo" as opposed to the full url or "my-repo.prismic.io"
+        ],
+
+        // ...
+    ],
+];
+```
+
+Once configured, you can issue
+
+- `primo:types:download` to download all JSON definitions to your local dist directory, or add a `type` argument to download just one of them.
+- `primo:types:upload` to upload locally defined definitions to the remote types api make them immediately available in your repository. Again, a `type` argument will process a single definition.
+- `primo:types:diff` will produce colourised diffs in your console showing the changes between local and remote.
+
+These tools make use of [`netglue/prismic-doctype-client`](https://github.com/netglue/prismic-doctype-client), so check that out if you'd like some more information, also [link to the Prismic Custom Types API Docs](https://prismic.io/docs/technologies/custom-types-api).
+
 ### Commands that Query a Repository
 
 Theres also some commands for getting information from a repository. These commands are opt-in. During installation there's a config

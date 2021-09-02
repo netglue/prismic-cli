@@ -42,7 +42,7 @@ final class BuildConfig
     /** @param Spec[] $types */
     public static function with(string $sourceDir, string $distDir, iterable $types): self
     {
-        return new static($sourceDir, $distDir, $types);
+        return new self($sourceDir, $distDir, $types);
     }
 
     /**
@@ -68,7 +68,7 @@ final class BuildConfig
         return $this->distDirectory;
     }
 
-    /** @return Spec[] */
+    /** @return iterable<Spec> */
     public function types(): iterable
     {
         return $this->types;

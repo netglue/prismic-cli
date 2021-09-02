@@ -28,14 +28,24 @@
     "require": {
         "php": "^7.3||~8.0",
         "ext-json": "*",
-        "netglue/prismic-client": "^0",
+        "netglue/prismic-client": "^0.7",
+        "netglue/prismic-doctype-client": "^0.1.0",
+        "php-http/discovery": "^1.14",
         "psr/container": "^1.0||^2.0",
-        "symfony/console": "^5.1"
+        "psr/http-client": "^1.0",
+        "psr/http-client-implementation": "*",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.0",
+        "sebastian/diff": "^4.0",
+        "symfony/console": "^5.1",
+        "webmozart/assert": "^1.10"
     },
     "require-dev": {
         "ext-curl": "*",
         "doctrine/coding-standard": "^9.0.0",
+        "laminas/laminas-config-aggregator": "^1.5",
         "laminas/laminas-diactoros": "^2.5",
+        "laminas/laminas-servicemanager": "^3.7",
         "php-http/curl-client": "^2.2",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-master",
@@ -45,7 +55,8 @@
         "laminas": {
             "config-provider": [
                 "Primo\\Cli\\ConfigProvider",
-                "Primo\\Cli\\ApiToolsConfigProvider"
+                "Primo\\Cli\\ApiToolsConfigProvider",
+                "Primo\\Cli\\CustomTypeApiConfigProvider"
             ]
         }
     },

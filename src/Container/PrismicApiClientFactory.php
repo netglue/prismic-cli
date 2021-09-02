@@ -8,12 +8,11 @@ use Primo\Cli\Exception\ConfigurationError;
 use Prismic\Api;
 use Prismic\ApiClient;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestFactoryInterface;
-use Psr\Http\Message\UriFactoryInterface;
 
 final class PrismicApiClientFactory
 {
+    use HttpComponentDiscovery;
+
     public function __invoke(ContainerInterface $container): ApiClient
     {
         $config = $container->has('config') ? $container->get('config') : [];
@@ -28,9 +27,9 @@ final class PrismicApiClientFactory
         return Api::get(
             $apiUrl,
             $config['prismic']['token'] ?? null,
-            $container->has(ClientInterface::class) ? $container->get(ClientInterface::class) : null,
-            $container->has(RequestFactoryInterface::class) ? $container->get(RequestFactoryInterface::class) : null,
-            $container->has(UriFactoryInterface::class) ? $container->get(UriFactoryInterface::class) : null
+            $this->httpClient($container),
+            $this->requestFactory($container),
+            $this->uriFactory($container)
         );
     }
 }

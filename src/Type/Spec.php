@@ -68,4 +68,9 @@ final class Spec implements JsonSerializable
     {
         return $this->name;
     }
+
+    public function repeatable(): bool
+    {
+        return $this->repeatable;
+    }
 }
