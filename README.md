@@ -1,4 +1,12 @@
-# PHP Based Prismic CLI Tooling _(WIP)_
+# PHP Based Prismic CLI Tooling
+
+[![Build Status](https://github.com/netglue/prismic-cli/workflows/Continuous%20Integration/badge.svg)](https://github.com/netglue/prismic-cli/actions?query=workflow%3A"Continuous+Integration")
+
+[![codecov](https://codecov.io/gh/netglue/prismic-cli/branch/main/graph/badge.svg)](https://codecov.io/gh/netglue/prismic-cli)
+[![Psalm Type Coverage](https://shepherd.dev/github/netglue/prismic-cli/coverage.svg)](https://shepherd.dev/github/netglue/prismic-cli)
+
+[![Latest Stable Version](https://poser.pugx.org/netglue/prismic-cli/v/stable)](https://packagist.org/packages/netglue/prismic-cli)
+[![Total Downloads](https://poser.pugx.org/netglue/prismic-cli/downloads)](https://packagist.org/packages/netglue/prismic-cli)
 
 This is a development tool based on Symfony Console so require it with `--dev` - it's meant to be used as part of a
 build process with a tool like `npm-watch` or similar.
