@@ -44,6 +44,7 @@ final class ConfigProvider
         return [
             'factories' => [
                 Console\BuildCommand::class => Console\Container\BuildCommandFactory::class,
+                Type\LocalPersistence::class => Type\Container\LocalPersistenceFactory::class,
                 BuildConfig::class => Container\BuildConfigFactory::class,
             ],
         ];

@@ -12,6 +12,7 @@ use PHPUnit\Framework\TestCase;
 use Primo\Cli\ApiToolsConfigProvider;
 use Primo\Cli\ConfigProvider;
 use Primo\Cli\CustomTypeApiConfigProvider;
+use Psr\Container\ContainerInterface;
 
 use function array_keys;
 
@@ -48,7 +49,7 @@ final class ServiceManagerIntegrationTest extends TestCase
     }
 
     /** @return array<string, mixed> */
-    private function mergedConfig(): array
+    private function kitchenSinkConfig(): array
     {
         $aggregator = new ConfigAggregator([
             ConfigProvider::class,
@@ -60,19 +61,46 @@ final class ServiceManagerIntegrationTest extends TestCase
         return $aggregator->getMergedConfig();
     }
 
-    private function serviceManager(): ServiceManager
+    /** @return array<string, mixed> */
+    private function generalPlusApiConfig(): array
     {
-        $config = $this->mergedConfig();
+        $aggregator = new ConfigAggregator([
+            ConfigProvider::class,
+            ApiToolsConfigProvider::class,
+            new ArrayProvider($this->validConfig()),
+        ]);
+
+        return $aggregator->getMergedConfig();
+    }
+
+    /** @return array<string, mixed> */
+    private function buildOnlyConfig(): array
+    {
+        $aggregator = new ConfigAggregator([
+            ConfigProvider::class,
+            new ArrayProvider($this->validConfig()),
+        ]);
+
+        return $aggregator->getMergedConfig();
+    }
+
+    /** @param array<string, mixed> $config */
+    private function serviceManager(array $config): ContainerInterface
+    {
         $dependencies = $config['dependencies'];
         $dependencies['services']['config'] = $config;
 
         return new ServiceManager($dependencies);
     }
 
-    /** @return Generator<class-string, array{0: class-string, 1: ServiceManager}> */
-    public function serviceDataProvider(): Generator
+    /**
+     * @param array<string, mixed> $config
+     *
+     * @return Generator<class-string, array{0: class-string, 1: ServiceManager}>
+     */
+    private function factoryGenerator(array $config): Generator
     {
-        $container = $this->serviceManager();
+        $container = $this->serviceManager($config);
         self::assertTrue($container->has('config'));
         $config = $container->get('config');
         $factories = $config['dependencies']['factories'] ?? null;
@@ -84,8 +112,40 @@ final class ServiceManagerIntegrationTest extends TestCase
         }
     }
 
-    /** @dataProvider serviceDataProvider */
-    public function testThatConfigProvidersCanProduceAllRequiredDependenciesGivenValidConfig(string $serviceId, ServiceManager $container): void
+    /** @return Generator<class-string, array{0: class-string, 1: ServiceManager}> */
+    public function kitchenSinkDataProvider(): Generator
+    {
+        return $this->factoryGenerator($this->kitchenSinkConfig());
+    }
+
+    /** @dataProvider kitchenSinkDataProvider */
+    public function testThatConfigProvidersCanProduceAllRequiredDependenciesGivenValidConfig(string $serviceId, ContainerInterface $container): void
+    {
+        self::assertTrue($container->has($serviceId));
+        self::assertIsObject($container->get($serviceId));
+    }
+
+    /** @return Generator<class-string, array{0: class-string, 1: ServiceManager}> */
+    public function generalUsageDataProvider(): Generator
+    {
+        return $this->factoryGenerator($this->generalPlusApiConfig());
+    }
+
+    /** @dataProvider generalUsageDataProvider */
+    public function testGeneralUsage(string $serviceId, ContainerInterface $container): void
+    {
+        self::assertTrue($container->has($serviceId));
+        self::assertIsObject($container->get($serviceId));
+    }
+
+    /** @return Generator<class-string, array{0: class-string, 1: ServiceManager}> */
+    public function buildOnlyDataProvider(): Generator
+    {
+        return $this->factoryGenerator($this->buildOnlyConfig());
+    }
+
+    /** @dataProvider buildOnlyDataProvider */
+    public function testBuildOnlyUsage(string $serviceId, ContainerInterface $container): void
     {
         self::assertTrue($container->has($serviceId));
         self::assertIsObject($container->get($serviceId));
