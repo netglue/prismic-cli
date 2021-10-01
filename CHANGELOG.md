@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.0.0 - 2021-10-01
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Updates locked deps.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 0.4.2 - 2021-09-02
 
 ### Added
