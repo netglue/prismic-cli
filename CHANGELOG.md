@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.0.2 - 2021-10-08
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Bumps `netglue/prismic-client` to `^1.0.0` which is not a BC break because only the version number has changed indicating the first stable.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 1.0.1 - 2021-10-07
 
 ### Added
