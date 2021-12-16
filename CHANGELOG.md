@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.0.3 - 2021-12-16
+
+### Added
+
+- [#31](https://github.com/netglue/prismic-cli/pull/31) Adds workflow to automate dependabot upgrades
+- [#32](https://github.com/netglue/prismic-cli/pull/32) Adds a workflow to check for unused and missing composer dependencies
+
+### Changed
+
+- [#30](https://github.com/netglue/prismic-cli/pull/30) Allows installation with Symfony Console ^6
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 1.0.2 - 2021-10-08
 
 ### Added
