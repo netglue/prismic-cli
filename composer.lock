@@ -210,16 +210,16 @@
         },
         {
             "name": "netglue/prismic-doctype-client",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-doctype-client.git",
-                "reference": "0368af4fade3118c6f9d024963ee5ab2fa4e7d50"
+                "reference": "38016621a99c4aea75f950cdd7872a3f7e80003a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-doctype-client/zipball/0368af4fade3118c6f9d024963ee5ab2fa4e7d50",
-                "reference": "0368af4fade3118c6f9d024963ee5ab2fa4e7d50",
+                "url": "https://api.github.com/repos/netglue/prismic-doctype-client/zipball/38016621a99c4aea75f950cdd7872a3f7e80003a",
+                "reference": "38016621a99c4aea75f950cdd7872a3f7e80003a",
                 "shasum": ""
             },
             "require": {
@@ -273,9 +273,9 @@
             "homepage": "https://github.com/netglue/prismic-doctype-client",
             "support": {
                 "issues": "https://github.com/netglue/prismic-doctype-client/issues",
-                "source": "https://github.com/netglue/prismic-doctype-client/tree/0.1.1"
+                "source": "https://github.com/netglue/prismic-doctype-client/tree/0.1.2"
             },
-            "time": "2021-10-07T12:46:59+00:00"
+            "time": "2021-12-16T10:44:18+00:00"
         },
         {
             "name": "php-http/curl-client",
