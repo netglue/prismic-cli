@@ -136,16 +136,16 @@
         },
         {
             "name": "netglue/prismic-client",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-client.git",
-                "reference": "f8f1a7be75166e5cd270960ea5ec44babcefec7a"
+                "reference": "c529098e4ffc8bb2bde58135628cc555b0f1db0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/f8f1a7be75166e5cd270960ea5ec44babcefec7a",
-                "reference": "f8f1a7be75166e5cd270960ea5ec44babcefec7a",
+                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/c529098e4ffc8bb2bde58135628cc555b0f1db0f",
+                "reference": "c529098e4ffc8bb2bde58135628cc555b0f1db0f",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,7 @@
                 "laminas/laminas-escaper": "^2.9",
                 "php": "^7.3 || ~8.0 || ~8.1",
                 "php-http/discovery": "^1.14.1",
-                "psr/cache": "^1.0",
+                "psr/cache": "^1.0.0 || ^2.0.0",
                 "psr/http-client": "^1.0",
                 "psr/http-client-implementation": "*",
                 "psr/http-factory": "^1.0",
@@ -162,9 +162,9 @@
             },
             "require-dev": {
                 "doctrine/coding-standard": "^9.0",
-                "ext-apcu": "*",
                 "ext-curl": "*",
                 "laminas/laminas-diactoros": "^2.8",
+                "maglnet/composer-require-checker": "^2.1",
                 "php-http/cache-plugin": "^1.7",
                 "php-http/curl-client": "^2.2",
                 "php-http/mock-client": "^1.5",
@@ -172,9 +172,9 @@
                 "psalm/plugin-phpunit": "^0.16.1",
                 "roave/security-advisories": "dev-latest",
                 "squizlabs/php_codesniffer": "^3.6",
-                "symfony/cache": "^5.3.8",
-                "symfony/options-resolver": "^5.3.7",
-                "vimeo/psalm": "^4.10.0"
+                "symfony/cache": "^5.4 || ^6.0.0",
+                "symfony/options-resolver": "^5.4 || ^6.0",
+                "vimeo/psalm": "^4.13.0"
             },
             "type": "library",
             "autoload": {
@@ -204,9 +204,9 @@
             ],
             "support": {
                 "issues": "https://github.com/netglue/prismic-client/issues",
-                "source": "https://github.com/netglue/prismic-client/tree/1.0.0"
+                "source": "https://github.com/netglue/prismic-client/tree/1.1.0"
             },
-            "time": "2021-10-08T15:25:15+00:00"
+            "time": "2022-01-07T11:21:47+00:00"
         },
         {
             "name": "netglue/prismic-doctype-client",
@@ -1624,16 +1624,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.23.1",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be"
+                "reference": "57b712b08eddb97c762a8caa32c84e037892d2e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/1100343ed1a92e3a38f9ae122fc0eb21602547be",
-                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/57b712b08eddb97c762a8caa32c84e037892d2e9",
+                "reference": "57b712b08eddb97c762a8caa32c84e037892d2e9",
                 "shasum": ""
             },
             "require": {
@@ -1687,7 +1687,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.1"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.24.0"
             },
             "funding": [
                 {
@@ -1703,7 +1703,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-28T13:41:28+00:00"
+            "time": "2021-09-13T13:58:33+00:00"
         },
         {
             "name": "symfony/service-contracts",
