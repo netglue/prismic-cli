@@ -90,6 +90,10 @@ final class InfoCommand extends Command
         ]);
     }
 
+    /**
+     * @psalm-suppress DeprecatedClass, DeprecatedMethod
+     * @todo Remove bookmark list in 2.0
+     */
     private function showApiInfo(SymfonyStyle $style): void
     {
         $style->title(sprintf('Repository Information: %s', $this->apiClient->host()));
