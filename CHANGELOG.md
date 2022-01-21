@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.1.0 - 2022-01-21
+
+### Added
+
+- [#49](https://github.com/netglue/prismic-cli/pull/49) Allows the slice display property to be used in the TypeBuilder
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#48](https://github.com/netglue/prismic-cli/pull/48) Fixes psalm errors due to the deprecation of bookmarks in [`prismic-client`](https://github.com/netglue/prismic-client)
+
 ## 1.0.3 - 2021-12-16
 
 ### Added
