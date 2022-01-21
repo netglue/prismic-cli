@@ -63,6 +63,14 @@ final class TypeBuilder
         self::EMBED,
     ];
 
+    public const SLICE_DISPLAY_LIST = 'list';
+    public const SLICE_DISPLAY_GRID = 'grid';
+
+    private const SLICE_DISPLAY = [
+        self::SLICE_DISPLAY_GRID,
+        self::SLICE_DISPLAY_LIST,
+    ];
+
     /** @return array<string, mixed> */
     public static function uid(string $label, ?string $placeholder = null): array
     {
@@ -388,13 +396,17 @@ final class TypeBuilder
         ?string $description = null,
         array $nonRepeatFields = [],
         array $repeatFields = [],
-        ?string $icon = null
+        ?string $icon = null,
+        ?string $displayFormat = null
     ): array {
+        Assert::nullOrInArray($displayFormat, self::SLICE_DISPLAY);
+
         return array_filter([
             'type' => self::TYPE_SLICE,
             'fieldset' => $label,
             'description' => $description,
             'icon' => $icon,
+            'display' => $displayFormat,
             'non-repeat' => $nonRepeatFields === [] ? null : $nonRepeatFields,
             'repeat' => $repeatFields === [] ? null : $repeatFields,
         ]);
