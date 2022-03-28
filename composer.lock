@@ -136,16 +136,16 @@
         },
         {
             "name": "netglue/prismic-client",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-client.git",
-                "reference": "a0d372afc1eb17ac897ad2b491ba3156f6cddc0b"
+                "reference": "48166333fbcea40e663976ec0c3f7367f7277a04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/a0d372afc1eb17ac897ad2b491ba3156f6cddc0b",
-                "reference": "a0d372afc1eb17ac897ad2b491ba3156f6cddc0b",
+                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/48166333fbcea40e663976ec0c3f7367f7277a04",
+                "reference": "48166333fbcea40e663976ec0c3f7367f7277a04",
                 "shasum": ""
             },
             "require": {
@@ -204,9 +204,9 @@
             ],
             "support": {
                 "issues": "https://github.com/netglue/prismic-client/issues",
-                "source": "https://github.com/netglue/prismic-client/tree/1.2.2"
+                "source": "https://github.com/netglue/prismic-client/tree/1.2.3"
             },
-            "time": "2022-02-21T14:30:27+00:00"
+            "time": "2022-03-22T23:00:35+00:00"
         },
         {
             "name": "netglue/prismic-doctype-client",
