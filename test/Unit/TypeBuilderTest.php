@@ -38,27 +38,37 @@ class TypeBuilderTest extends TestCase
         self::assertEquals($expect, $data);
     }
 
-    public function testWidthOrHeightWillYieldImageConstraintInRichText(): void
+    /** @return array<array-key, array{0: int|null, 1: int|null, 2: array{width?:int, height?:int}}> */
+    public function richTextImageConstraintProvider(): array
     {
-        $data = T::richText('Foo', 'Foo', [], true, true, true, [], 999, null);
-        $expect = ['width' => 999];
+        return [
+            [999, null, ['width' => 999]],
+            [null, 999, ['height' => 999]],
+            [123, 456, ['width' => 123, 'height' => 456]],
+        ];
+    }
 
-        self::assertArrayHasKey('imageConstraint', $data['config']);
-        self::assertEquals($expect, $data['config']['imageConstraint']);
+    /**
+     * @param array{width?:int, height?:int} $expect
+     *
+     * @dataProvider richTextImageConstraintProvider
+     */
+    public function testWidthOrHeightWillYieldImageConstraintInRichText(?int $x, ?int $y, array $expect): void
+    {
+        $data = T::richText('Foo', 'Foo', [], true, true, true, [], $x, $y);
+        self::assertArrayHasKey('config', $data);
+        $config = $data['config'];
+        self::assertIsArray($config);
+        self::assertArrayHasKey('imageConstraint', $config);
+        self::assertEquals($expect, $config['imageConstraint']);
+    }
 
-        $data = T::richText('Foo', 'Foo', [], true, true, true, [], null, 999);
-        $expect = ['height' => 999];
-
-        self::assertArrayHasKey('imageConstraint', $data['config']);
-        self::assertEquals($expect, $data['config']['imageConstraint']);
-
-        $data = T::richText('Foo', 'Foo', [], true, true, true, [], 123, 456);
-        $expect = ['width' => 123, 'height' => 456];
-
-        self::assertArrayHasKey('imageConstraint', $data['config']);
-        self::assertEquals($expect, $data['config']['imageConstraint']);
-
-        $data = T::richText('Foo', 'Foo', []);
-        self::assertArrayNotHasKey('imageConstraint', $data['config']);
+    public function testImageConstraintIsAbsentInRichTextWhenNeitherXNorYAreProvided(): void
+    {
+        $data = T::richText('Foo', null, []);
+        self::assertArrayHasKey('config', $data);
+        $config = $data['config'];
+        self::assertIsArray($config);
+        self::assertArrayNotHasKey('imageConstraint', $config);
     }
 }
