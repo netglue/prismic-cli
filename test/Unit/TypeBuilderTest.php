@@ -37,4 +37,28 @@ class TypeBuilderTest extends TestCase
         ];
         self::assertEquals($expect, $data);
     }
+
+    public function testWidthOrHeightWillYieldImageConstraintInRichText(): void
+    {
+        $data = T::richText('Foo', 'Foo', [], true, true, true, [], 999, null);
+        $expect = ['width' => 999];
+
+        self::assertArrayHasKey('imageConstraint', $data['config']);
+        self::assertEquals($expect, $data['config']['imageConstraint']);
+
+        $data = T::richText('Foo', 'Foo', [], true, true, true, [], null, 999);
+        $expect = ['height' => 999];
+
+        self::assertArrayHasKey('imageConstraint', $data['config']);
+        self::assertEquals($expect, $data['config']['imageConstraint']);
+
+        $data = T::richText('Foo', 'Foo', [], true, true, true, [], 123, 456);
+        $expect = ['width' => 123, 'height' => 456];
+
+        self::assertArrayHasKey('imageConstraint', $data['config']);
+        self::assertEquals($expect, $data['config']['imageConstraint']);
+
+        $data = T::richText('Foo', 'Foo', []);
+        self::assertArrayNotHasKey('imageConstraint', $data['config']);
+    }
 }
