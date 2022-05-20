@@ -376,7 +376,9 @@ final class TypeBuilder
             'allowTargetBlank' => $allowTargetBlank,
             'useAsTitle' => $isTitle,
             'labels' => $labels === [] ? null : $labels,
-            'imageConstraint' => $imgX && $imgY ? ['width' => $imgX, 'height' => $imgY] : null,
+            'imageConstraint' => $imgX !== null || $imgY !== null
+                ? array_filter(['width' => $imgX, 'height' => $imgY], [self::class, 'filterNull'])
+                : null,
         ];
 
         return [
