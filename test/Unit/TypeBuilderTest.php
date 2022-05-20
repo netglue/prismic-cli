@@ -22,4 +22,19 @@ class TypeBuilderTest extends TestCase
         ];
         self::assertEquals($expect, $data);
     }
+
+    public function testThatNumbersWillIncludeTheMinWhenZero(): void
+    {
+        $data = T::number('Number', 'Placeholder', 0, 100);
+        $expect = [
+            'type' => T::TYPE_NUMBER,
+            'config' => [
+                'label' => 'Number',
+                'placeholder' => 'Placeholder',
+                'min' => 0,
+                'max' => 100,
+            ],
+        ];
+        self::assertEquals($expect, $data);
+    }
 }
