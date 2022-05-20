@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+env:
+  php_extensions: ""
+  default_php: 8.0
+
 jobs:
   matrix:
     name: Generate job matrix
@@ -29,3 +33,52 @@ jobs:
         uses: laminas/laminas-continuous-integration-action@v1
         with:
           job: ${{ matrix.job }}
+
+  coverage:
+    name: PHPUnit Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.default_php }}
+          extensions: pcov
+          coverage: pcov
+          ini-values: pcov.enabled=1
+      - uses: "ramsey/composer-install@2.1.0"
+        with:
+          dependency-versions: "highest"
+      - run: php ./vendor/bin/phpunit --coverage-clover=coverage.xml
+
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          fail_ci_if_error: false
+
+  composer-require-checker:
+    name: "Check for missing dependencies"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.default_php }}
+          ini-values: memory_limit=-1
+
+      - uses: "ramsey/composer-install@2.1.0"
+        with:
+          dependency-versions: "highest"
+
+      - name: "Set global composer bin-dir"
+        run: composer global config bin-dir /usr/local/bin
+
+      - name: "Install require checker"
+        run: composer global require -W maglnet/composer-require-checker
+
+      - name: "Check"
+        run: /usr/local/bin/composer-require-checker check
