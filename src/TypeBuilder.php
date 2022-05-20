@@ -241,7 +241,7 @@ final class TypeBuilder
                 'placeholder' => self::nullifyString($placeholder),
                 'min' => $min,
                 'max' => $max,
-            ]),
+            ], [self::class, 'filterNull']),
         ];
     }
 
@@ -437,5 +437,15 @@ final class TypeBuilder
                 'choices' => $slices,
             ]),
         ];
+    }
+
+    /**
+     * @param mixed $value
+     *
+     * @psalm-assert !null $value
+     */
+    private static function filterNull($value): bool
+    {
+        return $value !== null;
     }
 }
