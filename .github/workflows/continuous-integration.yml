@@ -20,13 +20,13 @@ jobs:
 
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ env.default_php }}
+          php-version: 7.3
           extensions: ${{ env.php_extensions }}
           tools: cs2pr
 
       - uses: ramsey/composer-install@2.1.0
         with:
-          dependency-versions: highest
+          dependency-versions: locked
 
       - name: "Check CS"
         run: vendor/bin/phpcs --report=checkstyle -q | cs2pr
@@ -39,13 +39,13 @@ jobs:
 
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ env.default_php }}
+          php-version: 7.3
           extensions: ${{ env.php_extensions }}
           tools: cs2pr
 
       - uses: ramsey/composer-install@2.1.0
         with:
-          dependency-versions: highest
+          dependency-versions: locked
 
       - name: "Psalm"
         run: vendor/bin/psalm --output-format=github
