@@ -12,7 +12,10 @@
         }
     ],
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "autoload": {
         "psr-4": {
@@ -26,7 +29,7 @@
         }
     },
     "require": {
-        "php": "^7.3 || ~8.0 || ~8.1",
+        "php": "^7.3 || ~8.0 || ~8.1 || ~8.2",
         "ext-json": "*",
         "netglue/prismic-client": "^1.0.0",
         "netglue/prismic-doctype-client": "^0.1.1",
