@@ -136,16 +136,16 @@
         },
         {
             "name": "netglue/prismic-client",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-client.git",
-                "reference": "48166333fbcea40e663976ec0c3f7367f7277a04"
+                "reference": "0d8dad47de27f7dc741fe3431d017a6663df923d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/48166333fbcea40e663976ec0c3f7367f7277a04",
-                "reference": "48166333fbcea40e663976ec0c3f7367f7277a04",
+                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/0d8dad47de27f7dc741fe3431d017a6663df923d",
+                "reference": "0d8dad47de27f7dc741fe3431d017a6663df923d",
                 "shasum": ""
             },
             "require": {
@@ -204,9 +204,9 @@
             ],
             "support": {
                 "issues": "https://github.com/netglue/prismic-client/issues",
-                "source": "https://github.com/netglue/prismic-client/tree/1.2.3"
+                "source": "https://github.com/netglue/prismic-client/tree/1.2.4"
             },
-            "time": "2022-03-22T23:00:35+00:00"
+            "time": "2022-05-24T10:36:16+00:00"
         },
         {
             "name": "netglue/prismic-doctype-client",
@@ -348,16 +348,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.14.1",
+            "version": "1.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "de90ab2b41d7d61609f504e031339776bc8c7223"
+                "reference": "c8d48852fbc052454af42f6de27635ddd916b959"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/de90ab2b41d7d61609f504e031339776bc8c7223",
-                "reference": "de90ab2b41d7d61609f504e031339776bc8c7223",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/c8d48852fbc052454af42f6de27635ddd916b959",
+                "reference": "c8d48852fbc052454af42f6de27635ddd916b959",
                 "shasum": ""
             },
             "require": {
@@ -370,8 +370,7 @@
                 "graham-campbell/phpspec-skip-example-extension": "^5.0",
                 "php-http/httplug": "^1.0 || ^2.0",
                 "php-http/message-factory": "^1.0",
-                "phpspec/phpspec": "^5.1 || ^6.1",
-                "puli/composer-plugin": "1.0.0-beta10"
+                "phpspec/phpspec": "^5.1 || ^6.1"
             },
             "suggest": {
                 "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories"
@@ -410,9 +409,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.14.1"
+                "source": "https://github.com/php-http/discovery/tree/1.14.2"
             },
-            "time": "2021-09-18T07:57:46+00:00"
+            "time": "2022-05-25T07:26:05+00:00"
         },
         {
             "name": "php-http/httplug",
