@@ -25,6 +25,8 @@ jobs:
           tools: cs2pr
 
       - uses: ramsey/composer-install@2.1.0
+        with:
+          dependency-versions: highest
 
       - name: "Check CS"
         run: vendor/bin/phpcs --report=checkstyle -q | cs2pr
@@ -42,6 +44,8 @@ jobs:
           tools: cs2pr
 
       - uses: ramsey/composer-install@2.1.0
+        with:
+          dependency-versions: highest
 
       - name: "Psalm"
         run: vendor/bin/psalm --output-format=github
@@ -55,8 +59,11 @@ jobs:
       fail-fast: false
       matrix:
         php-version: [ '7.3', '7.4', '8.0', '8.1', '8.2' ]
-        dependencies: [ 'locked', 'highest' ]
+        dependencies: [ 'lowest', 'locked', 'highest' ]
         include:
+          - php-version: '8.1'
+            dependencies: 'locked'
+            composer-options: "--ignore-platform-reqs"
           - php-version: '8.2'
             composer-options: "--ignore-platform-reqs"
 
@@ -97,6 +104,8 @@ jobs:
           ini-values: memory_limit=-1
 
       - uses: ramsey/composer-install@2.1.0
+        with:
+          dependency-versions: highest
 
       - name: "Set global composer bin-dir"
         run: composer global config bin-dir /usr/local/bin
