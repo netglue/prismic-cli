@@ -291,10 +291,10 @@ final class TypeBuilder
             'config' => array_filter([
                 'label' => $label,
                 'placeholder' => $placeholder,
-                'constraint' => array_filter([
+                'constraint' => [
                     'width' => $x,
                     'height' => $y,
-                ]),
+                ],
                 'thumbnails' => $views,
             ]),
         ];
@@ -303,11 +303,11 @@ final class TypeBuilder
     /** @return array<string, mixed> */
     public static function imgView(string $name, ?int $x = null, ?int $y = null): array
     {
-        return array_filter([
+        return [
             'name' => $name,
             'width' => $x,
             'height' => $y,
-        ]);
+        ];
     }
 
     /** @param array<array-key, string> $types */

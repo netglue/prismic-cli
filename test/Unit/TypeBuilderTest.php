@@ -71,4 +71,31 @@ class TypeBuilderTest extends TestCase
         self::assertIsArray($config);
         self::assertArrayNotHasKey('imageConstraint', $config);
     }
+
+    public function testImageSpecDeclaresNullOnConstraintsWhenGivenNull(): void
+    {
+        $data = T::img('Foo', null, 100, null, []);
+        $expect = [
+            'type' => 'Image',
+            'config' => [
+                'label' => 'Foo',
+                'constraint' => [
+                    'width' => 100,
+                    'height' => null,
+                ],
+            ],
+        ];
+        self::assertEquals($expect, $data);
+    }
+
+    public function testThatImageViewsContainNullConstraintsWhenNullIsGiven(): void
+    {
+        $data = T::imgView('Foo', null, 100);
+        $expect = [
+            'name' => 'Foo',
+            'width' => null,
+            'height' => 100,
+        ];
+        self::assertEquals($expect, $data);
+    }
 }
