@@ -22,8 +22,7 @@ class RemotePersistenceTest extends TestCase
 {
     /** @var MockObject&Client */
     private $client;
-    /** @var RemotePersistence */
-    private $storage;
+    private RemotePersistence $storage;
 
     protected function setUp(): void
     {

@@ -8,8 +8,8 @@ use Primo\Cli\TypeBuilder as T;
  * Typically, its a good idea to configure each slice in its own file, that way you can create slice collections from
  * a library - maybe you have a different set of slices for an article vs a regular web page for example.
  *
- * A big drawback to this approach is that slice variations are defined outside of slices in Prismic. As you can see, the carousel
- * below has a couple of 'variations' in the third arg to T::sliceZone().
+ * A big drawback to this approach is that slice variations are defined outside of slices in Prismic. As you can see,
+ * the carousel below has a couple of 'variations' in the third arg to T::sliceZone().
  */
 
 return T::sliceZone('Document Body', [

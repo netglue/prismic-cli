@@ -11,8 +11,7 @@ use function json_encode;
 
 class SpecTest extends TestCase
 {
-    /** @var Spec */
-    private $spec;
+    private Spec $spec;
 
     protected function setUp(): void
     {

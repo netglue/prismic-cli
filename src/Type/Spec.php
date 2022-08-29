@@ -10,14 +10,10 @@ use function sprintf;
 
 final class Spec implements JsonSerializable
 {
-    /** @var string */
-    private $id;
-    /** @var string */
-    private $name;
-    /** @var bool */
-    private $repeatable;
-    /** @var string */
-    private $filename;
+    private string $id;
+    private string $name;
+    private bool $repeatable;
+    private string $filename;
 
     private function __construct(
         string $id,

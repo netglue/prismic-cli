@@ -5,7 +5,8 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 /**
- * An example of using the shipped Symfony CLI commands to create a standalone tool for uploading and downloading type definitions
+ * An example of using the shipped Symfony CLI commands to create a standalone tool
+ * for uploading and downloading type definitions
  */
 
 use Http\Discovery\Psr17FactoryDiscovery;
@@ -40,13 +41,14 @@ $client = new BaseClient(
     Psr18ClientDiscovery::find(),
     Psr17FactoryDiscovery::findRequestFactory(),
     Psr17FactoryDiscovery::findUriFactory(),
-    Psr17FactoryDiscovery::findStreamFactory()
+    Psr17FactoryDiscovery::findStreamFactory(),
 );
 
 /**
  * Define the Source and destination directories.
  *
- * Source contains php source files and the dist directory is the target directory for Json Specs - in this case, our backup
+ * Source contains php source files and the dist directory is the target directory for
+ * Json Specs - in this case, our backup
  */
 $source = __DIR__ . '/source';
 $dist = __DIR__ . '/dist';
@@ -87,7 +89,7 @@ $application->add(new DiffCommand(
     new DiffTool(new Differ()),
     new ConsoleColourDiffFormatter(),
     $localStorage,
-    $remoteStorage
+    $remoteStorage,
 ));
 
 return $application->run();

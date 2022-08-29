@@ -29,10 +29,8 @@ final class BuildCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:build';
 
-    /** @var BuildConfig */
-    private $config;
-    /** @var TypePersistence */
-    private $localStorage;
+    private BuildConfig $config;
+    private TypePersistence $localStorage;
 
     public function __construct(BuildConfig $config, TypePersistence $localStorage, string $name = self::DEFAULT_NAME)
     {
@@ -47,7 +45,7 @@ final class BuildCommand extends Command
         $this->setHelp(
             'This command iterates over all your configured Prismic types and renders the json into a file ' .
             'for each type in the configured output directory.' . PHP_EOL .
-            'There are no arguments or parameters.'
+            'There are no arguments or parameters.',
         );
     }
 
@@ -67,7 +65,7 @@ final class BuildCommand extends Command
 
         $style->success(sprintf(
             '%d document types processed',
-            count($types)
+            count($types),
         ));
 
         return self::SUCCESS;
@@ -99,7 +97,7 @@ final class BuildCommand extends Command
             $type->name(),
             $type->repeatable(),
             true,
-            $content
+            $content,
         ));
     }
 }

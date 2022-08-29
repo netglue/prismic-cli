@@ -23,8 +23,7 @@ use const JSON_THROW_ON_ERROR;
 
 final class LocalPersistence implements TypePersistence
 {
-    /** @var BuildConfig */
-    private $config;
+    private BuildConfig $config;
 
     public function __construct(
         BuildConfig $config
@@ -56,7 +55,7 @@ final class LocalPersistence implements TypePersistence
                 $spec->name(),
                 $spec->repeatable(),
                 true,
-                file_get_contents($path)
+                file_get_contents($path),
             );
         } catch (Throwable $error) {
             throw PersistenceError::readFailure($error);
@@ -83,7 +82,7 @@ final class LocalPersistence implements TypePersistence
             '%s%s%s',
             $this->config->distDirectory(),
             DIRECTORY_SEPARATOR,
-            $spec->filename()
+            $spec->filename(),
         );
     }
 
@@ -105,7 +104,7 @@ final class LocalPersistence implements TypePersistence
         return Spec::new(
             $definition->id(),
             $definition->label(),
-            $definition->isRepeatable()
+            $definition->isRepeatable(),
         );
     }
 
@@ -130,7 +129,7 @@ final class LocalPersistence implements TypePersistence
         try {
             file_put_contents(
                 $dest,
-                json_encode($specs, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT)
+                json_encode($specs, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT),
             );
         } catch (Throwable $error) {
             throw PersistenceError::writeFailure($error);

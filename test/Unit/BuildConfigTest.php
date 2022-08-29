@@ -14,8 +14,7 @@ use function sprintf;
 
 class BuildConfigTest extends TestCase
 {
-    /** @var BuildConfig */
-    private $config;
+    private BuildConfig $config;
 
     protected function setUp(): void
     {
@@ -40,21 +39,27 @@ class BuildConfigTest extends TestCase
                     'name' => 'Blog Post',
                     'repeatable' => true,
                 ],
-            ]
+            ],
         );
     }
 
     public function testExceptionThrownForNonDirectorySource(): void
     {
         $this->expectException(FilesystemError::class);
-        $this->expectExceptionMessage(sprintf('The directory "%s" either does not exist, or is not a directory', __FILE__));
+        $this->expectExceptionMessage(sprintf(
+            'The directory "%s" either does not exist, or is not a directory',
+            __FILE__,
+        ));
         BuildConfig::with(__FILE__, '', []);
     }
 
     public function testExceptionThrownForNonDirectoryDest(): void
     {
         $this->expectException(FilesystemError::class);
-        $this->expectExceptionMessage(sprintf('The directory "%s" either does not exist, or is not a directory', __FILE__));
+        $this->expectExceptionMessage(sprintf(
+            'The directory "%s" either does not exist, or is not a directory',
+            __FILE__,
+        ));
         BuildConfig::with(__DIR__, __FILE__, []);
     }
 

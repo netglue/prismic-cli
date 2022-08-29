@@ -11,8 +11,7 @@ use SebastianBergmann\Diff\Differ;
 
 class DiffToolTest extends TestCase
 {
-    /** @var DiffTool */
-    private $tool;
+    private DiffTool $tool;
 
     protected function setUp(): void
     {
@@ -29,7 +28,7 @@ class DiffToolTest extends TestCase
         $diff = $this->tool->diff($left, $right);
         self::assertNotNull($diff);
 
-        $expect = <<<DIFF
+        $expect = <<<'DIFF'
                  "foo": [
                      "a",
                      "b",

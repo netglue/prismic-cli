@@ -13,7 +13,7 @@ final class DiffToolFactory
     public function __invoke(ContainerInterface $container): DiffTool
     {
         return new DiffTool(
-            new Differ()
+            new Differ(),
         );
     }
 }

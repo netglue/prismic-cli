@@ -22,8 +22,7 @@ final class ListCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:list';
 
-    /** @var ApiClient */
-    private $apiClient;
+    private ApiClient $apiClient;
 
     public function __construct(ApiClient $apiClient, string $name = self::DEFAULT_NAME)
     {
@@ -35,12 +34,12 @@ final class ListCommand extends Command
     {
         $this->setDescription(
             'This command lists documents of a specific type. '
-            . 'With no arguments, it lists types available in the repository.'
+            . 'With no arguments, it lists types available in the repository.',
         );
         $this->addArgument(
             'type',
             InputArgument::OPTIONAL,
-            'The document type to list'
+            'The document type to list',
         );
     }
 
@@ -58,7 +57,7 @@ final class ListCommand extends Command
 
         $list = $this->apiClient->findAll(
             $this->apiClient->createQuery()
-                ->query(Predicate::at('document.type', $type))
+                ->query(Predicate::at('document.type', $type)),
         );
 
         $formatDocument = static function (Document $document): array {
@@ -73,7 +72,7 @@ final class ListCommand extends Command
         $style->title(sprintf('Found %d documents with the type %s', $list->count(), $type));
         $style->table(
             ['ID', 'UID', 'Last Modified', 'Language'],
-            array_map($formatDocument, $list->results())
+            array_map($formatDocument, $list->results()),
         );
 
         return 0;

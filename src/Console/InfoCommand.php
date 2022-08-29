@@ -26,8 +26,7 @@ final class InfoCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:info';
 
-    /** @var ApiClient */
-    private $apiClient;
+    private ApiClient $apiClient;
 
     public function __construct(ApiClient $apiClient, string $name = self::DEFAULT_NAME)
     {
@@ -39,12 +38,12 @@ final class InfoCommand extends Command
     {
         $this->setDescription(
             'This command shows information about a specific document when given its unique identifier, '
-            . 'or, with no arguments provides information about the repository.'
+            . 'or, with no arguments provides information about the repository.',
         );
         $this->addArgument(
             'id',
             InputArgument::OPTIONAL,
-            'The unique id of the document'
+            'The unique id of the document',
         );
     }
 
@@ -64,7 +63,7 @@ final class InfoCommand extends Command
             $style->warning(sprintf(
                 'A document could not be found with the id "%s" in the repository "%s"',
                 $id,
-                $this->apiClient->host()
+                $this->apiClient->host(),
             ));
 
             return 0;

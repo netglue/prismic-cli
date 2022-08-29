@@ -13,7 +13,7 @@ class ConfigProviderTest extends TestCase
     public function theConfigProviderShouldReturnAnArray(): void
     {
         self::assertIsArray(
-            (new ConfigProvider())()
+            (new ConfigProvider())(),
         );
     }
 }

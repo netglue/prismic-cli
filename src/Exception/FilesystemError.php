@@ -14,7 +14,7 @@ final class FilesystemError extends RuntimeException
     {
         return new self(sprintf(
             'The directory "%s" either does not exist, or is not a directory',
-            $path
+            $path,
         ));
     }
 
@@ -22,7 +22,7 @@ final class FilesystemError extends RuntimeException
     {
         return new self(sprintf(
             'The path "%s" is not readable',
-            $path
+            $path,
         ));
     }
 
@@ -30,7 +30,7 @@ final class FilesystemError extends RuntimeException
     {
         return new self(sprintf(
             'The path "%s" is not writable',
-            $path
+            $path,
         ));
     }
 }

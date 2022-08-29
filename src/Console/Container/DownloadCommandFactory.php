@@ -15,7 +15,7 @@ final class DownloadCommandFactory
     {
         return new DownloadCommand(
             $container->get(LocalPersistence::class),
-            $container->get(RemotePersistence::class)
+            $container->get(RemotePersistence::class),
         );
     }
 }

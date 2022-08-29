@@ -15,8 +15,7 @@ class CustomTypeClientFactoryTest extends TestCase
 {
     /** @var MockObject&ContainerInterface */
     private $container;
-    /** @var CustomTypeClientFactory */
-    private $factory;
+    private CustomTypeClientFactory $factory;
 
     protected function setUp(): void
     {
@@ -45,9 +44,7 @@ class CustomTypeClientFactoryTest extends TestCase
             ->with('config')
             ->willReturn([
                 'primo' => [
-                    'custom-type-api' => [
-                        'token' => 'Foo',
-                    ],
+                    'custom-type-api' => ['token' => 'Foo'],
                 ],
             ]);
 

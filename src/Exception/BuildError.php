@@ -16,7 +16,7 @@ final class BuildError extends RuntimeException
     {
         return new self(sprintf(
             'An unknown build error occurred: %s',
-            $previous->getMessage()
+            $previous->getMessage(),
         ), 500, $previous);
     }
 
@@ -25,7 +25,7 @@ final class BuildError extends RuntimeException
         return new self(sprintf(
             'The source file for "%s" did not return an array suitable for serialisation. Path: %s',
             $type->name(),
-            $source
+            $source,
         ));
     }
 }

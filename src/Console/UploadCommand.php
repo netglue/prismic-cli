@@ -22,10 +22,8 @@ final class UploadCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:types:upload';
 
-    /** @var TypePersistence */
-    private $local;
-    /** @var TypePersistence */
-    private $remote;
+    private TypePersistence $local;
+    private TypePersistence $remote;
 
     public function __construct(TypePersistence $local, TypePersistence $remote, string $name = self::DEFAULT_NAME)
     {
@@ -40,7 +38,7 @@ final class UploadCommand extends Command
         $this->setHelp(
             'This command iterates over all your configured Prismic types and uploads them to the remote ' .
             'custom types api endpoint, making them immediately usable in your Prismic repository.' . PHP_EOL .
-            'You can optionally provide a single type identifier to upload just one of the configured types.'
+            'You can optionally provide a single type identifier to upload just one of the configured types.',
         );
 
         $this->addArgument('type', InputArgument::OPTIONAL, 'An individual type identifier to upload', null);

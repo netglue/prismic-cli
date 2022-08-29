@@ -15,7 +15,7 @@ final class BuildCommandFactory
     {
         return new BuildCommand(
             $container->get(BuildConfig::class),
-            $container->get(LocalPersistence::class)
+            $container->get(LocalPersistence::class),
         );
     }
 }
