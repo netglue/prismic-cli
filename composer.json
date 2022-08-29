@@ -29,7 +29,7 @@
         }
     },
     "require": {
-        "php": "^7.3 || ~8.0 || ~8.1",
+        "php": "^7.4 || ~8.0 || ~8.1",
         "ext-json": "*",
         "netglue/prismic-client": "^1.0.0",
         "netglue/prismic-doctype-client": "^0.1.1",
@@ -46,16 +46,16 @@
     "require-dev": {
         "ext-curl": "*",
         "doctrine/coding-standard": "^9.0.0",
-        "laminas/laminas-config-aggregator": "^1.6",
-        "laminas/laminas-diactoros": "^2.8",
+        "laminas/laminas-config-aggregator": "^1.7",
+        "laminas/laminas-diactoros": "^2.16.0",
         "laminas/laminas-servicemanager": "^3.7",
-        "lctrs/psalm-psr-container-plugin": "^1.4",
+        "lctrs/psalm-psr-container-plugin": "^1.6.0",
         "php-http/curl-client": "^2.2",
-        "phpunit/phpunit": "^9.5.10",
-        "psalm/plugin-phpunit": "^0.16.1 || ^0.17.0",
+        "phpunit/phpunit": "^9.5.23",
+        "psalm/plugin-phpunit": "^0.17.0",
         "roave/security-advisories": "dev-master",
-        "squizlabs/php_codesniffer": "^3.6",
-        "vimeo/psalm": "^4.10"
+        "squizlabs/php_codesniffer": "^3.7.1",
+        "vimeo/psalm": "^4.26.0"
     },
     "extra": {
         "laminas": {
@@ -69,10 +69,12 @@
     "scripts": {
         "check": [
             "@cs-check",
+            "@static-analysis",
             "@test"
         ],
+        "static-analysis": "psalm --shepherd --stats",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "test": "phpunit --colors=always --testsuite=\"Unit Tests\""
+        "test": "phpunit --colors=always"
     }
 }
