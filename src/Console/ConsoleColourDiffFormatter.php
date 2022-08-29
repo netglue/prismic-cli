@@ -27,12 +27,11 @@ final class ConsoleColourDiffFormatter
     private const AT_START_REGEX = '#^(@.*)#';
     private const NEWLINES_REGEX = "#\n\r|\n#";
 
-    /** @var string */
-    private $template;
+    private string $template;
 
     public function __construct()
     {
-        $this->template = <<<TEXT
+        $this->template = <<<'TEXT'
             <comment>    ---------- begin diff ----------</comment>
             %s
             <comment>    ----------- end diff -----------</comment>
@@ -79,7 +78,7 @@ final class ConsoleColourDiffFormatter
         return (string) preg_replace(
             self::PLUS_START_REGEX,
             '<fg=green>$1</fg=green>',
-            $string
+            $string,
         );
     }
 
@@ -88,7 +87,7 @@ final class ConsoleColourDiffFormatter
         return (string) preg_replace(
             self::MINUS_START_REGEX,
             '<fg=red>$1</fg=red>',
-            $string
+            $string,
         );
     }
 
@@ -97,7 +96,7 @@ final class ConsoleColourDiffFormatter
         return (string) preg_replace(
             self::AT_START_REGEX,
             '<fg=cyan>$1</fg=cyan>',
-            $string
+            $string,
         );
     }
 }

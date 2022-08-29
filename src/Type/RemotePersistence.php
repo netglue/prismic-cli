@@ -17,8 +17,7 @@ use function iterator_to_array;
 
 final class RemotePersistence implements TypePersistence
 {
-    /** @var Client */
-    private $client;
+    private Client $client;
 
     public function __construct(Client $client)
     {
@@ -84,7 +83,7 @@ final class RemotePersistence implements TypePersistence
             return Spec::new(
                 $definition->id(),
                 $definition->label(),
-                $definition->isRepeatable()
+                $definition->isRepeatable(),
             );
         }, $types);
     }

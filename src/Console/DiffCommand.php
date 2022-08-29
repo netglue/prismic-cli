@@ -24,14 +24,10 @@ final class DiffCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:types:diff';
 
-    /** @var ConsoleColourDiffFormatter */
-    private $formatter;
-    /** @var DiffTool */
-    private $diffTool;
-    /** @var TypePersistence */
-    private $local;
-    /** @var TypePersistence */
-    private $remote;
+    private ConsoleColourDiffFormatter $formatter;
+    private DiffTool $diffTool;
+    private TypePersistence $local;
+    private TypePersistence $remote;
 
     public function __construct(
         DiffTool $diffTool,
@@ -54,7 +50,7 @@ final class DiffCommand extends Command
             'This command iterates over all your configured Prismic types and displays a unified diff ' . PHP_EOL .
             'between the local version and the version on the remote.' . PHP_EOL .
             'You can optionally provide a single type identifier to diff just one of the configured types.' . PHP_EOL .
-            'The command returns 0 if there are no changes and 1 if there are differences between local and remote.'
+            'The command returns 0 if there are no changes and 1 if there are differences between local and remote.',
         );
 
         $this->addArgument('type', InputArgument::OPTIONAL, 'An individual type identifier to diff', null);
@@ -73,7 +69,10 @@ final class DiffCommand extends Command
 
             return $this->showDiff($types, $style);
         } catch (PersistenceError $error) {
-            $style->error('An error occurred reading definitions. Check local types have been built and that credentials are correct for the remote API');
+            $style->error(
+                'An error occurred reading definitions. Check local types have been built '
+                . 'and that credentials are correct for the remote API',
+            );
 
             return self::FAILURE;
         }
@@ -114,7 +113,7 @@ final class DiffCommand extends Command
     {
         $style->info(sprintf(
             '%s.json is not present in the remote API',
-            $type->id()
+            $type->id(),
         ));
     }
 
@@ -122,14 +121,14 @@ final class DiffCommand extends Command
     {
         $style->info(sprintf(
             '%s.json is unchanged',
-            $local->id()
+            $local->id(),
         ));
     }
 
     private function formatDiff(string $diff, SymfonyStyle $style): void
     {
         $style->write(
-            $this->formatter->format($diff)
+            $this->formatter->format($diff),
         );
     }
 }

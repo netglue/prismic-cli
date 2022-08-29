@@ -113,8 +113,12 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function documentLink(string $label, ?string $placeholder = null, ?array $customTypes = null, ?array $tags = null): array
-    {
+    public static function documentLink(
+        string $label,
+        ?string $placeholder = null,
+        ?array $customTypes = null,
+        ?array $tags = null
+    ): array {
         $config = array_filter([
             'select' => 'document',
             'label' => $label,
@@ -130,8 +134,12 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function link(string $label, ?string $placeholder = null, bool $allowTargetBlank = false, ?array $customTypes = null): array
-    {
+    public static function link(
+        string $label,
+        ?string $placeholder = null,
+        bool $allowTargetBlank = false,
+        ?array $customTypes = null
+    ): array {
         $config = array_filter([
             'label' => $label,
             'placeholder' => $placeholder,
@@ -160,8 +168,12 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    private static function externalLink(string $type, string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
-    {
+    private static function externalLink(
+        string $type,
+        string $label,
+        ?string $placeholder = null,
+        bool $allowTargetBlank = false
+    ): array {
         return [
             'type' => self::TYPE_LINK,
             'config' => array_filter([
@@ -219,8 +231,12 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    private static function datetimeType(string $type, string $label, ?string $placeholder = null, bool $isToday = false): array
-    {
+    private static function datetimeType(
+        string $type,
+        string $label,
+        ?string $placeholder = null,
+        bool $isToday = false
+    ): array {
         return [
             'type' => $type,
             'config' => array_filter([
@@ -232,8 +248,12 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function number(string $label, ?string $placeholder = null, ?int $min = null, ?int $max = null): array
-    {
+    public static function number(
+        string $label,
+        ?string $placeholder = null,
+        ?int $min = null,
+        ?int $max = null
+    ): array {
         return [
             'type' => self::TYPE_NUMBER,
             'config' => array_filter([
@@ -284,8 +304,13 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function img(string $label, ?string $placeholder = null, ?int $x = null, ?int $y = null, ?array $views = null): array
-    {
+    public static function img(
+        string $label,
+        ?string $placeholder = null,
+        ?int $x = null,
+        ?int $y = null,
+        ?array $views = null
+    ): array {
         return [
             'type' => self::TYPE_IMAGE,
             'config' => array_filter([

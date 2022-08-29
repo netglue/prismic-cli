@@ -15,8 +15,7 @@ use const JSON_THROW_ON_ERROR;
 
 final class DiffTool
 {
-    /** @var Differ */
-    private $differ;
+    private Differ $differ;
 
     public function __construct(Differ $differ)
     {
@@ -39,7 +38,7 @@ final class DiffTool
     {
         return json_encode(
             json_decode($definition->json(), true, 512, JSON_THROW_ON_ERROR),
-            JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT
+            JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT,
         );
     }
 }

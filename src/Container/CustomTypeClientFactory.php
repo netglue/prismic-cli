@@ -23,8 +23,16 @@ final class CustomTypeClientFactory
 
         $token = $apiConfig['token'] ?? null;
         $repository = $apiConfig['repository'] ?? null;
-        Assert::string($token, 'An access token must be provided in config.primo.custom-type-api.token in order to access the Prismic custom type API.');
-        Assert::string($repository, 'The repository name must be provided in config.primo.custom-type-api.repository in order to access the Prismic custom type API.');
+        Assert::string(
+            $token,
+            'An access token must be provided in config.primo.custom-type-api.token in order '
+            . 'to access the Prismic custom type API.',
+        );
+        Assert::string(
+            $repository,
+            'The repository name must be provided in config.primo.custom-type-api.repository '
+            . 'in order to access the Prismic custom type API.',
+        );
 
         return new BaseClient(
             $token,
@@ -32,7 +40,7 @@ final class CustomTypeClientFactory
             $this->httpClient($container),
             $this->requestFactory($container),
             $this->uriFactory($container),
-            $this->streamFactory($container)
+            $this->streamFactory($container),
         );
     }
 }

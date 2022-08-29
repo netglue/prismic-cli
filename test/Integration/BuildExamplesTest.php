@@ -14,7 +14,7 @@ use Symfony\Component\Console\Input\ArgvInput;
 final class BuildExamplesTest extends TestCase
 {
     /** @var array<array-key, array{id: string, name: string, repeatable: bool}> */
-    private static $types = [
+    private static array $types = [
         [
             'id' => 'page',
             'name' => 'A Web Page',
@@ -38,7 +38,7 @@ final class BuildExamplesTest extends TestCase
         $config = BuildConfig::withArraySpecs(
             __DIR__ . '/../../example/source',
             __DIR__ . '/../../example/dist',
-            self::$types
+            self::$types,
         );
 
         $application = new Application('Type Builder Example');

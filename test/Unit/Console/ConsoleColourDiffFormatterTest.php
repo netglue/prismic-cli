@@ -12,7 +12,7 @@ class ConsoleColourDiffFormatterTest extends TestCase
 {
     public function testSimpleDiff(): void
     {
-        $left = <<<TEXT
+        $left = <<<'TEXT'
             Mary had
             a little
             lamb, it's
@@ -20,7 +20,7 @@ class ConsoleColourDiffFormatterTest extends TestCase
             as snow
             TEXT;
 
-        $right = <<<TEXT
+        $right = <<<'TEXT'
             Mary had
             a little
             goat, it's
@@ -33,7 +33,7 @@ class ConsoleColourDiffFormatterTest extends TestCase
 
         $formatter = new ConsoleColourDiffFormatter();
 
-        $expect = <<<DIFF
+        $expect = <<<'DIFF'
             <comment>    ---------- begin diff ----------</comment>
             <fg=cyan>@@ @@</fg=cyan>
              Mary had

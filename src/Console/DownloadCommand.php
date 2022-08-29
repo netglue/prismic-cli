@@ -22,10 +22,8 @@ final class DownloadCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:types:download';
 
-    /** @var TypePersistence */
-    private $local;
-    /** @var TypePersistence */
-    private $remote;
+    private TypePersistence $local;
+    private TypePersistence $remote;
 
     public function __construct(TypePersistence $local, TypePersistence $remote, string $name = self::DEFAULT_NAME)
     {
@@ -40,7 +38,7 @@ final class DownloadCommand extends Command
         $this->setHelp(
             'This command iterates over all your configured Prismic types and downloads them to the ' . PHP_EOL .
             'configured `dist` directory.' . PHP_EOL .
-            'You can optionally provide a single type identifier to download just one of the configured types.'
+            'You can optionally provide a single type identifier to download just one of the configured types.',
         );
 
         $this->addArgument('type', InputArgument::OPTIONAL, 'An individual type identifier to download', null);

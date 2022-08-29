@@ -18,14 +18,10 @@ use function unlink;
 
 class LocalPersistenceTest extends TestCase
 {
-    /** @var BuildConfig */
-    private $config;
-    /** @var LocalPersistence */
-    private $storage;
-    /** @var string */
-    private $sourceDir;
-    /** @var string */
-    private $distDir;
+    private BuildConfig $config;
+    private LocalPersistence $storage;
+    private string $sourceDir;
+    private string $distDir;
 
     protected function setUp(): void
     {
@@ -39,9 +35,9 @@ class LocalPersistenceTest extends TestCase
                 Spec::new(
                     'example',
                     'Example',
-                    true
+                    true,
                 ),
-            ]
+            ],
         );
         $this->storage = new LocalPersistence($this->config);
     }
@@ -97,7 +93,7 @@ class LocalPersistenceTest extends TestCase
             'Example',
             true,
             true,
-            'Some Content'
+            'Some Content',
         );
 
         $target = sprintf('%s/example.json', $this->distDir);
@@ -113,7 +109,7 @@ class LocalPersistenceTest extends TestCase
             'Example',
             true,
             true,
-            'Some Content'
+            'Some Content',
         );
 
         self::assertFalse($this->storage->has('unknown'));
@@ -131,7 +127,7 @@ class LocalPersistenceTest extends TestCase
             'Example',
             true,
             true,
-            'Some Content'
+            'Some Content',
         );
 
         $this->storage->write($input);

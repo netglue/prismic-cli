@@ -15,18 +15,22 @@ require __DIR__ . '/../vendor/autoload.php';
  * Examine the source files to get an idea of usage. The PHP files are just regular PHP so you can do anything you like,
  * but they should return an array that is suitable for JSON encoding.
  *
- * There's no requirement to use the 'Type Builder' - it's just a simple collection of static methods to chuck out arrays
- * that fit with the spec for making Prismic document definitions.
+ * There's no requirement to use the 'Type Builder' - it's just a simple collection of static methods to chuck out
+ * arrays that fit with the spec for making Prismic document definitions.
  *
  * To build the JSON files, you should run this script in your terminal (After running composer install) like this:
  * > php ./example/example.php primo:build
  *
  * Once you've done that, you can inspect the JSON files in ./dist
  *
- * As this is meant to be integrated into a project, you'll probably have npm-watch watching stuff like your JS and styles;
- * Once configured, you can setup a tool like npm-watch to watch your sources and trigger this tool when something changes.
+ * As this is meant to be integrated into a project, you'll probably have npm-watch watching stuff like your JS and
+ * styles;
+ *
+ * Once configured, you can setup a tool like npm-watch to watch your sources and trigger this tool when something
+ * changes.
  *
  * Something like this in your package.json should cover it:
+ *
  * "watch": {
  *   "types": {
  *     "patterns": ["example/source/**\/*"],

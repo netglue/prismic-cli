@@ -24,7 +24,7 @@ final class PrismicApiClientFactory
         Assert::string(
             $apiUrl,
             'An api url cannot be determined. Your content repository url should be available in ' .
-                'configuration under [prismic][api] and should be a non-empty string.'
+                'configuration under [prismic][api] and should be a non-empty string.',
         );
 
         Assert::nullOrStringNotEmpty($token);
@@ -34,7 +34,7 @@ final class PrismicApiClientFactory
             $token,
             $this->httpClient($container),
             $this->requestFactory($container),
-            $this->uriFactory($container)
+            $this->uriFactory($container),
         );
     }
 }

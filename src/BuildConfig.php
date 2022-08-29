@@ -20,12 +20,10 @@ use const DIRECTORY_SEPARATOR;
 
 final class BuildConfig
 {
-    /** @var string */
-    private $sourceDirectory;
-    /** @var string */
-    private $distDirectory;
+    private string $sourceDirectory;
+    private string $distDirectory;
     /** @var array<array-key, Spec> */
-    private $types = [];
+    private array $types = [];
 
     /** @param array<array-key, Spec> $types */
     private function __construct(string $sourceDirectory, string $distDirectory, array $types)
@@ -45,9 +43,7 @@ final class BuildConfig
         return new self($sourceDir, $distDir, $types);
     }
 
-    /**
-     * @param iterable<array-key, array{id: string, name: string, repeatable: bool}> $types
-     */
+    /** @param iterable<array-key, array{id: string, name: string, repeatable: bool}> $types */
     public static function withArraySpecs(string $sourceDir, string $distDir, iterable $types): self
     {
         $specs = [];
