@@ -45,7 +45,7 @@
     },
     "require-dev": {
         "ext-curl": "*",
-        "doctrine/coding-standard": "^9.0.0",
+        "doctrine/coding-standard": "^9.0.0 || ^10.0.0",
         "laminas/laminas-config-aggregator": "^1.7",
         "laminas/laminas-diactoros": "^2.16.0",
         "laminas/laminas-servicemanager": "^3.7",
