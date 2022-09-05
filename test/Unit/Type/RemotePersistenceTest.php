@@ -21,7 +21,7 @@ use function reset;
 class RemotePersistenceTest extends TestCase
 {
     /** @var MockObject&Client */
-    private $client;
+    private Client $client;
     private RemotePersistence $storage;
 
     protected function setUp(): void
@@ -44,6 +44,7 @@ class RemotePersistenceTest extends TestCase
 
     public function testThatHasReturnsFalseWhenTheTypeDoesNotExist(): void
     {
+        /** @psalm-suppress InternalMethod */
         $this->client->expects(self::once())
             ->method('getDefinition')
             ->with('example')
@@ -54,22 +55,25 @@ class RemotePersistenceTest extends TestCase
 
     public function testThatHasThrowsPersistenceErrorWhenAnyOtherErrorOccurs(): void
     {
-        $this->expectException(PersistenceError::class);
+        /** @psalm-suppress InternalMethod */
         $this->client->expects(self::once())
             ->method('getDefinition')
             ->with('example')
             ->willThrowException(new AuthenticationFailed('Whut?', 0));
 
+        $this->expectException(PersistenceError::class);
         $this->storage->has('example');
     }
 
     public function testReadThrowsPersistenceErrorWhenTypeIsNotFound(): void
     {
-        $this->expectException(PersistenceError::class);
+        /** @psalm-suppress InternalMethod */
         $this->client->expects(self::once())
             ->method('getDefinition')
             ->with('example')
             ->willThrowException(new DefinitionNotFound('Whut?', 0));
+
+        $this->expectException(PersistenceError::class);
         $this->storage->read('example');
     }
 
@@ -87,6 +91,7 @@ class RemotePersistenceTest extends TestCase
     public function testThatWriteThrowsPersistenceErrorForAnyFailure(): void
     {
         $definition = Definition::new('foo', 'foo', true, true, 'foo');
+        /** @psalm-suppress InternalMethod */
         $this->client->expects(self::once())
             ->method('saveDefinition')
             ->with($definition)
@@ -98,6 +103,7 @@ class RemotePersistenceTest extends TestCase
 
     public function testThatAllThrowsPersistenceErrorForAnyFailure(): void
     {
+        /** @psalm-suppress InternalMethod */
         $this->client->expects(self::once())
             ->method('fetchAllDefinitions')
             ->willThrowException(new AuthenticationFailed('Whut?', 0));
@@ -142,6 +148,7 @@ class RemotePersistenceTest extends TestCase
 
     public function testThatIndexThrowsPersistenceErrorForAnyFailure(): void
     {
+        /** @psalm-suppress InternalMethod */
         $this->client->expects(self::once())
             ->method('fetchAllDefinitions')
             ->willThrowException(new AuthenticationFailed('Whut?', 0));
