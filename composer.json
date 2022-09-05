@@ -32,7 +32,7 @@
         "php": "^7.4 || ~8.0 || ~8.1",
         "ext-json": "*",
         "netglue/prismic-client": "^1.0.0",
-        "netglue/prismic-doctype-client": "^0.1.1",
+        "netglue/prismic-doctype-client": "^0.1.1 || ^1.0.0",
         "php-http/discovery": "^1.14.1",
         "psr/container": "^1.0||^2.0",
         "psr/http-client": "^1.0",
