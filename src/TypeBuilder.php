@@ -23,6 +23,7 @@ final class TypeBuilder
     public const TYPE_EMBED = 'Embed';
     public const TYPE_GROUP = 'Group';
     public const TYPE_IMAGE = 'Image';
+    public const TYPE_RANGE = 'Range';
     public const TYPE_RICH = 'StructuredText';
     public const TYPE_SLICE = 'Slice';
     public const TYPE_SLICE_ZONE = 'Slices';
@@ -474,5 +475,41 @@ final class TypeBuilder
     private static function filterNull($value): bool
     {
         return $value !== null;
+    }
+
+    /**
+     * @param non-empty-string $label
+     * @param int<0, max>      $min
+     * @param int<1, max>      $max
+     * @param int<1, max>      $step
+     *
+     * @psalm-return array{
+     *   type: self::TYPE_RANGE,
+     *   config: array{
+     *     label: string,
+     *     placeholder: string|null,
+     *     min: int<0, max>,
+     *     max: int<1, max>,
+     *     step: int<1, max>,
+     *   }
+     * }
+     */
+    public static function range(string $label, ?string $placeholder, int $min, int $max, int $step): array
+    {
+        Assert::lessThan($min, $max);
+        Assert::greaterThan($step, 0);
+        Assert::greaterThan($min, 0);
+        Assert::greaterThan($max, 1);
+
+        return [
+            'type' => self::TYPE_RANGE,
+            'config' => [
+                'label' => $label,
+                'placeholder' => $placeholder,
+                'min' => $min,
+                'max' => $max,
+                'step' => $step,
+            ],
+        ];
     }
 }
