@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PrimoTest\Cli\Unit;
 
 use PHPUnit\Framework\TestCase;
+use Primo\Cli\Exception\AssertionFailed;
 use Primo\Cli\TypeBuilder as T;
 
 class TypeBuilderTest extends TestCase
@@ -97,5 +98,36 @@ class TypeBuilderTest extends TestCase
             'height' => 100,
         ];
         self::assertEquals($expect, $data);
+    }
+
+    public function testThatARangeElementHasTheExpectedStructure(): void
+    {
+        $data = T::range('My Range', 'Placeholder', 10, 30, 2);
+        $expect = [
+            'type' => 'Range',
+            'config' => [
+                'label' => 'My Range',
+                'placeholder' => 'Placeholder',
+                'min' => 10,
+                'max' => 30,
+                'step' => 2,
+            ],
+        ];
+
+        self::assertEquals($expect, $data);
+    }
+
+    public function testTheMaxCannotBeLessThanMin(): void
+    {
+        $this->expectException(AssertionFailed::class);
+        /** @psalm-suppress InvalidArgument */
+        T::range('Foo', null, 10, 0, 1);
+    }
+
+    public function testTheStepMustBeNonZero(): void
+    {
+        $this->expectException(AssertionFailed::class);
+        /** @psalm-suppress InvalidArgument */
+        T::range('Foo', null, 0, 20, 0);
     }
 }
