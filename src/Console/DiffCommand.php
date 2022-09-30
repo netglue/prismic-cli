@@ -95,7 +95,7 @@ final class DiffCommand extends Command
 
             $remote = $this->remote->read($local->id());
 
-            $diff = $this->diffTool->diff($local, $remote);
+            $diff = $this->diffTool->diff($remote, $local);
             if ($diff === null) {
                 $this->identical($local, $style);
 
