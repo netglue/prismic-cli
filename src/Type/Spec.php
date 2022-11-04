@@ -10,26 +10,20 @@ use function sprintf;
 
 final class Spec implements JsonSerializable
 {
-    private string $id;
-    private string $name;
-    private bool $repeatable;
     private string $filename;
 
     private function __construct(
-        string $id,
-        string $name,
-        bool $repeatable
+        private string $id,
+        private string $name,
+        private bool $repeatable,
     ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->repeatable = $repeatable;
         $this->filename = sprintf('%s.json', $this->id);
     }
 
     public static function new(
         string $id,
         string $name,
-        bool $repeatable
+        bool $repeatable,
     ): self {
         return new static($id, $name, $repeatable);
     }

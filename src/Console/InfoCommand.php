@@ -26,11 +26,8 @@ final class InfoCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:info';
 
-    private ApiClient $apiClient;
-
-    public function __construct(ApiClient $apiClient, string $name = self::DEFAULT_NAME)
+    public function __construct(private ApiClient $apiClient, string $name = self::DEFAULT_NAME)
     {
-        $this->apiClient = $apiClient;
         parent::__construct($name);
     }
 

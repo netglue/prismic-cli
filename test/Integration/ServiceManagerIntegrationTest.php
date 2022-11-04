@@ -135,7 +135,7 @@ final class ServiceManagerIntegrationTest extends TestCase
     /** @dataProvider kitchenSinkDataProvider */
     public function testThatConfigProvidersCanProduceAllRequiredDependenciesGivenValidConfig(
         string $serviceId,
-        ContainerInterface $container
+        ContainerInterface $container,
     ): void {
         self::assertTrue($container->has($serviceId));
         self::assertIsObject($container->get($serviceId));

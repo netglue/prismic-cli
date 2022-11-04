@@ -15,14 +15,11 @@ use const JSON_THROW_ON_ERROR;
 
 final class DiffTool
 {
-    private Differ $differ;
-
-    public function __construct(Differ $differ)
+    public function __construct(private Differ $differ)
     {
-        $this->differ = $differ;
     }
 
-    public function diff(Definition $left, Definition $right): ?string
+    public function diff(Definition $left, Definition $right): string|null
     {
         $left = $this->prettyPrint($left);
         $right = $this->prettyPrint($right);
