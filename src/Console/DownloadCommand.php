@@ -22,13 +22,11 @@ final class DownloadCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:types:download';
 
-    private TypePersistence $local;
-    private TypePersistence $remote;
-
-    public function __construct(TypePersistence $local, TypePersistence $remote, string $name = self::DEFAULT_NAME)
-    {
-        $this->local = $local;
-        $this->remote = $remote;
+    public function __construct(
+        private TypePersistence $local,
+        private TypePersistence $remote,
+        string $name = self::DEFAULT_NAME,
+    ) {
         parent::__construct($name);
     }
 
@@ -73,7 +71,7 @@ final class DownloadCommand extends Command
             $style->comment(sprintf('Writing "%s"', $type->label()));
             try {
                 $this->local->write($type);
-            } catch (PersistenceError $error) {
+            } catch (PersistenceError) {
                 $style->error(sprintf('Failed to write "%s" to local storage', $type->label()));
 
                 return self::FAILURE;
@@ -84,7 +82,7 @@ final class DownloadCommand extends Command
             try {
                 $style->comment('Writing Index');
                 $this->local->writeIndex($this->remote->indexSpecs());
-            } catch (PersistenceError $error) {
+            } catch (PersistenceError) {
                 $style->error('Failed to write the index to local storage');
 
                 return self::FAILURE;

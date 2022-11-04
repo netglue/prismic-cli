@@ -23,12 +23,9 @@ use const JSON_THROW_ON_ERROR;
 
 final class LocalPersistence implements TypePersistence
 {
-    private BuildConfig $config;
-
     public function __construct(
-        BuildConfig $config
+        private BuildConfig $config,
     ) {
-        $this->config = $config;
     }
 
     public function has(string $id): bool
@@ -37,7 +34,7 @@ final class LocalPersistence implements TypePersistence
             $this->getSpec($id);
 
             return true;
-        } catch (InvalidArgument $e) {
+        } catch (InvalidArgument) {
             return false;
         }
     }

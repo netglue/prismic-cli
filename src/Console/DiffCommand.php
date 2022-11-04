@@ -24,20 +24,16 @@ final class DiffCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:types:diff';
 
-    private ConsoleColourDiffFormatter $formatter;
-    private DiffTool $diffTool;
     private TypePersistence $local;
     private TypePersistence $remote;
 
     public function __construct(
-        DiffTool $diffTool,
-        ConsoleColourDiffFormatter $formatter,
+        private DiffTool $diffTool,
+        private ConsoleColourDiffFormatter $formatter,
         TypePersistence $localStorage,
         TypePersistence $remoteStorage,
-        string $name = self::DEFAULT_NAME
+        string $name = self::DEFAULT_NAME,
     ) {
-        $this->diffTool = $diffTool;
-        $this->formatter = $formatter;
         $this->local = $localStorage;
         $this->remote = $remoteStorage;
         parent::__construct($name);
@@ -68,7 +64,7 @@ final class DiffCommand extends Command
                 : $this->local->all();
 
             return $this->showDiff($types, $style);
-        } catch (PersistenceError $error) {
+        } catch (PersistenceError) {
             $style->error(
                 'An error occurred reading definitions. Check local types have been built '
                 . 'and that credentials are correct for the remote API',

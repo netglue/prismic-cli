@@ -22,13 +22,11 @@ final class UploadCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:types:upload';
 
-    private TypePersistence $local;
-    private TypePersistence $remote;
-
-    public function __construct(TypePersistence $local, TypePersistence $remote, string $name = self::DEFAULT_NAME)
-    {
-        $this->local = $local;
-        $this->remote = $remote;
+    public function __construct(
+        private TypePersistence $local,
+        private TypePersistence $remote,
+        string $name = self::DEFAULT_NAME,
+    ) {
         parent::__construct($name);
     }
 
@@ -55,7 +53,7 @@ final class UploadCommand extends Command
             $types = is_string($type)
                 ? [$this->local->read($type)]
                 : $this->local->all();
-        } catch (PersistenceError $error) {
+        } catch (PersistenceError) {
             $style->error('Failed to read local type definitions - make sure they have been built first');
 
             return self::FAILURE;
@@ -65,7 +63,7 @@ final class UploadCommand extends Command
             $style->comment(sprintf('Uploading "%s"', $type->label()));
             try {
                 $this->remote->write($type);
-            } catch (PersistenceError $error) {
+            } catch (PersistenceError) {
                 $style->error(sprintf('Upload of "%s" failed', $type->label()));
 
                 return self::FAILURE;

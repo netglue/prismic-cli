@@ -17,11 +17,8 @@ use function iterator_to_array;
 
 final class RemotePersistence implements TypePersistence
 {
-    private Client $client;
-
-    public function __construct(Client $client)
+    public function __construct(private Client $client)
     {
-        $this->client = $client;
     }
 
     public function has(string $id): bool
@@ -30,7 +27,7 @@ final class RemotePersistence implements TypePersistence
             $this->client->getDefinition($id);
 
             return true;
-        } catch (DefinitionNotFound $error) {
+        } catch (DefinitionNotFound) {
             return false;
         } catch (Throwable $error) {
             throw PersistenceError::readFailure($error);

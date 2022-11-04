@@ -29,13 +29,11 @@ final class BuildCommand extends Command
 {
     public const DEFAULT_NAME = 'primo:build';
 
-    private BuildConfig $config;
-    private TypePersistence $localStorage;
-
-    public function __construct(BuildConfig $config, TypePersistence $localStorage, string $name = self::DEFAULT_NAME)
-    {
-        $this->config = $config;
-        $this->localStorage = $localStorage;
+    public function __construct(
+        private BuildConfig $config,
+        private TypePersistence $localStorage,
+        string $name = self::DEFAULT_NAME,
+    ) {
         parent::__construct($name);
     }
 

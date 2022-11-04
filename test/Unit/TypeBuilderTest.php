@@ -54,7 +54,7 @@ class TypeBuilderTest extends TestCase
      *
      * @dataProvider richTextImageConstraintProvider
      */
-    public function testWidthOrHeightWillYieldImageConstraintInRichText(?int $x, ?int $y, array $expect): void
+    public function testWidthOrHeightWillYieldImageConstraintInRichText(int|null $x, int|null $y, array $expect): void
     {
         $data = T::richText('Foo', 'Foo', [], true, true, true, [], $x, $y);
         self::assertArrayHasKey('config', $data);

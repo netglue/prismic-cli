@@ -73,7 +73,7 @@ final class TypeBuilder
     ];
 
     /** @return array<string, mixed> */
-    public static function uid(string $label, ?string $placeholder = null): array
+    public static function uid(string $label, string|null $placeholder = null): array
     {
         return [
             'type' => self::TYPE_UID,
@@ -82,7 +82,7 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function text(string $label, ?string $placeholder = null, bool $useAsTitle = false): array
+    public static function text(string $label, string|null $placeholder = null, bool $useAsTitle = false): array
     {
         return [
             'type' => self::TYPE_TEXT,
@@ -116,9 +116,9 @@ final class TypeBuilder
     /** @return array<string, mixed> */
     public static function documentLink(
         string $label,
-        ?string $placeholder = null,
-        ?array $customTypes = null,
-        ?array $tags = null
+        string|null $placeholder = null,
+        array|null $customTypes = null,
+        array|null $tags = null,
     ): array {
         $config = array_filter([
             'select' => 'document',
@@ -137,9 +137,9 @@ final class TypeBuilder
     /** @return array<string, mixed> */
     public static function link(
         string $label,
-        ?string $placeholder = null,
+        string|null $placeholder = null,
         bool $allowTargetBlank = false,
-        ?array $customTypes = null
+        array|null $customTypes = null,
     ): array {
         $config = array_filter([
             'label' => $label,
@@ -157,14 +157,20 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function webLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
-    {
+    public static function webLink(
+        string $label,
+        string|null $placeholder = null,
+        bool $allowTargetBlank = false,
+    ): array {
         return self::externalLink('web', $label, $placeholder, $allowTargetBlank);
     }
 
     /** @return array<string, mixed> */
-    public static function mediaLink(string $label, ?string $placeholder = null, bool $allowTargetBlank = false): array
-    {
+    public static function mediaLink(
+        string $label,
+        string|null $placeholder = null,
+        bool $allowTargetBlank = false,
+    ): array {
         return self::externalLink('media', $label, $placeholder, $allowTargetBlank);
     }
 
@@ -172,8 +178,8 @@ final class TypeBuilder
     private static function externalLink(
         string $type,
         string $label,
-        ?string $placeholder = null,
-        bool $allowTargetBlank = false
+        string|null $placeholder = null,
+        bool $allowTargetBlank = false,
     ): array {
         return [
             'type' => self::TYPE_LINK,
@@ -187,7 +193,7 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    private static function config(?string $label, ?string $placeholder = null, bool $useAsTitle = false): array
+    private static function config(string|null $label, string|null $placeholder = null, bool $useAsTitle = false): array
     {
         return array_filter([
             'label' => self::nullifyString($label),
@@ -196,7 +202,7 @@ final class TypeBuilder
         ]);
     }
 
-    private static function nullifyString(?string $string): ?string
+    private static function nullifyString(string|null $string): string|null
     {
         return empty($string) ? null : $string;
     }
@@ -206,8 +212,12 @@ final class TypeBuilder
      *
      * @return array<string, mixed>
      */
-    public static function select(string $label, ?string $placeholder, array $options, ?string $default = null): array
-    {
+    public static function select(
+        string $label,
+        string|null $placeholder,
+        array $options,
+        string|null $default = null,
+    ): array {
         return [
             'type' => self::TYPE_SELECT,
             'config' => array_filter([
@@ -220,13 +230,13 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function date(string $label, ?string $placeholder = null, bool $isToday = false): array
+    public static function date(string $label, string|null $placeholder = null, bool $isToday = false): array
     {
         return self::datetimeType(self::TYPE_DATE, $label, $placeholder, $isToday);
     }
 
     /** @return array<string, mixed> */
-    public static function timestamp(string $label, ?string $placeholder = null, bool $isToday = false): array
+    public static function timestamp(string $label, string|null $placeholder = null, bool $isToday = false): array
     {
         return self::datetimeType(self::TYPE_TIMESTAMP, $label, $placeholder, $isToday);
     }
@@ -235,8 +245,8 @@ final class TypeBuilder
     private static function datetimeType(
         string $type,
         string $label,
-        ?string $placeholder = null,
-        bool $isToday = false
+        string|null $placeholder = null,
+        bool $isToday = false,
     ): array {
         return [
             'type' => $type,
@@ -251,9 +261,9 @@ final class TypeBuilder
     /** @return array<string, mixed> */
     public static function number(
         string $label,
-        ?string $placeholder = null,
-        ?int $min = null,
-        ?int $max = null
+        string|null $placeholder = null,
+        int|null $min = null,
+        int|null $max = null,
     ): array {
         return [
             'type' => self::TYPE_NUMBER,
@@ -276,7 +286,7 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function embed(string $label, ?string $placeholder = null): array
+    public static function embed(string $label, string|null $placeholder = null): array
     {
         return [
             'type' => self::TYPE_EMBED,
@@ -307,10 +317,10 @@ final class TypeBuilder
     /** @return array<string, mixed> */
     public static function img(
         string $label,
-        ?string $placeholder = null,
-        ?int $x = null,
-        ?int $y = null,
-        ?array $views = null
+        string|null $placeholder = null,
+        int|null $x = null,
+        int|null $y = null,
+        array|null $views = null,
     ): array {
         return [
             'type' => self::TYPE_IMAGE,
@@ -327,7 +337,7 @@ final class TypeBuilder
     }
 
     /** @return array<string, mixed> */
-    public static function imgView(string $name, ?int $x = null, ?int $y = null): array
+    public static function imgView(string $name, int|null $x = null, int|null $y = null): array
     {
         return [
             'name' => $name,
@@ -384,14 +394,14 @@ final class TypeBuilder
      */
     public static function richText(
         string $label,
-        ?string $placeholder = null,
+        string|null $placeholder = null,
         array $allow = [],
         bool $multiple = true,
         bool $allowTargetBlank = false,
         bool $isTitle = false,
         array $labels = [],
-        ?int $imgX = null,
-        ?int $imgY = null
+        int|null $imgX = null,
+        int|null $imgY = null,
     ): array {
         $t = $multiple ? 'multi' : 'single';
         $allowString = $allow === [] ? self::textAllowAll() : self::textAllow($allow);
@@ -421,11 +431,11 @@ final class TypeBuilder
      */
     public static function slice(
         string $label,
-        ?string $description = null,
+        string|null $description = null,
         array $nonRepeatFields = [],
         array $repeatFields = [],
-        ?string $icon = null,
-        ?string $displayFormat = null
+        string|null $icon = null,
+        string|null $displayFormat = null,
     ): array {
         Assert::nullOrInArray($displayFormat, self::SLICE_DISPLAY);
 
@@ -467,12 +477,8 @@ final class TypeBuilder
         ];
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @psalm-assert !null $value
-     */
-    private static function filterNull($value): bool
+    /** @psalm-assert !null $value */
+    private static function filterNull(mixed $value): bool
     {
         return $value !== null;
     }
@@ -494,7 +500,7 @@ final class TypeBuilder
      *   }
      * }
      */
-    public static function range(string $label, ?string $placeholder, int $min, int $max, int $step): array
+    public static function range(string $label, string|null $placeholder, int $min, int $max, int $step): array
     {
         Assert::lessThan($min, $max);
         Assert::greaterThan($step, 0);
