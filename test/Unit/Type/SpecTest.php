@@ -16,6 +16,7 @@ class SpecTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->spec = Spec::new('page', 'Web Page', true);
     }
 

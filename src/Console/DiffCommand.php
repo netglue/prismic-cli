@@ -36,6 +36,7 @@ final class DiffCommand extends Command
     ) {
         $this->local = $localStorage;
         $this->remote = $remoteStorage;
+
         parent::__construct($name);
     }
 
