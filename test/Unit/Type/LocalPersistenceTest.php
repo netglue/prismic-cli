@@ -26,6 +26,7 @@ class LocalPersistenceTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->sourceDir = __DIR__ . '/../build-specs/src';
         $this->distDir = __DIR__ . '/../build-specs/dist';
         $this->config = BuildConfig::with(
