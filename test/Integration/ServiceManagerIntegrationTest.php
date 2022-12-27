@@ -7,7 +7,6 @@ namespace Integration;
 use Generator;
 use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
-use Laminas\ServiceManager\ConfigInterface;
 use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\ApiToolsConfigProvider;
@@ -17,7 +16,7 @@ use Psr\Container\ContainerInterface;
 
 use function array_keys;
 
-/** @psalm-import-type ServiceManagerConfigurationType from ConfigInterface */
+/** @psalm-import-type ServiceManagerConfiguration from ServiceManager */
 final class ServiceManagerIntegrationTest extends TestCase
 {
     /** @return array<string, mixed> */
@@ -93,11 +92,12 @@ final class ServiceManagerIntegrationTest extends TestCase
      */
     private function serviceManager(array $config): ContainerInterface
     {
-        /** @psalm-var ServiceManagerConfigurationType $dependencies */
-        $dependencies = $config['dependencies'];
+        $dependencies = $config['dependencies'] ?? [];
         $dependencies['services'] ??= [];
+        unset($dependencies['services']['config']);
         $dependencies['services']['config'] = $config;
 
+        /** @psalm-var ServiceManagerConfiguration $dependencies */
         return new ServiceManager($dependencies);
     }
 
