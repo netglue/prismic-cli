@@ -7,6 +7,7 @@ namespace PrimoTest\Cli\Unit\Console;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\Console\ConsoleColourDiffFormatter;
 use SebastianBergmann\Diff\Differ;
+use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 
 class ConsoleColourDiffFormatterTest extends TestCase
 {
@@ -28,7 +29,7 @@ class ConsoleColourDiffFormatterTest extends TestCase
             as flour.
             TEXT;
 
-        $differ = new Differ();
+        $differ = new Differ(new UnifiedDiffOutputBuilder());
         $diff = $differ->diff($left, $right);
 
         $formatter = new ConsoleColourDiffFormatter();

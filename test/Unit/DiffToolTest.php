@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Primo\Cli\DiffTool;
 use Prismic\DocumentType\Definition;
 use SebastianBergmann\Diff\Differ;
+use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 
 class DiffToolTest extends TestCase
 {
@@ -17,7 +18,7 @@ class DiffToolTest extends TestCase
     {
         parent::setUp();
 
-        $this->tool = new DiffTool(new Differ());
+        $this->tool = new DiffTool(new Differ(new UnifiedDiffOutputBuilder()));
     }
 
     public function testThatTheDifferencesCanBeDiffed(): void
