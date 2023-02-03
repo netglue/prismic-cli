@@ -20,7 +20,7 @@ use function array_keys;
 final class ServiceManagerIntegrationTest extends TestCase
 {
     /** @return array<string, mixed> */
-    private function validConfig(): array
+    private static function validConfig(): array
     {
         return [
             'prismic' => [
@@ -50,36 +50,36 @@ final class ServiceManagerIntegrationTest extends TestCase
     }
 
     /** @return array<array-key, mixed> */
-    private function kitchenSinkConfig(): array
+    private static function kitchenSinkConfig(): array
     {
         $aggregator = new ConfigAggregator([
             ConfigProvider::class,
             ApiToolsConfigProvider::class,
             CustomTypeApiConfigProvider::class,
-            new ArrayProvider($this->validConfig()),
+            new ArrayProvider(self::validConfig()),
         ]);
 
         return $aggregator->getMergedConfig();
     }
 
     /** @return array<array-key, mixed> */
-    private function generalPlusApiConfig(): array
+    private static function generalPlusApiConfig(): array
     {
         $aggregator = new ConfigAggregator([
             ConfigProvider::class,
             ApiToolsConfigProvider::class,
-            new ArrayProvider($this->validConfig()),
+            new ArrayProvider(self::validConfig()),
         ]);
 
         return $aggregator->getMergedConfig();
     }
 
     /** @return array<array-key, mixed> */
-    private function buildOnlyConfig(): array
+    private static function buildOnlyConfig(): array
     {
         $aggregator = new ConfigAggregator([
             ConfigProvider::class,
-            new ArrayProvider($this->validConfig()),
+            new ArrayProvider(self::validConfig()),
         ]);
 
         return $aggregator->getMergedConfig();
@@ -90,7 +90,7 @@ final class ServiceManagerIntegrationTest extends TestCase
      *
      * @psalm-suppress MixedAssignment, MixedArrayAssignment, MixedArrayAccess
      */
-    private function serviceManager(array $config): ContainerInterface
+    private static function serviceManager(array $config): ContainerInterface
     {
         $dependencies = $config['dependencies'] ?? [];
         $dependencies['services'] ??= [];
@@ -108,9 +108,9 @@ final class ServiceManagerIntegrationTest extends TestCase
      *
      * @psalm-suppress MoreSpecificReturnType
      */
-    private function factoryGenerator(array $config): Generator
+    private static function factoryGenerator(array $config): Generator
     {
-        $container = $this->serviceManager($config);
+        $container = self::serviceManager($config);
         $local = $container->get('config');
         self::assertIsArray($local);
         $factories = $local['dependencies']['factories'] ?? null;
@@ -127,9 +127,9 @@ final class ServiceManagerIntegrationTest extends TestCase
      *
      * @psalm-suppress MoreSpecificReturnType
      */
-    public function kitchenSinkDataProvider(): Generator
+    public static function kitchenSinkDataProvider(): Generator
     {
-        return $this->factoryGenerator($this->kitchenSinkConfig());
+        return self::factoryGenerator(self::kitchenSinkConfig());
     }
 
     /** @dataProvider kitchenSinkDataProvider */
@@ -146,9 +146,9 @@ final class ServiceManagerIntegrationTest extends TestCase
      *
      * @psalm-suppress MoreSpecificReturnType
      */
-    public function generalUsageDataProvider(): Generator
+    public static function generalUsageDataProvider(): Generator
     {
-        return $this->factoryGenerator($this->generalPlusApiConfig());
+        return self::factoryGenerator(self::generalPlusApiConfig());
     }
 
     /** @dataProvider generalUsageDataProvider */
@@ -163,9 +163,9 @@ final class ServiceManagerIntegrationTest extends TestCase
      *
      * @psalm-suppress MoreSpecificReturnType
      */
-    public function buildOnlyDataProvider(): Generator
+    public static function buildOnlyDataProvider(): Generator
     {
-        return $this->factoryGenerator($this->buildOnlyConfig());
+        return self::factoryGenerator(self::buildOnlyConfig());
     }
 
     /** @dataProvider buildOnlyDataProvider */

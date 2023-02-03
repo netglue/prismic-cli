@@ -40,7 +40,7 @@ class TypeBuilderTest extends TestCase
     }
 
     /** @return array<array-key, array{0: int|null, 1: int|null, 2: array{width?:int, height?:int}}> */
-    public function richTextImageConstraintProvider(): array
+    public static function richTextImageConstraintProvider(): array
     {
         return [
             [999, null, ['width' => 999]],
