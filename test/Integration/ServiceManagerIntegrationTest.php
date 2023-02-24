@@ -122,11 +122,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         }
     }
 
-    /**
-     * @return Generator<string, array{0: string, 1: ContainerInterface}>
-     *
-     * @psalm-suppress MoreSpecificReturnType
-     */
+    /** @return Generator<string, array{0: string, 1: ContainerInterface}> */
     public static function kitchenSinkDataProvider(): Generator
     {
         return self::factoryGenerator(self::kitchenSinkConfig());
@@ -141,11 +137,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         self::assertIsObject($container->get($serviceId));
     }
 
-    /**
-     * @return Generator<string, array{0: string, 1: ContainerInterface}>
-     *
-     * @psalm-suppress MoreSpecificReturnType
-     */
+    /** @return Generator<string, array{0: string, 1: ContainerInterface}> */
     public static function generalUsageDataProvider(): Generator
     {
         return self::factoryGenerator(self::generalPlusApiConfig());
@@ -158,11 +150,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         self::assertIsObject($container->get($serviceId));
     }
 
-    /**
-     * @return Generator<string, array{0: string, 1: ContainerInterface}>
-     *
-     * @psalm-suppress MoreSpecificReturnType
-     */
+    /** @return Generator<string, array{0: string, 1: ContainerInterface}> */
     public static function buildOnlyDataProvider(): Generator
     {
         return self::factoryGenerator(self::buildOnlyConfig());
