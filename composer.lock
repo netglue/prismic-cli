@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27597b6459458a979f0da1b07c9f2675",
+    "content-hash": "07666426cc3cd09a6fac04b195b394b1",
     "packages": [
         {
             "name": "laminas/laminas-escaper",
