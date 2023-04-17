@@ -9,11 +9,11 @@
          displayDetailsOnIncompleteTests="true"
          displayDetailsOnSkippedTests="true"
          colors="true">
-    <coverage>
+    <source>
         <include>
             <directory suffix=".php">./src</directory>
         </include>
-    </coverage>
+    </source>
     <testsuites>
         <testsuite name="All Tests">
             <directory>./test</directory>
