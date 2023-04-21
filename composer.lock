@@ -70,16 +70,16 @@
         },
         {
             "name": "netglue/prismic-client",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-client.git",
-                "reference": "517614559cfc827357e2caff9d600fc18e5484fb"
+                "reference": "3b07deb5d80e252076628dcbbfc041997d93b202"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/517614559cfc827357e2caff9d600fc18e5484fb",
-                "reference": "517614559cfc827357e2caff9d600fc18e5484fb",
+                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/3b07deb5d80e252076628dcbbfc041997d93b202",
+                "reference": "3b07deb5d80e252076628dcbbfc041997d93b202",
                 "shasum": ""
             },
             "require": {
@@ -91,22 +91,22 @@
                 "psr/http-client": "^1.0",
                 "psr/http-client-implementation": "*",
                 "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.0"
+                "psr/http-message": "^1.0 || ^2.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^11.1",
                 "ext-curl": "*",
-                "laminas/laminas-diactoros": "^2.24",
+                "laminas/laminas-diactoros": "^2.25.2",
                 "php-http/cache-plugin": "^1.7.5",
                 "php-http/curl-client": "^2.2.1",
                 "php-http/mock-client": "^1.5.0",
-                "phpunit/phpunit": "^10.0.0",
+                "phpunit/phpunit": "^10.1.1",
                 "psalm/plugin-phpunit": "^0.18.4",
                 "roave/security-advisories": "dev-latest",
-                "squizlabs/php_codesniffer": "^3.7.1",
-                "symfony/cache": "^5.4.15 || ^6.2.5",
-                "symfony/options-resolver": "^5.4.11 || ^6.2.5",
-                "vimeo/psalm": "^5.6"
+                "squizlabs/php_codesniffer": "^3.7.2",
+                "symfony/cache": "^5.4.15 || ^6.2.8",
+                "symfony/options-resolver": "^5.4.11 || ^6.2.7",
+                "vimeo/psalm": "^5.9"
             },
             "type": "library",
             "autoload": {
@@ -136,9 +136,9 @@
             ],
             "support": {
                 "issues": "https://github.com/netglue/prismic-client/issues",
-                "source": "https://github.com/netglue/prismic-client/tree/1.6.0"
+                "source": "https://github.com/netglue/prismic-client/tree/1.7.0"
             },
-            "time": "2023-02-04T13:37:13+00:00"
+            "time": "2023-04-18T15:50:17+00:00"
         },
         {
             "name": "netglue/prismic-doctype-client",
@@ -4172,12 +4172,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "d6da623259549bc05d08fd5f39d339d75f78a978"
+                "reference": "20f03d27a8ee2e23a29aa65c117f20cf31d2e531"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d6da623259549bc05d08fd5f39d339d75f78a978",
-                "reference": "d6da623259549bc05d08fd5f39d339d75f78a978",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/20f03d27a8ee2e23a29aa65c117f20cf31d2e531",
+                "reference": "20f03d27a8ee2e23a29aa65c117f20cf31d2e531",
                 "shasum": ""
             },
             "conflict": {
@@ -4205,6 +4205,7 @@
                 "automad/automad": "<1.8",
                 "awesome-support/awesome-support": "<=6.0.7",
                 "aws/aws-sdk-php": ">=3,<3.2.1",
+                "azuracast/azuracast": "<0.18",
                 "backdrop/backdrop": "<=1.23",
                 "badaso/core": "<2.7",
                 "bagisto/bagisto": "<0.1.5",
@@ -4348,7 +4349,7 @@
                 "gregwar/rst": "<1.0.3",
                 "grumpydictator/firefly-iii": "<6",
                 "guzzlehttp/guzzle": "<6.5.8|>=7,<7.4.5",
-                "guzzlehttp/psr7": "<1.8.4|>=2,<2.1.1",
+                "guzzlehttp/psr7": "<1.9.1|>=2,<2.4.5",
                 "harvesthq/chosen": "<1.8.7",
                 "helloxz/imgurl": "= 2.31|<=2.31",
                 "hillelcoren/invoice-ninja": "<5.3.35",
@@ -4569,6 +4570,7 @@
                 "simplesamlphp/simplesamlphp-module-openidprovider": "<0.9",
                 "simplito/elliptic-php": "<1.0.6",
                 "sitegeist/fluid-components": "<3.5",
+                "slim/psr7": "<1.6.1",
                 "slim/slim": "<2.6",
                 "smarty/smarty": "<3.1.48|>=4,<4.3.1",
                 "snipe/snipe-it": "<=6.0.14|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
@@ -4763,7 +4765,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-18T14:04:28+00:00"
+            "time": "2023-04-20T21:04:06+00:00"
         },
         {
             "name": "sebastian/cli-parser",
