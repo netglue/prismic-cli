@@ -15,6 +15,8 @@ use Primo\Cli\CustomTypeApiConfigProvider;
 use Psr\Container\ContainerInterface;
 
 use function array_keys;
+use function assert;
+use function is_string;
 
 /** @psalm-import-type ServiceManagerConfiguration from ServiceManager */
 final class ServiceManagerIntegrationTest extends TestCase
@@ -105,8 +107,6 @@ final class ServiceManagerIntegrationTest extends TestCase
      * @param array<array-key, mixed> $config
      *
      * @return Generator<string, array{0: string, 1: ContainerInterface}>
-     *
-     * @psalm-suppress MoreSpecificReturnType
      */
     private static function factoryGenerator(array $config): Generator
     {
@@ -118,6 +118,8 @@ final class ServiceManagerIntegrationTest extends TestCase
         $services = array_keys($factories);
 
         foreach ($services as $serviceId) {
+            assert(is_string($serviceId));
+
             yield $serviceId => [$serviceId, $container];
         }
     }

@@ -11,6 +11,7 @@ use Primo\Cli\Type\LocalPersistence;
 use Primo\Cli\Type\Spec;
 use Prismic\DocumentType\Definition;
 
+use function assert;
 use function glob;
 use function realpath;
 use function sprintf;
@@ -45,7 +46,10 @@ class LocalPersistenceTest extends TestCase
 
     protected function tearDown(): void
     {
-        foreach (glob(sprintf('%s/*.json', realpath($this->distDir))) as $file) {
+        $glob = sprintf('%s/*.json', realpath($this->distDir));
+        assert($glob !== '');
+
+        foreach (glob($glob) as $file) {
             unlink($file);
         }
     }
