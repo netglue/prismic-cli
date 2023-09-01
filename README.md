@@ -25,7 +25,7 @@ During installation you should be prompted to inject the config provider(s) if i
 There's nothing to stop you from using this tool 'stand-alone' - the `./example/example.php` should point you in the
 right direction for this. It's also worth inspecting that example so everything makes sense.
 
-### Building Document Model JSON Files
+## Building Document Model JSON Files
 
 The command `primo:build`, given some configuration, generates JSON files from PHP sources that you can copy
 and paste into [Prismic.io's](https://prismic.io) custom type editor.
@@ -54,10 +54,9 @@ return [
 ];
 ```
 
-The lib currently lacks documentation and a decent test suite but there is an annotated example in `./example`. When it comes to 
-configuring as part of a Mezzio app, please examine `./src/ConfigProvider.php` for more information.
+The lib currently lacks documentation and a decent test suite but there is an annotated example in `./example`. When it comes to configuring as part of a Mezzio app, please examine `./src/ConfigProvider.php` for more information.
 
-### Upload, Download and Diff Document Models Against the Remote Repository
+## Upload, Download and Diff Document Models Against the Remote Repository
 
 If you have setup the "Custom Types API" and have a valid access token to use it, adding the following to your configuration along with the contents of `CustomTypeApiConfigProvider` will configure 3 additional commands that will enable you to upload, download and diff changes between your local and remote definitions:
 
@@ -87,7 +86,7 @@ Once configured, you can issue
 
 These tools make use of [`netglue/prismic-doctype-client`](https://github.com/netglue/prismic-doctype-client), so check that out if you'd like some more information, also [link to the Prismic Custom Types API Docs](https://prismic.io/docs/technologies/custom-types-api).
 
-### Commands that Query a Repository
+## Commands that Query a Repository
 
 Theres also some commands for getting information from a repository. These commands are opt-in. During installation there's a config
 provider called `ApiToolsConfigProvider` which you can skip if you don't want these tools available.
@@ -98,6 +97,7 @@ The above mentioned config provider sets up its own factory for the api client, 
 if you are using the tools, you don't want stale information.
 
 Configure the repository somewhere with information similar to:
+
 ```php
 return [
     'prismic' => [
@@ -107,7 +107,7 @@ return [
 ];
 ```
 
-#### Currently Available Commands
+### Currently Available Commands
 
 - `primo:info` - Without arguments, provides information about the repository itself
 - `primo:info <document-id>` - Shows information about a specific document
@@ -116,4 +116,4 @@ return [
 
 You can try out these commands on the test repo used for the Prismic/Mezzio integration lib we wrote at [`netglue/primo`](https://github.com/netglue/primo) by running `./example/api-queries.php`
 
-_Note: This lib is not a replacement for JS cli tooling provided by Prismic…_
+Note: _This lib is not a replacement for JS cli tooling provided by Prismic…_
