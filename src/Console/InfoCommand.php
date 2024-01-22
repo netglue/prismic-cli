@@ -77,7 +77,7 @@ final class InfoCommand extends Command
 
         $style->table([], [
             ['ID:', $document->id()],
-            ['UID:', $document->uid() ?: '<none>'],
+            ['UID:', $document->uid() ?? '<none>'],
             ['Type:', $document->type()],
             ['Created At:', $document->firstPublished()->format('l jS F Y H:i:s')],
             ['Modified At:', $document->lastPublished()->format('l jS F Y H:i:s')],

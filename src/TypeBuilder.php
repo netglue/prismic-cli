@@ -145,7 +145,7 @@ final class TypeBuilder
             'label' => $label,
             'placeholder' => $placeholder,
             'allowTargetBlank' => $allowTargetBlank ? true : null,
-            'customtypes' => empty($customTypes) ? null : $customTypes,
+            'customtypes' => $customTypes === null || $customTypes === [] ? null : $customTypes,
         ]);
 
         $config['select'] = null;
@@ -204,7 +204,7 @@ final class TypeBuilder
 
     private static function nullifyString(string|null $string): string|null
     {
-        return empty($string) ? null : $string;
+        return $string === '' || $string === null ? null : $string;
     }
 
     /**
