@@ -37,5 +37,8 @@
     </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
-    <pluginClass class="Lctrs\PsalmPsrContainerPlugin\Plugin"/></plugins>
+    </plugins>
+    <stubs>
+        <file name=".psr-container.php.stub"/>
+    </stubs>
 </psalm>
