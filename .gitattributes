@@ -5,3 +5,4 @@
 /phpunit.xml.dist export-ignore
 /psalm.xml export-ignore
 /test/ export-ignore
+.psr-container.php.stub export-ignore
