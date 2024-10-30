@@ -8,6 +8,10 @@
          displayDetailsOnTestsThatTriggerWarnings="true"
          displayDetailsOnIncompleteTests="true"
          displayDetailsOnSkippedTests="true"
+         displayDetailsOnPhpunitDeprecations="true"
+         failOnPhpunitDeprecation="true"
+         failOnNotice="true"
+         failOnWarning="true"
          colors="true">
     <source>
         <include>

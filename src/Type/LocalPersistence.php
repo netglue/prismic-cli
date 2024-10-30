@@ -46,13 +46,15 @@ final class LocalPersistence implements TypePersistence
             $path = $this->path($spec);
             Assert::fileExists($path);
             Assert::readable($path);
+            $json = file_get_contents($path);
+            Assert::stringNotEmpty($json);
 
             return Definition::new(
                 $spec->id(),
                 $spec->name(),
                 $spec->repeatable(),
                 true,
-                file_get_contents($path),
+                $json,
             );
         } catch (Throwable $error) {
             throw PersistenceError::readFailure($error);

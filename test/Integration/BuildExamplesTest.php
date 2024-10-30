@@ -13,7 +13,7 @@ use Symfony\Component\Console\Input\ArgvInput;
 
 final class BuildExamplesTest extends TestCase
 {
-    /** @var array<array-key, array{id: string, name: string, repeatable: bool}> */
+    /** @var array<array-key, array{id: non-empty-string, name: string, repeatable: bool}> */
     private static array $types = [
         [
             'id' => 'page',

@@ -12,6 +12,7 @@ final class Spec implements JsonSerializable
 {
     private string $filename;
 
+    /** @param non-empty-string $id */
     private function __construct(
         private string $id,
         private string $name,
@@ -20,6 +21,7 @@ final class Spec implements JsonSerializable
         $this->filename = sprintf('%s.json', $this->id);
     }
 
+    /** @param non-empty-string $id */
     public static function new(
         string $id,
         string $name,
@@ -28,7 +30,7 @@ final class Spec implements JsonSerializable
         return new static($id, $name, $repeatable);
     }
 
-    /** @return mixed[] */
+    /** @return array{id: non-empty-string, name: string, repeatable: bool, value: string} */
     public function jsonSerialize(): array
     {
         return [
@@ -44,6 +46,7 @@ final class Spec implements JsonSerializable
         return sprintf('%s.php', $this->id);
     }
 
+    /** @return non-empty-string */
     public function id(): string
     {
         return $this->id;

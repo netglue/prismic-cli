@@ -12,12 +12,16 @@ interface TypePersistence
     /**
      * Whether the type is currently persisted
      *
+     * @param non-empty-string $id
+     *
      * @throws PersistenceError if a problem occurs querying the underlying storage.
      */
     public function has(string $id): bool;
 
     /**
      * Retrieve the type definition by its id
+     *
+     * @param non-empty-string $id
      *
      * @throws PersistenceError if a problem occurs reading from the underlying storage.
      */
