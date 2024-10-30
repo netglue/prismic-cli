@@ -267,12 +267,15 @@ final class TypeBuilder
     ): array {
         return [
             'type' => self::TYPE_NUMBER,
-            'config' => array_filter([
-                'label' => self::nullifyString($label),
-                'placeholder' => self::nullifyString($placeholder),
-                'min' => $min,
-                'max' => $max,
-            ], [self::class, 'filterNull']),
+            'config' => array_filter(
+                [
+                    'label' => self::nullifyString($label),
+                    'placeholder' => self::nullifyString($placeholder),
+                    'min' => $min,
+                    'max' => $max,
+                ],
+                static fn (mixed $value): bool => $value !== null,
+            ),
         ];
     }
 
@@ -413,7 +416,10 @@ final class TypeBuilder
             'useAsTitle' => $isTitle,
             'labels' => $labels === [] ? null : $labels,
             'imageConstraint' => $imgX !== null || $imgY !== null
-                ? array_filter(['width' => $imgX, 'height' => $imgY], [self::class, 'filterNull'])
+                ? array_filter(
+                    ['width' => $imgX, 'height' => $imgY],
+                    static fn (mixed $value): bool => $value !== null,
+                )
                 : null,
         ];
 
@@ -475,12 +481,6 @@ final class TypeBuilder
                 'choices' => $slices,
             ]),
         ];
-    }
-
-    /** @psalm-assert !null $value */
-    private static function filterNull(mixed $value): bool
-    {
-        return $value !== null;
     }
 
     /**
