@@ -13,10 +13,16 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Console\ConsoleColourDiffFormatter;
+use Primo\Cli\Console\DeleteCommand;
+use Primo\Cli\Console\DeleteSliceCommand;
 use Primo\Cli\Console\DiffCommand;
 use Primo\Cli\Console\DownloadCommand;
+use Primo\Cli\Console\DownloadSlicesCommand;
+use Primo\Cli\Console\ListSlicesCommand;
 use Primo\Cli\Console\UploadCommand;
+use Primo\Cli\Console\UploadSlicesCommand;
 use Primo\Cli\DiffTool;
+use Primo\Cli\Slice\SliceBuildConfig;
 use Primo\Cli\Type\LocalPersistence;
 use Primo\Cli\Type\RemotePersistence;
 use Prismic\DocumentType\BaseClient;
@@ -83,9 +89,22 @@ $config = BuildConfig::withArraySpecs($source, $dist, $types);
 $localStorage = new LocalPersistence($config);
 $remoteStorage = new RemotePersistence($client);
 
+$sliceConfig = SliceBuildConfig::withDirectories(
+    __DIR__ . '/slices/source',
+    __DIR__ . '/slices/dist',
+);
+
+$localSlices = new \Primo\Cli\Slice\LocalPersistence($sliceConfig);
+$remoteSlices = new \Primo\Cli\Slice\RemotePersistence($client);
+
 $application = new Application('Primo Upload and Download Example');
+$application->add(new DeleteCommand($client));
+$application->add(new DeleteSliceCommand($client));
 $application->add(new DownloadCommand($localStorage, $remoteStorage));
+$application->add(new DownloadSlicesCommand($localSlices, $remoteSlices));
+$application->add(new ListSlicesCommand($client));
 $application->add(new UploadCommand($localStorage, $remoteStorage));
+$application->add(new UploadSlicesCommand($localSlices, $remoteSlices));
 $application->add(new DiffCommand(
     new DiffTool(new Differ(new UnifiedDiffOutputBuilder())),
     new ConsoleColourDiffFormatter(),

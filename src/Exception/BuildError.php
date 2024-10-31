@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Exception;
 
+use Primo\Cli\Slice\BuildSpec;
 use Primo\Cli\Type\Spec;
 use RuntimeException;
 use Throwable;
@@ -26,6 +27,15 @@ final class BuildError extends RuntimeException
             'The source file for "%s" did not return an array suitable for serialisation. Path: %s',
             $type->name(),
             $source,
+        ));
+    }
+
+    public static function invalidSliceSpec(BuildSpec $spec): self
+    {
+        return new self(sprintf(
+            'The source file for the shared slice "%s" did not return an array suitable for serialisation. Path: %s',
+            $spec->id,
+            $spec->source,
         ));
     }
 }

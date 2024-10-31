@@ -3,3 +3,5 @@ phpunit.xml
 /vendor/
 /example/dist/*
 !/example/dist/.gitkeep
+/example/slices/dist/*
+!/example/slices/dist/.gitkeep
