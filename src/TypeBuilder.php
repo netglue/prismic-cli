@@ -26,6 +26,7 @@ final class TypeBuilder
     public const TYPE_RANGE = 'Range';
     public const TYPE_RICH = 'StructuredText';
     public const TYPE_SLICE = 'Slice';
+    public const TYPE_SHARED_SLICE = 'SharedSlice';
     public const TYPE_SLICE_ZONE = 'Slices';
 
     public const P     = 'paragraph';
@@ -454,6 +455,68 @@ final class TypeBuilder
             'non-repeat' => $nonRepeatFields === [] ? null : $nonRepeatFields,
             'repeat' => $repeatFields === [] ? null : $repeatFields,
         ]);
+    }
+
+    /**
+     * @param non-empty-string           $id          Required, non-empty
+     * @param non-empty-string           $name        Required, non-empty
+     * @param string|null                $description Can be null and omitted entirely
+     * @param list<array<string, mixed>> $variations  Must be a list of maps in variation format
+     *
+     * @return array<string, mixed>
+     */
+    public static function sharedSlice(
+        string $id,
+        string $name,
+        string|null $description,
+        array $variations,
+    ): array {
+        Assert::notEmpty($variations);
+
+        return array_filter([
+            'id' => $id,
+            'type' => self::TYPE_SHARED_SLICE,
+            'name' => $name,
+            'description' => $description,
+            'variations' => $variations,
+        ], static fn (mixed $value): bool => $value !== null);
+    }
+
+    /**
+     * @param non-empty-string          $id            Required, non-empty
+     * @param non-empty-string          $name          Required, non-empty
+     * @param non-empty-string          $version       Required, Can actually be empty
+     * @param string                    $description   Required, Can be an empty string
+     * @param array<string, mixed>|null $primaryFields Strangely, not actually required
+     * @param array<string, mixed>|null $repeatFields  Strangely, not actually required
+     * @param non-empty-string|null     $imageUrl      Absolute URL to an image. Can be omitted
+     * @param string                    $docURL        Required, no idea what it is for, can be empty
+     *
+     * @return array<string, mixed>
+     */
+    public static function sharedSliceVariation(
+        string $id,
+        string $name,
+        string $version,
+        string $description = '',
+        array|null $primaryFields = null,
+        array|null $repeatFields = null,
+        string|null $imageUrl = null,
+        string $docURL = '',
+    ): array {
+        $primaryFields = $primaryFields === [] ? null : $primaryFields;
+        $repeatFields = $repeatFields === [] ? null : $repeatFields;
+
+        return array_filter([
+            'id' => $id,
+            'name' => $name,
+            'description' => $description,
+            'docURL' => $docURL,
+            'version' => $version,
+            'primary' => $primaryFields,
+            'items' => $repeatFields,
+            'imageUrl' => $imageUrl,
+        ], static fn (mixed $value): bool => $value !== null);
     }
 
     /** @return array{name: string, display: string} */
