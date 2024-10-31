@@ -25,6 +25,15 @@ return T::sliceZone('Document Body', [
         'caption' => T::richText('Caption Text', 'Say something', ['paragraph', 'em', 'strong'], false),
     ]),
     'body-text' => T::richText('Standard Prose', null, T::blocksAll(), true, true),
+    /**
+     * It's up to you to add possible shared slices to your types, and, also match up the key "banner-header" to an
+     * actual shared slice.
+     *
+     * Each item should be 'slice-id' => ['type' => T::TYPE_SHARED_SLICE]
+     */
+    'banner-header' => [
+        'type' => T::TYPE_SHARED_SLICE,
+    ],
 ], [
     'carousel' => [
         T::sliceLabel('dark-mode', 'Dark Styling'),

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Console\BuildCommand;
+use Primo\Cli\Slice\LocalPersistence as SlicePersistence;
+use Primo\Cli\Slice\SliceBuildConfig;
 use Primo\Cli\Type\LocalPersistence;
 use Symfony\Component\Console\Application;
 
@@ -66,7 +68,7 @@ $types = [
 ];
 
 /**
- * Define the Source and destination directories.
+ * Define the Source and destination directories for the document types
  *
  * Source contains php source files and the dist directory is the target directory for Json
  */
@@ -78,7 +80,21 @@ $dist = __DIR__ . '/dist';
  */
 $config = BuildConfig::withArraySpecs($source, $dist, $types);
 
+/**
+ * Source and dist dirs for shared slices
+ */
+
+$source = __DIR__ . '/slices/source';
+$dist = __DIR__ . '/slices/dist';
+
+$sliceConfig = SliceBuildConfig::withDirectories($source, $dist);
+
 $application = new Application('Primo Builder Example');
-$application->add(new BuildCommand($config, new LocalPersistence($config)));
+$application->add(new BuildCommand(
+    $config,
+    new LocalPersistence($config),
+    $sliceConfig,
+    new SlicePersistence($sliceConfig),
+));
 
 return $application->run();

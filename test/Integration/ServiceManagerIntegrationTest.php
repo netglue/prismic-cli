@@ -39,6 +39,10 @@ final class ServiceManagerIntegrationTest extends TestCase
                         'source' => __DIR__ . '/../Unit/build-specs/src',
                         'dist' => __DIR__ . '/../Unit/build-specs/dist',
                     ],
+                    'slices' => [
+                        'source' => __DIR__ . '/../Unit/slice-spec/src',
+                        'dist' => __DIR__ . '/../Unit/slice-spec/dist',
+                    ],
                 ],
                 'types' => [
                     [

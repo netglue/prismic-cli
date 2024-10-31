@@ -130,4 +130,31 @@ class TypeBuilderTest extends TestCase
         /** @psalm-suppress InvalidArgument */
         T::range('Foo', null, 0, 20, 0);
     }
+
+    public function testSharedSliceHasRequiredProperties(): void
+    {
+        $slice = T::sharedSlice(
+            'foo',
+            'bar',
+            '',
+            [
+                T::sharedSliceVariation('foo', 'bar', 'baz', ''),
+            ],
+        );
+
+        $keys = ['id', 'name', 'description', 'variations'];
+
+        foreach ($keys as $key) {
+            self::assertArrayHasKey($key, $slice);
+        }
+    }
+
+    public function testVariationsHaveRequiredKeys(): void
+    {
+        $variation = T::sharedSliceVariation('foo', 'bar', 'baz', '');
+        $keys = ['id', 'name', 'version', 'docURL', 'description'];
+        foreach ($keys as $key) {
+            self::assertArrayHasKey($key, $variation);
+        }
+    }
 }

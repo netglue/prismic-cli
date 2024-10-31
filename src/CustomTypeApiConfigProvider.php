@@ -35,9 +35,16 @@ final class CustomTypeApiConfigProvider
             'factories' => [
                 Prismic\DocumentType\BaseClient::class => Container\CustomTypeClientFactory::class,
 
+                Console\DeleteCommand::class => Console\Container\DeleteCommandFactory::class,
+                Console\DeleteSliceCommand::class => Console\Container\DeleteSliceCommandFactory::class,
                 Console\DiffCommand::class => Console\Container\DiffCommandFactory::class,
                 Console\DownloadCommand::class => Console\Container\DownloadCommandFactory::class,
+                Console\DownloadSlicesCommand::class => Console\Container\DownloadSlicesCommandFactory::class,
+                Console\ListSlicesCommand::class => Console\Container\ListSlicesCommandFactory::class,
                 Console\UploadCommand::class => Console\Container\UploadCommandFactory::class,
+                Console\UploadSlicesCommand::class => Console\Container\UploadSlicesCommandFactory::class,
+
+                Slice\RemotePersistence::class => Slice\Container\RemotePersistenceFactory::class,
 
                 Type\RemotePersistence::class => Type\Container\RemotePersistenceFactory::class,
 
@@ -53,9 +60,14 @@ final class CustomTypeApiConfigProvider
     private function commands(): array
     {
         return [
+            Console\DeleteCommand::DEFAULT_NAME => Console\DeleteCommand::class,
+            Console\DeleteSliceCommand::DEFAULT_NAME => Console\DeleteSliceCommand::class,
             Console\DiffCommand::DEFAULT_NAME => Console\DiffCommand::class,
             Console\DownloadCommand::DEFAULT_NAME => Console\DownloadCommand::class,
+            Console\DownloadSlicesCommand::DEFAULT_NAME => Console\DownloadSlicesCommand::class,
+            Console\ListSlicesCommand::DEFAULT_NAME => Console\ListSlicesCommand::class,
             Console\UploadCommand::DEFAULT_NAME => Console\UploadCommand::class,
+            Console\UploadSlicesCommand::DEFAULT_NAME => Console\UploadSlicesCommand::class,
         ];
     }
 }

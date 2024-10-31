@@ -23,6 +23,10 @@ final class ConfigProvider
                         'source' => null, // Path to directory containing 1 php file per type
                         'dist' => null, // Path to directory to store JSON output files
                     ],
+                    'slices' => [
+                        'source' => null, // Path to directory containing 1 PHP file per Shared Slice
+                        'dist' => null, // Output directory for built slices
+                    ],
                 ],
                 /**
                  * Types should look something like this:
@@ -44,6 +48,8 @@ final class ConfigProvider
         return [
             'factories' => [
                 Console\BuildCommand::class => Console\Container\BuildCommandFactory::class,
+                Slice\SliceBuildConfig::class => Slice\Container\SliceBuildConfigFactory::class,
+                Slice\LocalPersistence::class => Slice\Container\LocalPersistenceFactory::class,
                 Type\LocalPersistence::class => Type\Container\LocalPersistenceFactory::class,
                 BuildConfig::class => Container\BuildConfigFactory::class,
             ],
