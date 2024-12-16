@@ -70,16 +70,16 @@
         },
         {
             "name": "netglue/prismic-client",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-client.git",
-                "reference": "bc527388d79dd4b86ad163b941046d13b232f122"
+                "reference": "cbbf645bdda659cdd66434570bd9eb20b8b38363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/bc527388d79dd4b86ad163b941046d13b232f122",
-                "reference": "bc527388d79dd4b86ad163b941046d13b232f122",
+                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/cbbf645bdda659cdd66434570bd9eb20b8b38363",
+                "reference": "cbbf645bdda659cdd66434570bd9eb20b8b38363",
                 "shasum": ""
             },
             "require": {
@@ -138,9 +138,9 @@
             ],
             "support": {
                 "issues": "https://github.com/netglue/prismic-client/issues",
-                "source": "https://github.com/netglue/prismic-client/tree/1.11.0"
+                "source": "https://github.com/netglue/prismic-client/tree/1.12.0"
             },
-            "time": "2024-10-31T12:04:44+00:00"
+            "time": "2024-12-13T12:21:31+00:00"
         },
         {
             "name": "netglue/prismic-doctype-client",
@@ -4045,12 +4045,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "782fdf596581968ada24d6b3137cc622d08a5bbc"
+                "reference": "233f7c395ac3b83e3c85aa304f3350bf8897aca5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/782fdf596581968ada24d6b3137cc622d08a5bbc",
-                "reference": "782fdf596581968ada24d6b3137cc622d08a5bbc",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/233f7c395ac3b83e3c85aa304f3350bf8897aca5",
+                "reference": "233f7c395ac3b83e3c85aa304f3350bf8897aca5",
                 "shasum": ""
             },
             "conflict": {
@@ -4374,6 +4374,7 @@
                 "laravel/fortify": "<1.11.1",
                 "laravel/framework": "<6.20.45|>=7,<7.30.7|>=8,<8.83.28|>=9,<9.52.17|>=10,<10.48.23|>=11,<11.31",
                 "laravel/laravel": ">=5.4,<5.4.22",
+                "laravel/pulse": "<1.3.1",
                 "laravel/reverb": "<1.4",
                 "laravel/socialite": ">=1,<2.0.10",
                 "latte/latte": "<2.10.8",
@@ -4637,7 +4638,7 @@
                 "snipe/snipe-it": "<=7.0.13",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
-                "spatie/browsershot": "<3.57.4",
+                "spatie/browsershot": "<5.0.1",
                 "spatie/image-optimizer": "<1.7.3",
                 "spencer14420/sp-php-email-handler": "<1",
                 "spipu/html2pdf": "<5.2.8",
@@ -4888,7 +4889,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-12-12T20:05:59+00:00"
+            "time": "2024-12-13T21:04:51+00:00"
         },
         {
             "name": "sebastian/cli-parser",
