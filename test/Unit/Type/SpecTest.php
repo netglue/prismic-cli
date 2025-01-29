@@ -9,6 +9,8 @@ use Primo\Cli\Type\Spec;
 
 use function json_encode;
 
+use const JSON_THROW_ON_ERROR;
+
 class SpecTest extends TestCase
 {
     private Spec $spec;
@@ -43,7 +45,7 @@ class SpecTest extends TestCase
     public function testSerialize(): void
     {
         $expect = '{"id":"page","name":"Web Page","repeatable":true,"value":"page.json"}';
-        $this->assertJsonStringEqualsJsonString($expect, json_encode($this->spec));
+        $this->assertJsonStringEqualsJsonString($expect, json_encode($this->spec, JSON_THROW_ON_ERROR));
     }
 
     public function testRepeatable(): void

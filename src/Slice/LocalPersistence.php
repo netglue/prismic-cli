@@ -14,6 +14,7 @@ use function file_get_contents;
 use function file_put_contents;
 use function is_file;
 use function is_readable;
+use function is_resource;
 use function opendir;
 use function readdir;
 use function sprintf;
@@ -51,7 +52,7 @@ final class LocalPersistence implements SlicePersistence
             $id,
         ));
 
-        assert($data !== '');
+        assert($data !== '' && $data !== false);
 
         return SharedSlice::new($id, $data);
     }
@@ -71,6 +72,8 @@ final class LocalPersistence implements SlicePersistence
     {
         $list = [];
         $handle = opendir($this->config->distDir);
+        assert(is_resource($handle));
+
         while (($filename = readdir($handle)) !== false) {
             $path = sprintf('%s%s%s', $this->config->distDir, DIRECTORY_SEPARATOR, $filename);
             if (! is_file($path) || ! is_readable($path)) {

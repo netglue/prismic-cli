@@ -8,6 +8,7 @@ use Generator;
 use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
 use Laminas\ServiceManager\ServiceManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\ApiToolsConfigProvider;
 use Primo\Cli\ConfigProvider;
@@ -134,7 +135,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         return self::factoryGenerator(self::kitchenSinkConfig());
     }
 
-    /** @dataProvider kitchenSinkDataProvider */
+    #[DataProvider('kitchenSinkDataProvider')]
     public function testThatConfigProvidersCanProduceAllRequiredDependenciesGivenValidConfig(
         string $serviceId,
         ContainerInterface $container,
@@ -149,7 +150,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         return self::factoryGenerator(self::generalPlusApiConfig());
     }
 
-    /** @dataProvider generalUsageDataProvider */
+    #[DataProvider('generalUsageDataProvider')]
     public function testGeneralUsage(string $serviceId, ContainerInterface $container): void
     {
         self::assertTrue($container->has($serviceId));
@@ -162,7 +163,7 @@ final class ServiceManagerIntegrationTest extends TestCase
         return self::factoryGenerator(self::buildOnlyConfig());
     }
 
-    /** @dataProvider buildOnlyDataProvider */
+    #[DataProvider('buildOnlyDataProvider')]
     public function testBuildOnlyUsage(string $serviceId, ContainerInterface $container): void
     {
         self::assertTrue($container->has($serviceId));
