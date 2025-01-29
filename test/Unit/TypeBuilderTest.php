@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\Exception\AssertionFailed;
 use Primo\Cli\TypeBuilder as T;
@@ -49,11 +50,8 @@ class TypeBuilderTest extends TestCase
         ];
     }
 
-    /**
-     * @param array{width?:int, height?:int} $expect
-     *
-     * @dataProvider richTextImageConstraintProvider
-     */
+    /** @param array{width?:int, height?:int} $expect */
+    #[DataProvider('richTextImageConstraintProvider')]
     public function testWidthOrHeightWillYieldImageConstraintInRichText(int|null $x, int|null $y, array $expect): void
     {
         $data = T::richText('Foo', 'Foo', [], true, true, true, [], $x, $y);

@@ -124,6 +124,7 @@ class RemotePersistenceTest extends TestCase
         self::assertContainsOnlyInstancesOf(Spec::class, $result);
         assert(is_array($result));
         $spec = reset($result);
+        self::assertInstanceOf(Spec::class, $spec);
         self::assertEquals('id', $spec->id());
         self::assertEquals('label', $spec->name());
         self::assertTrue($spec->repeatable());
@@ -143,6 +144,7 @@ class RemotePersistenceTest extends TestCase
         self::assertCount(1, $result);
         assert(is_array($result));
         $spec = reset($result);
+        assert($spec instanceof Spec);
         self::assertEquals('id', $spec->id());
     }
 

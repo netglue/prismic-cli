@@ -11,6 +11,7 @@ use function closedir;
 use function is_dir;
 use function is_file;
 use function is_readable;
+use function is_resource;
 use function is_writable;
 use function opendir;
 use function readdir;
@@ -68,6 +69,7 @@ final class SliceBuildConfig
         $list = [];
 
         $handle = opendir($this->sourceDir);
+        assert(is_resource($handle));
 
         while (($filename = readdir($handle)) !== false) {
             $path = sprintf(

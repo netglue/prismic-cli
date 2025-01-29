@@ -7,7 +7,9 @@ namespace Primo\Cli\Console;
 use Symfony\Component\Console\Formatter\OutputFormatter;
 
 use function array_map;
+use function assert;
 use function implode;
+use function is_array;
 use function preg_replace;
 use function preg_split;
 use function rtrim;
@@ -48,6 +50,7 @@ final class ConsoleColourDiffFormatter
     {
         $escapedDiff = OutputFormatter::escape(rtrim($diff));
         $escapedDiffLines = preg_split(self::NEWLINES_REGEX, $escapedDiff);
+        assert(is_array($escapedDiffLines));
 
         // remove description of added + remove; obvious on diffs
         foreach ($escapedDiffLines as $key => $escapedDiffLine) {
