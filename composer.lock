@@ -3192,16 +3192,16 @@
         },
         {
             "name": "laminas/laminas-servicemanager",
-            "version": "4.3.0",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-servicemanager.git",
-                "reference": "b87a792d232c006eec9787230f611c74cc57b8b6"
+                "reference": "74da44d07e493b834347123242d0047976fb9932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-servicemanager/zipball/b87a792d232c006eec9787230f611c74cc57b8b6",
-                "reference": "b87a792d232c006eec9787230f611c74cc57b8b6",
+                "url": "https://api.github.com/repos/laminas/laminas-servicemanager/zipball/74da44d07e493b834347123242d0047976fb9932",
+                "reference": "74da44d07e493b834347123242d0047976fb9932",
                 "shasum": ""
             },
             "require": {
@@ -3218,19 +3218,17 @@
                 "psr/container-implementation": "^1.0 || ^2.0"
             },
             "require-dev": {
-                "boesing/psalm-plugin-stringf": "^1.4",
                 "composer/package-versions-deprecated": "^1.11.99.5",
                 "friendsofphp/proxy-manager-lts": "^1.0.18",
-                "laminas/laminas-cli": "^1.8",
-                "laminas/laminas-coding-standard": "~3.0.0",
+                "laminas/laminas-cli": "^1.11",
+                "laminas/laminas-coding-standard": "~3.0.1",
                 "laminas/laminas-container-config-test": "^1.0",
-                "lctrs/psalm-psr-container-plugin": "^1.9",
                 "mikey179/vfsstream": "^1.6.12",
-                "phpbench/phpbench": "^1.3.1",
-                "phpunit/phpunit": "^10.5.36",
-                "psalm/plugin-phpunit": "^0.19.0",
-                "symfony/console": "^6.0",
-                "vimeo/psalm": "^5.26.1"
+                "phpbench/phpbench": "^1.4.0",
+                "phpunit/phpunit": "^10.5.44",
+                "psalm/plugin-phpunit": "^0.19.2",
+                "symfony/console": "^6.4.17 || ^7.0",
+                "vimeo/psalm": "^6.2.0"
             },
             "suggest": {
                 "friendsofphp/proxy-manager-lts": "To handle lazy initialization of services",
@@ -3267,7 +3265,7 @@
                 "chat": "https://laminas.dev/chat",
                 "forum": "https://discourse.laminas.dev",
                 "issues": "https://github.com/laminas/laminas-servicemanager/issues",
-                "source": "https://github.com/laminas/laminas-servicemanager/tree/4.3.0"
+                "source": "https://github.com/laminas/laminas-servicemanager/tree/4.4.0"
             },
             "funding": [
                 {
@@ -3275,7 +3273,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2024-11-05T00:35:06+00:00"
+            "time": "2025-02-04T06:13:50+00:00"
         },
         {
             "name": "laminas/laminas-stdlib",
@@ -4874,12 +4872,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "4015f7fbd4aedd2ebe19143e26e9f64fafae8d88"
+                "reference": "ec1d1ce93931a0560cbb5b9ba2d6a3a2719c0c79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4015f7fbd4aedd2ebe19143e26e9f64fafae8d88",
-                "reference": "4015f7fbd4aedd2ebe19143e26e9f64fafae8d88",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ec1d1ce93931a0560cbb5b9ba2d6a3a2719c0c79",
+                "reference": "ec1d1ce93931a0560cbb5b9ba2d6a3a2719c0c79",
                 "shasum": ""
             },
             "conflict": {
@@ -5476,7 +5474,7 @@
                 "snipe/snipe-it": "<=7.0.13",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
-                "spatie/browsershot": "<5.0.3",
+                "spatie/browsershot": "<5.0.5",
                 "spatie/image-optimizer": "<1.7.3",
                 "spencer14420/sp-php-email-handler": "<1",
                 "spipu/html2pdf": "<5.2.8",
@@ -5737,7 +5735,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-03T16:05:30+00:00"
+            "time": "2025-02-05T22:04:25+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -7052,16 +7050,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "6.2.0",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "814dfde37b43a1fe6d9b0996e08b19661af53bc5"
+                "reference": "04f312ac6ea48ba1c3e5db4d815bf6d74641c0ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/814dfde37b43a1fe6d9b0996e08b19661af53bc5",
-                "reference": "814dfde37b43a1fe6d9b0996e08b19661af53bc5",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/04f312ac6ea48ba1c3e5db4d815bf6d74641c0ee",
+                "reference": "04f312ac6ea48ba1c3e5db4d815bf6d74641c0ee",
                 "shasum": ""
             },
             "require": {
@@ -7119,6 +7117,7 @@
                 "psalm-language-server",
                 "psalm-plugin",
                 "psalm-refactor",
+                "psalm-review",
                 "psalter"
             ],
             "type": "project",
@@ -7163,7 +7162,7 @@
                 "issues": "https://github.com/vimeo/psalm/issues",
                 "source": "https://github.com/vimeo/psalm"
             },
-            "time": "2025-02-01T16:30:21+00:00"
+            "time": "2025-02-05T12:31:01+00:00"
         },
         {
             "name": "webimpress/safe-writer",
