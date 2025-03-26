@@ -13,7 +13,7 @@ use Primo\Cli\Type\Spec;
 
 use function sprintf;
 
-class BuildConfigTest extends TestCase
+final class BuildConfigTest extends TestCase
 {
     private BuildConfig $config;
 

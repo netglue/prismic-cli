@@ -11,7 +11,7 @@ use Prismic\DocumentType\Definition;
 use SebastianBergmann\Diff\Differ;
 use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 
-class DiffToolTest extends TestCase
+final class DiffToolTest extends TestCase
 {
     private DiffTool $tool;
 

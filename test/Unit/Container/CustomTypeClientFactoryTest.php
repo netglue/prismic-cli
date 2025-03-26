@@ -12,7 +12,7 @@ use Primo\Cli\Exception\AssertionFailed;
 use Prismic\DocumentType\Client;
 use Psr\Container\ContainerInterface;
 
-class CustomTypeClientFactoryTest extends TestCase
+final class CustomTypeClientFactoryTest extends TestCase
 {
     private MockObject&ContainerInterface $container;
     private CustomTypeClientFactory $factory;

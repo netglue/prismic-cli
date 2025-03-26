@@ -18,7 +18,7 @@ use function is_iterable;
 use function sprintf;
 use function unlink;
 
-class LocalPersistenceTest extends TestCase
+final class LocalPersistenceTest extends TestCase
 {
     private BuildConfig $config;
     private LocalPersistence $storage;

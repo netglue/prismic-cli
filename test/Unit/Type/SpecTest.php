@@ -12,7 +12,7 @@ use function json_encode;
 
 use const JSON_THROW_ON_ERROR;
 
-class SpecTest extends TestCase
+final class SpecTest extends TestCase
 {
     private Spec $spec;
 

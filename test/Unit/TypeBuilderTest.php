@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Primo\Cli\Exception\AssertionFailed;
 use Primo\Cli\TypeBuilder as T;
 
-class TypeBuilderTest extends TestCase
+final class TypeBuilderTest extends TestCase
 {
     public function testLinkConfigHasExpectedStructure(): void
     {

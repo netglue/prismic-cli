@@ -19,7 +19,7 @@ use function assert;
 use function is_array;
 use function reset;
 
-class RemotePersistenceTest extends TestCase
+final class RemotePersistenceTest extends TestCase
 {
     /** @var MockObject&Client */
     private Client $client;
