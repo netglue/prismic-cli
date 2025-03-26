@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Override;
 use Primo\Cli\Assert;
 use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Type\TypePersistence;
@@ -30,6 +31,7 @@ final class DownloadCommand extends Command
         parent::__construct($name);
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setDescription('Download one or all document type definitions');
@@ -44,6 +46,7 @@ final class DownloadCommand extends Command
         $this->addOption('all', 'a', InputOption::VALUE_NONE, 'Include disabled types');
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit\Container;
 
+use Override;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\Container\CustomTypeClientFactory;
@@ -16,6 +17,7 @@ class CustomTypeClientFactoryTest extends TestCase
     private MockObject&ContainerInterface $container;
     private CustomTypeClientFactory $factory;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

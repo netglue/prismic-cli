@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit\Type;
 
+use Override;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\Type\Spec;
 
@@ -15,6 +16,7 @@ class SpecTest extends TestCase
 {
     private Spec $spec;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

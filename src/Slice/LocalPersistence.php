@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Slice;
 
+use Override;
 use Primo\Cli\Exception\PersistenceError;
 use Prismic\DocumentType\SharedSlice;
 
@@ -29,6 +30,7 @@ final class LocalPersistence implements SlicePersistence
     {
     }
 
+    #[Override]
     public function has(string $id): bool
     {
         return file_exists(sprintf(
@@ -39,6 +41,7 @@ final class LocalPersistence implements SlicePersistence
         ));
     }
 
+    #[Override]
     public function read(string $id): SharedSlice
     {
         if (! $this->has($id)) {
@@ -57,6 +60,7 @@ final class LocalPersistence implements SlicePersistence
         return SharedSlice::new($id, $data);
     }
 
+    #[Override]
     public function write(SharedSlice $definition): void
     {
         file_put_contents(sprintf(
@@ -68,6 +72,7 @@ final class LocalPersistence implements SlicePersistence
     }
 
     /** @inheritDoc */
+    #[Override]
     public function all(): iterable
     {
         $list = [];

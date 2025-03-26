@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit;
 
+use Override;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Exception\FilesystemError;
@@ -16,6 +17,7 @@ class BuildConfigTest extends TestCase
 {
     private BuildConfig $config;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

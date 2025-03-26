@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Override;
 use Primo\Cli\Assert;
 use Primo\Cli\DiffTool;
 use Primo\Cli\Exception\PersistenceError;
@@ -40,6 +41,7 @@ final class DiffCommand extends Command
         parent::__construct($name);
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setDescription('Diff local changes to document models against the remote versions');
@@ -53,6 +55,7 @@ final class DiffCommand extends Command
         $this->addArgument('type', InputArgument::OPTIONAL, 'An individual type identifier to diff', null);
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Override;
 use Primo\Cli\Assert;
 use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Slice\SlicePersistence;
@@ -30,12 +31,14 @@ final class DownloadSlicesCommand extends Command
         parent::__construct($name);
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setDescription('Download one or all of your shared slice definitions');
         $this->addArgument('id', InputArgument::OPTIONAL, 'An individual identifier to download', null);
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

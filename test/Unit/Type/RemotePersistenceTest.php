@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit\Type;
 
+use Override;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\Exception\PersistenceError;
@@ -24,6 +25,7 @@ class RemotePersistenceTest extends TestCase
     private Client $client;
     private RemotePersistence $storage;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

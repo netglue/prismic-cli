@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Override;
 use Primo\Cli\Assert;
 use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Slice\SlicePersistence;
@@ -32,6 +33,7 @@ final class UploadSlicesCommand extends Command
         parent::__construct($name);
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setDescription('Upload one or all shared slice definitions');
@@ -44,6 +46,7 @@ final class UploadSlicesCommand extends Command
         $this->addArgument('id', InputArgument::OPTIONAL, 'An individual identifier to upload', null);
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

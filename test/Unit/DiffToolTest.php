@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit;
 
+use Override;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\DiffTool;
 use Prismic\DocumentType\Definition;
@@ -14,6 +15,7 @@ class DiffToolTest extends TestCase
 {
     private DiffTool $tool;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
