@@ -28,6 +28,7 @@ final class TypeBuilder
     public const TYPE_SLICE = 'Slice';
     public const TYPE_SHARED_SLICE = 'SharedSlice';
     public const TYPE_SLICE_ZONE = 'Slices';
+    public const TYPE_TABLE = 'Table';
 
     public const P     = 'paragraph';
     public const H1    = 'heading1';
@@ -579,6 +580,19 @@ final class TypeBuilder
                 'max' => $max,
                 'step' => $step,
             ],
+        ];
+    }
+
+    /**
+     * @param non-empty-string $label
+     *
+     * @return array{type: self::TYPE_TABLE, config: array{label: non-empty-string}}
+     */
+    public static function table(string $label): array
+    {
+        return [
+            'type' => self::TYPE_TABLE,
+            'config' => ['label' => $label],
         ];
     }
 }
