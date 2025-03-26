@@ -9,7 +9,7 @@ use Primo\Cli\Console\ConsoleColourDiffFormatter;
 use SebastianBergmann\Diff\Differ;
 use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 
-class ConsoleColourDiffFormatterTest extends TestCase
+final class ConsoleColourDiffFormatterTest extends TestCase
 {
     public function testSimpleDiff(): void
     {

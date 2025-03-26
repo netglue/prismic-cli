@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Override;
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Exception\BuildError;
 use Primo\Cli\Slice\BuildSpec;
@@ -43,6 +44,7 @@ final class BuildCommand extends Command
         parent::__construct($name);
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setDescription('Build JSON document models from local PHP Sources');
@@ -53,6 +55,7 @@ final class BuildCommand extends Command
         );
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

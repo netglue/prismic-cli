@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Slice;
 
+use Override;
 use Primo\Cli\Exception\PersistenceError;
 use Prismic\DocumentType\Exception\DefinitionNotFound;
 use Prismic\DocumentType\Exception\Exception;
@@ -17,6 +18,7 @@ final class RemotePersistence implements SlicePersistence
     {
     }
 
+    #[Override]
     public function has(string $id): bool
     {
         try {
@@ -30,6 +32,7 @@ final class RemotePersistence implements SlicePersistence
         }
     }
 
+    #[Override]
     public function read(string $id): SharedSlice
     {
         try {
@@ -39,6 +42,7 @@ final class RemotePersistence implements SlicePersistence
         }
     }
 
+    #[Override]
     public function write(SharedSlice $definition): void
     {
         try {
@@ -49,6 +53,7 @@ final class RemotePersistence implements SlicePersistence
     }
 
     /** @inheritDoc */
+    #[Override]
     public function all(): iterable
     {
         try {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Type;
 
+use Override;
 use Primo\Cli\Assert;
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Exception\InvalidArgument;
@@ -28,6 +29,7 @@ final class LocalPersistence implements TypePersistence
     ) {
     }
 
+    #[Override]
     public function has(string $id): bool
     {
         try {
@@ -39,6 +41,7 @@ final class LocalPersistence implements TypePersistence
         }
     }
 
+    #[Override]
     public function read(string $id): Definition
     {
         try {
@@ -61,6 +64,7 @@ final class LocalPersistence implements TypePersistence
         }
     }
 
+    #[Override]
     public function write(Definition $definition): void
     {
         try {
@@ -108,6 +112,7 @@ final class LocalPersistence implements TypePersistence
     }
 
     /** @inheritDoc */
+    #[Override]
     public function all(): iterable
     {
         return array_map(function (Spec $spec): Definition {
@@ -116,12 +121,14 @@ final class LocalPersistence implements TypePersistence
     }
 
     /** @inheritDoc */
+    #[Override]
     public function indexSpecs(): iterable
     {
         return $this->config->types();
     }
 
     /** @inheritDoc */
+    #[Override]
     public function writeIndex(iterable $specs): void
     {
         $dest = sprintf('%s%s%s', $this->config->distDirectory(), DIRECTORY_SEPARATOR, 'index.json');

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit\Type;
 
+use Override;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\Type\Spec;
 
@@ -11,10 +12,11 @@ use function json_encode;
 
 use const JSON_THROW_ON_ERROR;
 
-class SpecTest extends TestCase
+final class SpecTest extends TestCase
 {
     private Spec $spec;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Type;
 
+use Override;
 use Primo\Cli\Exception\PersistenceError;
 use Prismic\DocumentType\Client;
 use Prismic\DocumentType\Definition;
@@ -21,6 +22,7 @@ final class RemotePersistence implements TypePersistence
     {
     }
 
+    #[Override]
     public function has(string $id): bool
     {
         try {
@@ -34,6 +36,7 @@ final class RemotePersistence implements TypePersistence
         }
     }
 
+    #[Override]
     public function read(string $id): Definition
     {
         try {
@@ -43,6 +46,7 @@ final class RemotePersistence implements TypePersistence
         }
     }
 
+    #[Override]
     public function write(Definition $definition): void
     {
         try {
@@ -53,6 +57,7 @@ final class RemotePersistence implements TypePersistence
     }
 
     /** @inheritDoc */
+    #[Override]
     public function all(): iterable
     {
         try {
@@ -63,6 +68,7 @@ final class RemotePersistence implements TypePersistence
     }
 
     /** @inheritDoc */
+    #[Override]
     public function indexSpecs(): iterable
     {
         try {
@@ -86,6 +92,7 @@ final class RemotePersistence implements TypePersistence
     }
 
     /** @inheritDoc */
+    #[Override]
     public function writeIndex(iterable $specs): void
     {
         // It is not possible to write an index to remote storage

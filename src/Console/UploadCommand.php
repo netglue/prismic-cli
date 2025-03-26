@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Primo\Cli\Console;
 
+use Override;
 use Primo\Cli\Assert;
 use Primo\Cli\Exception\PersistenceError;
 use Primo\Cli\Type\TypePersistence;
@@ -30,6 +31,7 @@ final class UploadCommand extends Command
         parent::__construct($name);
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setDescription('Upload one or all configured document type definitions');
@@ -42,6 +44,7 @@ final class UploadCommand extends Command
         $this->addArgument('type', InputArgument::OPTIONAL, 'An individual type identifier to upload', null);
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);

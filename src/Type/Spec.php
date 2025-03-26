@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Primo\Cli\Type;
 
 use JsonSerializable;
+use Override;
 
 use function sprintf;
 
@@ -31,6 +32,7 @@ final class Spec implements JsonSerializable
     }
 
     /** @return array{id: non-empty-string, name: string, repeatable: bool, value: string} */
+    #[Override]
     public function jsonSerialize(): array
     {
         return [

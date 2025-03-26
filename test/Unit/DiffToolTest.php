@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit;
 
+use Override;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\DiffTool;
 use Prismic\DocumentType\Definition;
 use SebastianBergmann\Diff\Differ;
 use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 
-class DiffToolTest extends TestCase
+final class DiffToolTest extends TestCase
 {
     private DiffTool $tool;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

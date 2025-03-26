@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PrimoTest\Cli\Unit\Type;
 
+use Override;
 use PHPUnit\Framework\TestCase;
 use Primo\Cli\BuildConfig;
 use Primo\Cli\Exception\PersistenceError;
@@ -17,13 +18,14 @@ use function is_iterable;
 use function sprintf;
 use function unlink;
 
-class LocalPersistenceTest extends TestCase
+final class LocalPersistenceTest extends TestCase
 {
     private BuildConfig $config;
     private LocalPersistence $storage;
     private string $sourceDir;
     private string $distDir;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
@@ -44,6 +46,7 @@ class LocalPersistenceTest extends TestCase
         $this->storage = new LocalPersistence($this->config);
     }
 
+    #[Override]
     protected function tearDown(): void
     {
         $glob = sprintf('%s/*.json', $this->distDir);
