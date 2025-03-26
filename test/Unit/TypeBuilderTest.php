@@ -155,4 +155,11 @@ final class TypeBuilderTest extends TestCase
             self::assertArrayHasKey($key, $variation);
         }
     }
+
+    public function testTablesHaveTheExpectedLabel(): void
+    {
+        $data = T::table('foo');
+
+        self::assertSame('foo', $data['config']['label']);
+    }
 }
