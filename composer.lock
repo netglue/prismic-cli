@@ -69,16 +69,16 @@
         },
         {
             "name": "netglue/prismic-client",
-            "version": "1.14.0",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-client.git",
-                "reference": "596c743f9b1b72d94d830fd8ed0f263abfa2323c"
+                "reference": "df05304e3530eca0acac34fdeff84d76c88198bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/596c743f9b1b72d94d830fd8ed0f263abfa2323c",
-                "reference": "596c743f9b1b72d94d830fd8ed0f263abfa2323c",
+                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/df05304e3530eca0acac34fdeff84d76c88198bb",
+                "reference": "df05304e3530eca0acac34fdeff84d76c88198bb",
                 "shasum": ""
             },
             "require": {
@@ -104,10 +104,10 @@
                 "php-http/curl-client": "^2.3.3",
                 "php-http/mock-client": "^1.6.1",
                 "phpunit/phpunit": "^11.5.15",
-                "psalm/plugin-phpunit": "^0.19.3",
+                "psalm/plugin-phpunit": "^0.19.5",
                 "roave/security-advisories": "dev-latest",
-                "symfony/cache": "^6.4.13 || ^7.2.4",
-                "vimeo/psalm": "^6.9.5"
+                "symfony/cache": "^6.4.13 || ^7.2.5",
+                "vimeo/psalm": "^6.10.0"
             },
             "type": "library",
             "autoload": {
@@ -137,9 +137,9 @@
             ],
             "support": {
                 "issues": "https://github.com/netglue/prismic-client/issues",
-                "source": "https://github.com/netglue/prismic-client/tree/1.14.0"
+                "source": "https://github.com/netglue/prismic-client/tree/1.15.0"
             },
-            "time": "2025-03-26T20:59:07+00:00"
+            "time": "2025-04-03T10:30:28+00:00"
         },
         {
             "name": "netglue/prismic-doctype-client",
