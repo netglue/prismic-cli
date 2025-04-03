@@ -557,7 +557,7 @@ final class TypeBuilder
      *   type: self::TYPE_RANGE,
      *   config: array{
      *     label: string,
-     *     placeholder: string|null,
+     *     placeholder?: string,
      *     min: int<0, max>,
      *     max: int<1, max>,
      *     step: int<1, max>,
@@ -571,15 +571,20 @@ final class TypeBuilder
         Assert::greaterThanEq($min, 0);
         Assert::greaterThan($max, 0);
 
+        $config = [
+            'label' => $label,
+            'min' => $min,
+            'max' => $max,
+            'step' => $step,
+        ];
+
+        if ($placeholder !== null) {
+            $config['placeholder'] = $placeholder;
+        }
+
         return [
             'type' => self::TYPE_RANGE,
-            'config' => [
-                'label' => $label,
-                'placeholder' => $placeholder,
-                'min' => $min,
-                'max' => $max,
-                'step' => $step,
-            ],
+            'config' => $config,
         ];
     }
 
