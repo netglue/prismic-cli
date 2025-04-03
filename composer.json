@@ -55,9 +55,9 @@
         "laminas/laminas-servicemanager": "^4.4.0",
         "php-http/curl-client": "^2.3.3",
         "phpunit/phpunit": "^11.5.15 || ^12.0.1",
-        "psalm/plugin-phpunit": "^0.19.3",
+        "psalm/plugin-phpunit": "^0.19.5",
         "roave/security-advisories": "dev-master",
-        "vimeo/psalm": "^6.9.5"
+        "vimeo/psalm": "^6.10.0"
     },
     "extra": {
         "laminas": {
