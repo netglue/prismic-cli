@@ -568,8 +568,8 @@ final class TypeBuilder
     {
         Assert::lessThan($min, $max);
         Assert::greaterThan($step, 0);
-        Assert::greaterThan($min, 0);
-        Assert::greaterThan($max, 1);
+        Assert::greaterThanEq($min, 0);
+        Assert::greaterThan($max, 0);
 
         return [
             'type' => self::TYPE_RANGE,
