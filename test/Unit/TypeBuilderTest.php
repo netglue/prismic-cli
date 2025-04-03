@@ -115,6 +115,23 @@ final class TypeBuilderTest extends TestCase
         self::assertEquals($expect, $data);
     }
 
+    public function testRangeElementAcceptsMinimum(): void
+    {
+        $data = T::range('My Range', 'Placeholder', 0, 100, 1);
+        $expect = [
+            'type' => 'Range',
+            'config' => [
+                'label' => 'My Range',
+                'placeholder' => 'Placeholder',
+                'min' => 0,
+                'max' => 100,
+                'step' => 1,
+            ],
+        ];
+
+        self::assertEquals($expect, $data);
+    }
+
     public function testTheMaxCannotBeLessThanMin(): void
     {
         $this->expectException(AssertionFailed::class);
