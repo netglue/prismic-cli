@@ -20,6 +20,9 @@ final class TypeBuilderTest extends TestCase
                 'select' => null,
                 'label' => 'Label',
                 'placeholder' => 'Placeholder',
+                'allowText' => false,
+                'repeat' => false,
+                'variants' => [],
             ],
         ];
         self::assertEquals($expect, $data);
@@ -178,5 +181,88 @@ final class TypeBuilderTest extends TestCase
         $data = T::table('foo');
 
         self::assertSame('foo', $data['config']['label']);
+    }
+
+    public function testDocumentLinksCanBeRepeatable(): void
+    {
+        $data = T::documentLink(
+            'Label',
+            'Placeholder',
+            ['my-type'],
+            ['some-tag'],
+            false,
+            true,
+            ['V1', 'V2'],
+        );
+
+        $expect = [
+            'type' => 'Link',
+            'config' => [
+                'select' => 'document',
+                'label' => 'Label',
+                'placeholder' => 'Placeholder',
+                'customtypes' => ['my-type'],
+                'tags' => ['some-tag'],
+                'allowText' => true,
+                'repeat' => true,
+                'variants' => ['V1', 'V2'],
+            ],
+        ];
+
+        self::assertEquals($expect, $data);
+    }
+
+    public function testWebLinkOutput(): void
+    {
+        $data = T::webLink(
+            'Label',
+            'Placeholder',
+            true,
+            true,
+            true,
+            ['Ping', 'Pong'],
+        );
+
+        $expect = [
+            'type' => 'Link',
+            'config' => [
+                'select' => 'web',
+                'label' => 'Label',
+                'placeholder' => 'Placeholder',
+                'allowTargetBlank' => true,
+                'allowText' => true,
+                'repeat' => true,
+                'variants' => ['Ping', 'Pong'],
+            ],
+        ];
+
+        self::assertEquals($expect, $data);
+    }
+
+    public function testMediaLinkOutput(): void
+    {
+        $data = T::mediaLink(
+            'Label',
+            'Placeholder',
+            true,
+            true,
+            true,
+            ['Ping', 'Pong'],
+        );
+
+        $expect = [
+            'type' => 'Link',
+            'config' => [
+                'select' => 'media',
+                'label' => 'Label',
+                'placeholder' => 'Placeholder',
+                'allowTargetBlank' => true,
+                'allowText' => true,
+                'repeat' => true,
+                'variants' => ['Ping', 'Pong'],
+            ],
+        ];
+
+        self::assertEquals($expect, $data);
     }
 }
