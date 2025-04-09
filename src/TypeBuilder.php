@@ -115,19 +115,30 @@ final class TypeBuilder
         ];
     }
 
-    /** @return array<string, mixed> */
+    /**
+     * @param list<non-empty-string> $variants
+     * @param list<non-empty-string>|null $customTypes
+     *
+     * @return array<string, mixed>
+     */
     public static function documentLink(
         string $label,
         string|null $placeholder = null,
         array|null $customTypes = null,
         array|null $tags = null,
+        bool $allowText = false,
+        bool $repeat = false,
+        array $variants = [],
     ): array {
-        $config = array_filter([
+        $config = self::filterNull([
             'select' => 'document',
             'label' => $label,
             'placeholder' => $placeholder,
             'customtypes' => $customTypes,
             'tags' => $tags,
+            'allowText' => $repeat ? true : $allowText,
+            'repeat' => $repeat,
+            'variants' => $variants,
         ]);
 
         return [
@@ -136,18 +147,29 @@ final class TypeBuilder
         ];
     }
 
-    /** @return array<string, mixed> */
+    /**
+     * @param list<non-empty-string> $variants
+     * @param list<non-empty-string>|null $customTypes
+     *
+     * @return array<string, mixed>
+     */
     public static function link(
         string $label,
         string|null $placeholder = null,
         bool $allowTargetBlank = false,
         array|null $customTypes = null,
+        bool $allowText = false,
+        bool $repeat = false,
+        array $variants = [],
     ): array {
-        $config = array_filter([
+        $config = self::filterNull([
             'label' => $label,
             'placeholder' => $placeholder,
             'allowTargetBlank' => $allowTargetBlank ? true : null,
             'customtypes' => $customTypes === null || $customTypes === [] ? null : $customTypes,
+            'allowText' => $repeat ? true : $allowText,
+            'repeat' => $repeat,
+            'variants' => $variants,
         ]);
 
         $config['select'] = null;
@@ -158,38 +180,78 @@ final class TypeBuilder
         ];
     }
 
-    /** @return array<string, mixed> */
+    /**
+     * @param list<non-empty-string> $variants
+     *
+     * @return array<string, mixed>
+     */
     public static function webLink(
         string $label,
         string|null $placeholder = null,
         bool $allowTargetBlank = false,
+        bool $allowText = false,
+        bool $repeat = false,
+        array $variants = [],
     ): array {
-        return self::externalLink('web', $label, $placeholder, $allowTargetBlank);
+        return self::externalLink(
+            'web',
+            $label,
+            $placeholder,
+            $allowTargetBlank,
+            $allowText,
+            $repeat,
+            $variants,
+        );
     }
 
-    /** @return array<string, mixed> */
+    /**
+     * @param list<non-empty-string> $variants
+     *
+     * @return array<string, mixed>
+     */
     public static function mediaLink(
         string $label,
         string|null $placeholder = null,
         bool $allowTargetBlank = false,
+        bool $allowText = false,
+        bool $repeat = false,
+        array $variants = [],
     ): array {
-        return self::externalLink('media', $label, $placeholder, $allowTargetBlank);
+        return self::externalLink(
+            'media',
+            $label,
+            $placeholder,
+            $allowTargetBlank,
+            $allowText,
+            $repeat,
+            $variants,
+        );
     }
 
-    /** @return array<string, mixed> */
+    /**
+     * @param list<non-empty-string> $variants
+     *
+     * @return array<string, mixed>
+     */
     private static function externalLink(
         string $type,
         string $label,
         string|null $placeholder = null,
         bool $allowTargetBlank = false,
+        bool $allowText = false,
+        bool $repeat = false,
+        array $variants = [],
     ): array {
         return [
             'type' => self::TYPE_LINK,
-            'config' => array_filter([
+            'config' => self::filterNull([
                 'select' => $type,
                 'label' => $label,
                 'placeholder' => $placeholder,
                 'allowTargetBlank' => $allowTargetBlank ? true : null,
+                'allowText' => $repeat ? true : $allowText,
+                'repeat' => $repeat,
+                'variants' => $variants,
             ]),
         ];
     }
@@ -599,5 +661,18 @@ final class TypeBuilder
             'type' => self::TYPE_TABLE,
             'config' => ['label' => $label],
         ];
+    }
+
+    /**
+     * @param array<array-key, mixed|null> $data
+     *
+     * @return array<array-key, mixed>
+     */
+    private static function filterNull(array $data): array
+    {
+        return array_filter(
+            $data,
+            static fn (mixed $value): bool => $value !== null,
+        );
     }
 }
