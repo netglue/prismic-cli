@@ -69,16 +69,16 @@
         },
         {
             "name": "netglue/prismic-client",
-            "version": "1.16.0",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-client.git",
-                "reference": "480a11207bcfc638e8be291c40c793df165c5b78"
+                "reference": "602fa25fc55bca6d5ebc3c9120dcf9bb8b7a1f01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/480a11207bcfc638e8be291c40c793df165c5b78",
-                "reference": "480a11207bcfc638e8be291c40c793df165c5b78",
+                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/602fa25fc55bca6d5ebc3c9120dcf9bb8b7a1f01",
+                "reference": "602fa25fc55bca6d5ebc3c9120dcf9bb8b7a1f01",
                 "shasum": ""
             },
             "require": {
@@ -97,17 +97,17 @@
                 "php-http/promise": "<1.3.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^13.0.0",
+                "doctrine/coding-standard": "^13.0.1",
                 "ext-curl": "*",
-                "laminas/laminas-diactoros": "^3.5.0",
+                "laminas/laminas-diactoros": "^3.6.0",
                 "php-http/cache-plugin": "^2.0.1",
                 "php-http/curl-client": "^2.3.3",
                 "php-http/mock-client": "^1.6.1",
-                "phpunit/phpunit": "^11.5.15",
+                "phpunit/phpunit": "^11.5.25",
                 "psalm/plugin-phpunit": "^0.19.5",
                 "roave/security-advisories": "dev-latest",
-                "symfony/cache": "^6.4.13 || ^7.2.5",
-                "vimeo/psalm": "^6.10.0"
+                "symfony/cache": "^6.4.13 || ^7.3.0",
+                "vimeo/psalm": "^6.12.0"
             },
             "type": "library",
             "autoload": {
@@ -137,9 +137,9 @@
             ],
             "support": {
                 "issues": "https://github.com/netglue/prismic-client/issues",
-                "source": "https://github.com/netglue/prismic-client/tree/1.16.0"
+                "source": "https://github.com/netglue/prismic-client/tree/1.17.0"
             },
-            "time": "2025-04-09T16:30:44+00:00"
+            "time": "2025-06-27T12:26:39+00:00"
         },
         {
             "name": "netglue/prismic-doctype-client",
@@ -2580,16 +2580,16 @@
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/composer-installer.git",
-                "reference": "18a95476797ed480b3f2598984bc6f7e1eecc9a8"
+                "reference": "6e0fa428497bf560152ee73ffbb8af5c6a56b0dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/18a95476797ed480b3f2598984bc6f7e1eecc9a8",
-                "reference": "18a95476797ed480b3f2598984bc6f7e1eecc9a8",
+                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/6e0fa428497bf560152ee73ffbb8af5c6a56b0dd",
+                "reference": "6e0fa428497bf560152ee73ffbb8af5c6a56b0dd",
                 "shasum": ""
             },
             "require": {
@@ -2601,7 +2601,7 @@
                 "composer/composer": "^2.2",
                 "ext-json": "*",
                 "ext-zip": "*",
-                "php-parallel-lint/php-parallel-lint": "^1.3.1",
+                "php-parallel-lint/php-parallel-lint": "^1.4.0",
                 "phpcompatibility/php-compatibility": "^9.0",
                 "yoast/phpunit-polyfills": "^1.0"
             },
@@ -2672,7 +2672,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-05-28T16:05:48+00:00"
+            "time": "2025-06-27T17:24:01+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -4553,16 +4553,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.24",
+            "version": "11.5.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6b07ab1047155cf38f82dd691787a277782271dd"
+                "reference": "864ab32b3ff52058f917c5b19b3cef821e4a4f1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6b07ab1047155cf38f82dd691787a277782271dd",
-                "reference": "6b07ab1047155cf38f82dd691787a277782271dd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/864ab32b3ff52058f917c5b19b3cef821e4a4f1b",
+                "reference": "864ab32b3ff52058f917c5b19b3cef821e4a4f1b",
                 "shasum": ""
             },
             "require": {
@@ -4634,7 +4634,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.24"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.25"
             },
             "funding": [
                 {
@@ -4658,7 +4658,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-20T11:31:02+00:00"
+            "time": "2025-06-27T04:36:07+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
@@ -4846,12 +4846,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "b79895bbbfcb549006a8ee8efae7f77edffe5329"
+                "reference": "d4ca0cc4c49ba3437778e201d35844715d9b1bd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/b79895bbbfcb549006a8ee8efae7f77edffe5329",
-                "reference": "b79895bbbfcb549006a8ee8efae7f77edffe5329",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d4ca0cc4c49ba3437778e201d35844715d9b1bd9",
+                "reference": "d4ca0cc4c49ba3437778e201d35844715d9b1bd9",
                 "shasum": ""
             },
             "conflict": {
@@ -4921,7 +4921,7 @@
                 "bedita/bedita": "<4",
                 "bednee/cooluri": "<1.0.30",
                 "bigfork/silverstripe-form-capture": ">=3,<3.1.1",
-                "billz/raspap-webgui": "<=3.1.4",
+                "billz/raspap-webgui": "<3.3.6",
                 "bk2k/bootstrap-package": ">=7.1,<7.1.2|>=8,<8.0.8|>=9,<9.0.4|>=9.1,<9.1.3|>=10,<10.0.10|>=11,<11.0.3",
                 "blueimp/jquery-file-upload": "==6.4.4",
                 "bmarshall511/wordpress_zero_spam": "<5.2.13",
@@ -5530,7 +5530,7 @@
                 "squizlabs/php_codesniffer": ">=1,<2.8.1|>=3,<3.0.1",
                 "ssddanbrown/bookstack": "<24.05.1",
                 "starcitizentools/citizen-skin": ">=2.4.2,<3.3.1",
-                "starcitizentools/tabber-neue": ">=1.9.1,<2.7.2",
+                "starcitizentools/tabber-neue": ">=1.9.1,<2.7.2|>=3,<3.1.1",
                 "statamic/cms": "<=5.16",
                 "stormpath/sdk": "<9.9.99",
                 "studio-42/elfinder": "<=2.1.64",
@@ -5791,7 +5791,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-24T22:05:35+00:00"
+            "time": "2025-06-27T21:05:09+00:00"
         },
         {
             "name": "sebastian/cli-parser",
