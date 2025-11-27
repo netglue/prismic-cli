@@ -49,7 +49,7 @@ final class BuildExamplesTest extends TestCase
         );
 
         $application = new Application('Type Builder Example');
-        $application->add(new BuildCommand(
+        $application->addCommand(new BuildCommand(
             $config,
             new LocalPersistence($config),
             $sliceConfig,
