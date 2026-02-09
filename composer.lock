@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbed0ac36c8935ceef478c576fc75bfe",
+    "content-hash": "8dd957a1d3f736238b239ffbc1fb0d65",
     "packages": [
         {
             "name": "laminas/laminas-escaper",
@@ -69,24 +69,24 @@
         },
         {
             "name": "netglue/prismic-client",
-            "version": "1.18.0",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-client.git",
-                "reference": "0733f014e5f56d5f5b1c71c90700c0e516c808f9"
+                "reference": "9c2c3e039036669df2babdc96a5463107361bdf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/0733f014e5f56d5f5b1c71c90700c0e516c808f9",
-                "reference": "0733f014e5f56d5f5b1c71c90700c0e516c808f9",
+                "url": "https://api.github.com/repos/netglue/prismic-client/zipball/9c2c3e039036669df2babdc96a5463107361bdf4",
+                "reference": "9c2c3e039036669df2babdc96a5463107361bdf4",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "laminas/laminas-escaper": "^2.9",
-                "php": "~8.2 || ~8.3 || ~8.4",
+                "php": "~8.2 || ~8.3 || ~8.4 || ~8.5",
                 "php-http/discovery": "^1.18.0",
-                "psr/cache": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "psr/cache": "^2.0.0 || ^3.0.0",
                 "psr/http-client": "^1.0",
                 "psr/http-client-implementation": "*",
                 "psr/http-factory": "^1.0",
@@ -97,17 +97,17 @@
                 "php-http/promise": "<1.3.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^13.0.1",
+                "doctrine/coding-standard": "^14.0.0",
                 "ext-curl": "*",
-                "laminas/laminas-diactoros": "^3.6.0",
-                "php-http/cache-plugin": "^2.0.1",
-                "php-http/curl-client": "^2.3.3",
+                "laminas/laminas-diactoros": "^3.8.0",
+                "php-http/cache-plugin": "^2.0.2",
+                "php-http/curl-client": "^2.4.0",
                 "php-http/mock-client": "^1.6.1",
-                "phpunit/phpunit": "^11.5.25",
+                "phpunit/phpunit": "^11.5.52 || ^12.0 || ^13.0",
                 "psalm/plugin-phpunit": "^0.19.5",
                 "roave/security-advisories": "dev-latest",
-                "symfony/cache": "^6.4.13 || ^7.3.0",
-                "vimeo/psalm": "^6.12.0"
+                "symfony/cache": "^7.4.5 || ^8.0.0",
+                "vimeo/psalm": "^6.15.1"
             },
             "type": "library",
             "autoload": {
@@ -137,53 +137,55 @@
             ],
             "support": {
                 "issues": "https://github.com/netglue/prismic-client/issues",
-                "source": "https://github.com/netglue/prismic-client/tree/1.18.0"
+                "source": "https://github.com/netglue/prismic-client/tree/1.19.0"
             },
-            "time": "2025-07-24T12:07:05+00:00"
+            "time": "2026-02-09T12:50:48+00:00"
         },
         {
             "name": "netglue/prismic-doctype-client",
-            "version": "1.7.1",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netglue/prismic-doctype-client.git",
-                "reference": "8c8ef052b0cfffb54c704d6055d1261f53f8cb08"
+                "reference": "d416beef024fd9276299e8e6bc5f9c5910402825"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netglue/prismic-doctype-client/zipball/8c8ef052b0cfffb54c704d6055d1261f53f8cb08",
-                "reference": "8c8ef052b0cfffb54c704d6055d1261f53f8cb08",
+                "url": "https://api.github.com/repos/netglue/prismic-doctype-client/zipball/d416beef024fd9276299e8e6bc5f9c5910402825",
+                "reference": "d416beef024fd9276299e8e6bc5f9c5910402825",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": "~8.2.0 || ~8.3 || ~8.4",
+                "php": "~8.2.0 || ~8.3 || ~8.4 || ~8.5",
                 "php-http/discovery": "^1.14.1",
                 "psr/http-client": "^1.0",
                 "psr/http-client-implementation": "*",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0 || ^2.0",
-                "webmozart/assert": "^1.10"
+                "webmozart/assert": "^2.1"
             },
             "conflict": {
+                "amphp/dns": "<2.1.2",
+                "amphp/socket": "<2.3.1",
                 "php-http/httplug": "<2.4.1",
                 "sanmai/pipeline": "<6.12",
                 "shish/safe": "<2.6.4",
                 "symfony/options-resolver": "<7.2"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^12.0",
+                "doctrine/coding-standard": "^14.0",
                 "ext-curl": "*",
-                "infection/infection": "^0.29.10",
-                "laminas/laminas-diactoros": "^3.5.0",
-                "php-http/curl-client": "^2.3.3",
-                "phpunit/phpunit": "^11.5.4",
-                "psalm/plugin-phpunit": "^0.19.2",
-                "react/child-process": "^0.6.6",
+                "infection/infection": "^0.32.3",
+                "laminas/laminas-diactoros": "^3.8.0",
+                "php-http/curl-client": "^2.4.0",
+                "phpunit/phpunit": "^11.5.52 || ^12",
+                "psalm/plugin-phpunit": "^0.19.5",
+                "react/child-process": "^0.6.7",
                 "react/http": "^1.11",
                 "roave/security-advisories": "dev-latest",
-                "squizlabs/php_codesniffer": "^3.11.3",
-                "vimeo/psalm": "^6.0.0"
+                "squizlabs/php_codesniffer": "^4.0.1",
+                "vimeo/psalm": "^6.15.1"
             },
             "type": "library",
             "extra": {
@@ -211,9 +213,9 @@
             "homepage": "https://github.com/netglue/prismic-doctype-client",
             "support": {
                 "issues": "https://github.com/netglue/prismic-doctype-client/issues",
-                "source": "https://github.com/netglue/prismic-doctype-client/tree/1.7.1"
+                "source": "https://github.com/netglue/prismic-doctype-client/tree/1.8.0"
             },
-            "time": "2025-01-31T16:18:59+00:00"
+            "time": "2026-02-09T13:33:27+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -1303,23 +1305,23 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.12.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "9be6926d8b485f55b9229203f962b51ed377ba68"
+                "reference": "ce6a2f100c404b2d32a1dd1270f9b59ad4f57649"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/9be6926d8b485f55b9229203f962b51ed377ba68",
-                "reference": "9be6926d8b485f55b9229203f962b51ed377ba68",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/ce6a2f100c404b2d32a1dd1270f9b59ad4f57649",
+                "reference": "ce6a2f100c404b2d32a1dd1270f9b59ad4f57649",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
                 "ext-date": "*",
                 "ext-filter": "*",
-                "php": "^7.2 || ^8.0"
+                "php": "^8.2"
             },
             "suggest": {
                 "ext-intl": "",
@@ -1329,7 +1331,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.10-dev"
+                    "dev-feature/2-0": "2.0-dev"
                 }
             },
             "autoload": {
@@ -1345,6 +1347,10 @@
                 {
                     "name": "Bernhard Schussek",
                     "email": "bschussek@gmail.com"
+                },
+                {
+                    "name": "Woody Gilk",
+                    "email": "woody.gilk@gmail.com"
                 }
             ],
             "description": "Assertions to validate method input/output with nice error messages.",
@@ -1355,9 +1361,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/1.12.1"
+                "source": "https://github.com/webmozarts/assert/tree/2.1.2"
             },
-            "time": "2025-10-29T15:56:20+00:00"
+            "time": "2026-01-13T14:02:24+00:00"
         }
     ],
     "packages-dev": [
@@ -4598,16 +4604,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.51",
+            "version": "11.5.52",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ad14159f92910b0f0e3928c13e9b2077529de091"
+                "reference": "b287d32c26f78768e391843c5a59395f24b62605"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ad14159f92910b0f0e3928c13e9b2077529de091",
-                "reference": "ad14159f92910b0f0e3928c13e9b2077529de091",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b287d32c26f78768e391843c5a59395f24b62605",
+                "reference": "b287d32c26f78768e391843c5a59395f24b62605",
                 "shasum": ""
             },
             "require": {
@@ -4680,7 +4686,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.51"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.52"
             },
             "funding": [
                 {
@@ -4704,7 +4710,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-05T07:59:30+00:00"
+            "time": "2026-02-08T07:05:14+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
@@ -4892,12 +4898,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "7ea2d110787f6807213e27a1255c6b858ad99d89"
+                "reference": "c9bc175c224c05354a704903e6f38c31776d40e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7ea2d110787f6807213e27a1255c6b858ad99d89",
-                "reference": "7ea2d110787f6807213e27a1255c6b858ad99d89",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c9bc175c224c05354a704903e6f38c31776d40e3",
+                "reference": "c9bc175c224c05354a704903e6f38c31776d40e3",
                 "shasum": ""
             },
             "conflict": {
@@ -4928,6 +4934,7 @@
                 "amphp/artax": "<1.0.6|>=2,<2.0.6",
                 "amphp/http": "<=1.7.2|>=2,<=2.1",
                 "amphp/http-client": ">=4,<4.4",
+                "amphp/http-server": ">=2.0.0.0-RC1-dev,<2.1.10|>=3.0.0.0-beta1,<3.4.4",
                 "anchorcms/anchor-cms": "<=0.12.7",
                 "andreapollastri/cipi": "<=3.1.15",
                 "andrewhaine/silverstripe-form-capture": ">=0.2,<=0.2.3|>=1,<1.0.2|>=2,<2.2.5",
@@ -5902,7 +5909,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-05T22:08:29+00:00"
+            "time": "2026-02-09T09:24:23+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -7360,16 +7367,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "6.15.0",
+            "version": "6.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "204d06619833a297b402cbc66be7f2df74437db4"
+                "reference": "28dc127af1b5aecd52314f6f645bafc10d0e11f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/204d06619833a297b402cbc66be7f2df74437db4",
-                "reference": "204d06619833a297b402cbc66be7f2df74437db4",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/28dc127af1b5aecd52314f6f645bafc10d0e11f9",
+                "reference": "28dc127af1b5aecd52314f6f645bafc10d0e11f9",
                 "shasum": ""
             },
             "require": {
@@ -7393,7 +7400,7 @@
                 "netresearch/jsonmapper": "^5.0",
                 "nikic/php-parser": "^5.0.0",
                 "php": "~8.1.31 || ~8.2.27 || ~8.3.16 || ~8.4.3 || ~8.5.0",
-                "sebastian/diff": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+                "sebastian/diff": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
                 "spatie/array-to-xml": "^2.17.0 || ^3.0",
                 "symfony/console": "^6.0 || ^7.0 || ^8.0",
                 "symfony/filesystem": "~6.3.12 || ~6.4.3 || ^7.0.3 || ^8.0",
@@ -7474,7 +7481,7 @@
                 "issues": "https://github.com/vimeo/psalm/issues",
                 "source": "https://github.com/vimeo/psalm"
             },
-            "time": "2026-01-30T13:53:17+00:00"
+            "time": "2026-02-07T19:27:16+00:00"
         },
         {
             "name": "webimpress/safe-writer",
