@@ -13,6 +13,8 @@ use Primo\Cli\Type\LocalPersistence;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 
+use function method_exists;
+
 final class BuildExamplesTest extends TestCase
 {
     /** @var array<array-key, array{id: non-empty-string, name: string, repeatable: bool}> */
@@ -49,12 +51,19 @@ final class BuildExamplesTest extends TestCase
         );
 
         $application = new Application('Type Builder Example');
-        $application->add(new BuildCommand(
+        $command = new BuildCommand(
             $config,
             new LocalPersistence($config),
             $sliceConfig,
             new SlicePersistence($sliceConfig),
-        ));
+        );
+
+        if (method_exists($application, 'add')) {
+            $application->add($command);
+        } else {
+            $application->addCommand($command);
+        }
+
         $application->setAutoExit(false);
         $application->setDefaultCommand(BuildCommand::DEFAULT_NAME, true);
         $application->run(new ArgvInput(['', '-qn']));
