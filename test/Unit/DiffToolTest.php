@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Primo\Cli\DiffTool;
 use Prismic\DocumentType\Definition;
 use SebastianBergmann\Diff\Differ;
-use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
+use SebastianBergmann\Diff\Output\DiffOnlyOutputBuilder;
 
 final class DiffToolTest extends TestCase
 {
@@ -20,7 +20,7 @@ final class DiffToolTest extends TestCase
     {
         parent::setUp();
 
-        $this->tool = new DiffTool(new Differ(new UnifiedDiffOutputBuilder()));
+        $this->tool = new DiffTool(new Differ(new DiffOnlyOutputBuilder()));
     }
 
     public function testThatTheDifferencesCanBeDiffed(): void
@@ -32,12 +32,8 @@ final class DiffToolTest extends TestCase
         self::assertNotNull($diff);
 
         $expect = <<<'DIFF'
-                 "foo": [
-                     "a",
-                     "b",
             -        "c"
             +        "d"
-                 ]
             
             DIFF;
 

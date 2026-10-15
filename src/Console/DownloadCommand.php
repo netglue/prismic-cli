@@ -21,7 +21,7 @@ use const PHP_EOL;
 
 final class DownloadCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:types:download';
+    public const string DEFAULT_NAME = 'primo:types:download';
 
     public function __construct(
         private TypePersistence $local,

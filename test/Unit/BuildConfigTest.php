@@ -48,7 +48,7 @@ final class BuildConfigTest extends TestCase
     public function testExceptionThrownForNonDirectorySource(): void
     {
         $this->expectException(FilesystemError::class);
-        $this->expectExceptionMessage(sprintf(
+        $this->expectExceptionMessageIsOrContains(sprintf(
             'The directory "%s" either does not exist, or is not a directory',
             __FILE__,
         ));
@@ -58,7 +58,7 @@ final class BuildConfigTest extends TestCase
     public function testExceptionThrownForNonDirectoryDest(): void
     {
         $this->expectException(FilesystemError::class);
-        $this->expectExceptionMessage(sprintf(
+        $this->expectExceptionMessageIsOrContains(sprintf(
             'The directory "%s" either does not exist, or is not a directory',
             __FILE__,
         ));
@@ -84,7 +84,7 @@ final class BuildConfigTest extends TestCase
             ['id' => 'a', 'name' => 'b', 'repeatable' => true],
         ];
         $this->expectException(FilesystemError::class);
-        $this->expectExceptionMessage('is not readable');
+        $this->expectExceptionMessageIsOrContains('is not readable');
         BuildConfig::withArraySpecs(__DIR__, __DIR__, $types);
     }
 
@@ -96,7 +96,7 @@ final class BuildConfigTest extends TestCase
     public function testTypesCannotBeCalledIndex(): void
     {
         $this->expectException(InvalidArgument::class);
-        $this->expectExceptionMessage('has "index" for its identifier');
+        $this->expectExceptionMessageIsOrContains('has "index" for its identifier');
         BuildConfig::withArraySpecs(__DIR__, __DIR__, [
             ['id' => 'index', 'name' => 'foo', 'repeatable' => true],
         ]);

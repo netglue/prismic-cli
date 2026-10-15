@@ -20,7 +20,7 @@ use function sprintf;
 #[AsCommand('primo:types:delete')]
 final class DeleteCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:types:delete';
+    public const string DEFAULT_NAME = 'primo:types:delete';
 
     public function __construct(private readonly Client $apiClient, string $name = self::DEFAULT_NAME)
     {

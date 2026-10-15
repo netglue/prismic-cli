@@ -21,7 +21,7 @@ use function sprintf;
 
 final class ListCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:list';
+    public const string DEFAULT_NAME = 'primo:list';
 
     public function __construct(private ApiClient $apiClient, string $name = self::DEFAULT_NAME)
     {

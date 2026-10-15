@@ -21,7 +21,7 @@ use const PHP_EOL;
 
 final class UploadCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:types:upload';
+    public const string DEFAULT_NAME = 'primo:types:upload';
 
     public function __construct(
         private TypePersistence $local,

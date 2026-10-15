@@ -24,10 +24,10 @@ use const PHP_EOL;
  */
 final class ConsoleColourDiffFormatter
 {
-    private const PLUS_START_REGEX = '#^(\+.*)#';
-    private const MINUS_START_REGEX = '#^(\-.*)#';
-    private const AT_START_REGEX = '#^(@.*)#';
-    private const NEWLINES_REGEX = "#\n\r|\n#";
+    private const string PLUS_START_REGEX = '#^(\+.*)#';
+    private const string MINUS_START_REGEX = '#^(\-.*)#';
+    private const string AT_START_REGEX = '#^(@.*)#';
+    private const string NEWLINES_REGEX = "#\n\r|\n#";
 
     private string $template;
 

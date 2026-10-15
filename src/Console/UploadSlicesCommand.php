@@ -23,7 +23,7 @@ use const PHP_EOL;
 #[AsCommand('primo:slices:upload')]
 final class UploadSlicesCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:slices:upload';
+    public const string DEFAULT_NAME = 'primo:slices:upload';
 
     public function __construct(
         private readonly SlicePersistence $local,
