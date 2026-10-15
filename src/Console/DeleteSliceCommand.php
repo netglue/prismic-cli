@@ -18,7 +18,7 @@ use function is_string;
 #[AsCommand('primo:slices:delete')]
 final class DeleteSliceCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:slices:delete';
+    public const string DEFAULT_NAME = 'primo:slices:delete';
 
     public function __construct(
         private SharedSliceManagementClient $apiClient,

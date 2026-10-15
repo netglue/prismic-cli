@@ -25,7 +25,7 @@ use const PHP_EOL;
 
 final class InfoCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:info';
+    public const string DEFAULT_NAME = 'primo:info';
 
     public function __construct(private ApiClient $apiClient, string $name = self::DEFAULT_NAME)
     {

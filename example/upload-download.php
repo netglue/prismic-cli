@@ -27,7 +27,7 @@ use Primo\Cli\Type\LocalPersistence;
 use Primo\Cli\Type\RemotePersistence;
 use Prismic\DocumentType\BaseClient;
 use SebastianBergmann\Diff\Differ;
-use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
+use SebastianBergmann\Diff\Output\DiffOnlyOutputBuilder;
 use Symfony\Component\Console\Application;
 
 $repo = getenv('PRISMIC_REPOSITORY');
@@ -106,7 +106,7 @@ $application->add(new ListSlicesCommand($client));
 $application->add(new UploadCommand($localStorage, $remoteStorage));
 $application->add(new UploadSlicesCommand($localSlices, $remoteSlices));
 $application->add(new DiffCommand(
-    new DiffTool(new Differ(new UnifiedDiffOutputBuilder())),
+    new DiffTool(new Differ(new DiffOnlyOutputBuilder())),
     new ConsoleColourDiffFormatter(),
     $localStorage,
     $remoteStorage,

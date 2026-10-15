@@ -6,7 +6,7 @@ namespace Primo\Cli\Container;
 
 use Primo\Cli\DiffTool;
 use SebastianBergmann\Diff\Differ;
-use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
+use SebastianBergmann\Diff\Output\DiffOnlyOutputBuilder;
 
 final class DiffToolFactory
 {
@@ -14,7 +14,7 @@ final class DiffToolFactory
     {
         return new DiffTool(
             new Differ(
-                new UnifiedDiffOutputBuilder(),
+                new DiffOnlyOutputBuilder(),
             ),
         );
     }

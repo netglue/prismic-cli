@@ -21,7 +21,7 @@ use function sprintf;
 #[AsCommand('primo:slices:download')]
 final class DownloadSlicesCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:slices:download';
+    public const string DEFAULT_NAME = 'primo:slices:download';
 
     public function __construct(
         private readonly SlicePersistence $local,

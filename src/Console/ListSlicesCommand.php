@@ -26,7 +26,7 @@ use function sprintf;
 #[AsCommand('primo:slices:list')]
 final class ListSlicesCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:slices:list';
+    public const string DEFAULT_NAME = 'primo:slices:list';
 
     public function __construct(
         private SharedSliceManagementClient $apiClient,

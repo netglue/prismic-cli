@@ -23,7 +23,7 @@ use const PHP_EOL;
 
 final class DiffCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:types:diff';
+    public const string DEFAULT_NAME = 'primo:types:diff';
 
     private TypePersistence $local;
     private TypePersistence $remote;

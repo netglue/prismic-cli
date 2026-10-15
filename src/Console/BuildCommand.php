@@ -32,7 +32,7 @@ use const PHP_EOL;
 
 final class BuildCommand extends Command
 {
-    public const DEFAULT_NAME = 'primo:build';
+    public const string DEFAULT_NAME = 'primo:build';
 
     public function __construct(
         private BuildConfig $config,

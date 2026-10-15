@@ -34,7 +34,7 @@ final class CustomTypeClientFactoryTest extends TestCase
             ->willReturn([]);
 
         $this->expectException(AssertionFailed::class);
-        $this->expectExceptionMessage('config.primo.custom-type-api.token');
+        $this->expectExceptionMessageIsOrContains('config.primo.custom-type-api.token');
 
         ($this->factory)($this->container);
     }
@@ -51,7 +51,7 @@ final class CustomTypeClientFactoryTest extends TestCase
             ]);
 
         $this->expectException(AssertionFailed::class);
-        $this->expectExceptionMessage('config.primo.custom-type-api.repository');
+        $this->expectExceptionMessageIsOrContains('config.primo.custom-type-api.repository');
 
         ($this->factory)($this->container);
     }

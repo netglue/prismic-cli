@@ -10,44 +10,44 @@ use function sort;
 
 final class TypeBuilder
 {
-    public const TYPE_UID = 'UID';
-    public const TYPE_TEXT = 'Text';
-    public const TYPE_BOOLEAN = 'Boolean';
-    public const TYPE_COLOR = 'Color';
-    public const TYPE_LINK = 'Link';
-    public const TYPE_SELECT = 'Select';
-    public const TYPE_DATE = 'Date';
-    public const TYPE_TIMESTAMP = 'Timestamp';
-    public const TYPE_NUMBER = 'Number';
-    public const TYPE_GEOPOINT = 'GeoPoint';
-    public const TYPE_EMBED = 'Embed';
-    public const TYPE_GROUP = 'Group';
-    public const TYPE_IMAGE = 'Image';
-    public const TYPE_RANGE = 'Range';
-    public const TYPE_RICH = 'StructuredText';
-    public const TYPE_SLICE = 'Slice';
-    public const TYPE_SHARED_SLICE = 'SharedSlice';
-    public const TYPE_SLICE_ZONE = 'Slices';
-    public const TYPE_TABLE = 'Table';
+    public const string TYPE_UID = 'UID';
+    public const string TYPE_TEXT = 'Text';
+    public const string TYPE_BOOLEAN = 'Boolean';
+    public const string TYPE_COLOR = 'Color';
+    public const string TYPE_LINK = 'Link';
+    public const string TYPE_SELECT = 'Select';
+    public const string TYPE_DATE = 'Date';
+    public const string TYPE_TIMESTAMP = 'Timestamp';
+    public const string TYPE_NUMBER = 'Number';
+    public const string TYPE_GEOPOINT = 'GeoPoint';
+    public const string TYPE_EMBED = 'Embed';
+    public const string TYPE_GROUP = 'Group';
+    public const string TYPE_IMAGE = 'Image';
+    public const string TYPE_RANGE = 'Range';
+    public const string TYPE_RICH = 'StructuredText';
+    public const string TYPE_SLICE = 'Slice';
+    public const string TYPE_SHARED_SLICE = 'SharedSlice';
+    public const string TYPE_SLICE_ZONE = 'Slices';
+    public const string TYPE_TABLE = 'Table';
 
-    public const P     = 'paragraph';
-    public const H1    = 'heading1';
-    public const H2    = 'heading2';
-    public const H3    = 'heading3';
-    public const H4    = 'heading4';
-    public const H5    = 'heading5';
-    public const H6    = 'heading6';
-    public const B     = 'strong';
-    public const I     = 'em';
-    public const A     = 'hyperlink';
-    public const IMG   = 'image';
-    public const PRE   = 'preformatted';
-    public const UL    = 'list-item';
-    public const OL    = 'o-list-item';
-    public const RTL   = 'rtl';
-    public const EMBED = 'embed';
+    public const string P     = 'paragraph';
+    public const string H1    = 'heading1';
+    public const string H2    = 'heading2';
+    public const string H3    = 'heading3';
+    public const string H4    = 'heading4';
+    public const string H5    = 'heading5';
+    public const string H6    = 'heading6';
+    public const string B     = 'strong';
+    public const string I     = 'em';
+    public const string A     = 'hyperlink';
+    public const string IMG   = 'image';
+    public const string PRE   = 'preformatted';
+    public const string UL    = 'list-item';
+    public const string OL    = 'o-list-item';
+    public const string RTL   = 'rtl';
+    public const string EMBED = 'embed';
 
-    public const ALL = [
+    public const array ALL = [
         self::P,
         self::H1,
         self::H2,
@@ -66,10 +66,10 @@ final class TypeBuilder
         self::EMBED,
     ];
 
-    public const SLICE_DISPLAY_LIST = 'list';
-    public const SLICE_DISPLAY_GRID = 'grid';
+    public const string SLICE_DISPLAY_LIST = 'list';
+    public const string SLICE_DISPLAY_GRID = 'grid';
 
-    private const SLICE_DISPLAY = [
+    private const array SLICE_DISPLAY = [
         self::SLICE_DISPLAY_GRID,
         self::SLICE_DISPLAY_LIST,
     ];
